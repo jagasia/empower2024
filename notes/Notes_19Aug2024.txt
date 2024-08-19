@@ -218,3 +218,49 @@ Create a table using the information given above
 
 
 
+INSERT INTO CUSTOMER VALUES
+(1, 'Raja','01-Jan-00','989898998','India');
+
+
+dd-MON-RR
+
+RR is year format where,
+00	is 2000 because, now it is 2024
+
+TO_CHAR
+
+INSERT INTO CUSTOMER VALUES
+(2, 'Suresh',TO_DATE('01-Jan-1900','dd-MON-yyyy'),'989898997','India');
+
+
+select id, name, TO_CHAR(dob,'dd-MON-yyyy'), phone, address from customer;
+
+
+----------------------------
+ALTER
+
+is used to alter the structure of the table
+
+ALTER
+	adding a column to the existing table
+	drop a column from a table
+	rename a column
+	modify the data type of the column
+
+PRODUCT
+	ID
+	NAME
+	MFG_DATE
+	PRICE
+in the product table,
+1) add another column called "EXP_DATE
+2) modify the data type of price to NUMBER(6,2)
+3) remove the EXP_DATE column
+4) rename a column from PRICE to COST
+
+
+
+
+
+
+
