@@ -531,3 +531,132 @@ https://docs.oracle.com/database/timesten-18.1/TTSQL/privileges.htm#BABECGGB
 --GRANT CREATE SESSION TO JAG WITH ADMIN OPTION;
 
 REVOKE CREATE SESSION FROM JAG;
+
+--------------------------------
+CONSTRAINTS
+	Limitations
+	Restrictions
+	Conditions that needs to be met
+	
+constraints enforce integrity
+
+Integrity
+-------------
+	means correctness
+
+types of data integrity?
+	Entity Integrity
+	Domain Integrity
+	Referential Integrity
+	User defined data integrity
+
+What is entity integrity?
+	is the ability to identify a row uniquely
+	is implemented using PRIMARY KEY
+
+what is a primary key?
+	a column or columns which is/are used to identify a row uniquely is a primary key
+	primary key column(s) will not allow
+		NULL
+		Duplicates
+
+	primary key can be composite also
+
+We can add primary key 
+	while creating a table		CREATE
+	after creating a table		ALTER
+
+
+PRIMARY KEY WHILE CREATE TABLE 
+	at column level
+	at row level
+	and we can also mention constraint id while creating a constraint. It will be useful while removing the constraint
+	if we do not name the constraint id, then system gives an id. we can find that id and use it to remove the constraint
+
+CREATE TABLE PRODUCT
+(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR2(20),
+	PRICE NUMBER(6,2)
+);
+Table created
+
+DROP TABLE PRODUCT;
+Table dropped.
+
+
+CREATE TABLE PRODUCT
+(
+	ID INT,
+	NAME VARCHAR2(20),
+	PRICE NUMBER(6,2),
+	PRIMARY KEY(ID)
+);
+Table created.
+
+drop table product;
+table dropped.
+
+CREATE TABLE PRODUCT
+(
+	ID INT,
+	NAME VARCHAR2(20),
+	PRICE NUMBER(6,2),
+	CONSTRAINT pkId1 PRIMARY KEY(ID)
+);
+Table created.
+
+i will show you, how to remove this constraint.
+before that, lets see the effect of this constraint.
+
+we add 2 rows and see the effect of primary key
+INSERT INTO PRODUCT VALUES(NULL, 'Pen',10);
+ORA-01400: cannot insert NULL into ("SQL_XAILRSLZDFLQFNZSHSKOOEJMB"."PRODUCT"."ID") ORA-06512: at "SYS.DBMS_SQL", line 1721
+
+select * from product;
+no data found
+
+INSERT INTO PRODUCT VALUES(1, 'Pen',10);
+1 row(s) inserted
+
+INSERT INTO PRODUCT VALUES(1, 'Pencil',5);
+ORA-00001: unique constraint (SQL_XAILRSLZDFLQFNZSHSKOOEJMB.PKID1) violated ORA-06512: at "SYS.DBMS_SQL", line 1721
+
+Remove primary key constraint from the PRODUCT table:
+ALTER TABLE PRODUCT DROP CONSTRAINT pkId1;
+Table altered
+
+How to find the constraint name by table name?
+SELECT * FROM USER_CONS_COLUMNS WHERE TABLE_NAME='PRODUCT';
+
+now, lets check effect of this:
+
+ALTER TABLE PRODUCT DROP PRIMARY KEY;
+
+Alter table and add primary key now.
+
+ALTER TABLE PRODUCT ADD CONSTRAINT pkpid1 PRIMARY KEY(ID);
+ORA-01449: column contains NULL values; cannot alter to NOT NULL 
+
+
+Now, 
+DELETE FROM PRODUCT WHERE ID IS NULL;
+1 row(s) deleted.
+
+
+ALTER TABLE PRODUCT ADD CONSTRAINT pkpid1 PRIMARY KEY(ID);
+ORA-02437: cannot validate (SQL_XAILRSLZDFLQFNZSHSKOOEJMB.PKPID1) - primary key violated 
+
+DELETE FROM PRODUCT WHERE NAME='Pen'
+1 row(s) delete.
+
+ALTER TABLE PRODUCT ADD CONSTRAINT pkpid1 PRIMARY KEY(ID);
+Table altered.
+
+Task:
+1) create a table and introduce primary key at column level
+2) drop the table and create again and introduce primary key at table level
+3) create primary key with constraint id of your choice and check data dictionary
+4) alter table and drop constraint primary key
+5) alter table and add primary key
+
