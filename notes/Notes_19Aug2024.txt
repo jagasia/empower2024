@@ -119,29 +119,100 @@ XML (XMLTYPE)
 https://blog.devart.com/oracle-data-types.html
 
 
+CHAR
+NCHAR
+VARCHAR2
+NUMERIC
+NUMBER
+INT
+DATE
+	DATE
+	DATETIME
+	TIMESTAMP
+	TIMESTAMP WITH TIMEZONE
+	YEAR TO MONTH
+	HOUR TO MINUTE
+https://docs.oracle.com/en/database/oracle/oracle-database/19/nlspg/datetime-data-types-and-time-zone-support.html#GUID-3A1B7AC6-2EDB-4DDC-9C9D-223D4C72AC74
+
+BLOB
+CLOB
+
+
+CHAR vs VARCHAR
+CHAR vs NCHAR
+
+Observation:
+create table EMP
+(
+    name CHAR(4)
+);
+
+INSERT INTO EMP VALUES('RAJA');
+1 row inserted
+
+INSERT INTO EMP VALUES('RAJAN');
+ORA-12899: value too large for column "SQL_YXQXXPCFJBRANOZXAQAZPLDPW"."EMP"."NAME" (actual: 5, maximum: 4) ORA-06512: at "SYS.DBMS_SQL", line 1721
+
+INSERT INTO EMP VALUES('123☺');
+ORA-12899: value too large for column "SQL_YXQXXPCFJBRANOZXAQAZPLDPW"."EMP"."NAME" (actual: 6, maximum: 4) ORA-06512: at "SYS.DBMS_SQL", line 1721
+
+
+DROP TABLE EMP;
+Table dropped
+
+create table EMP
+(
+    name NCHAR(4)
+);
+
+Table created
+
+
+INSERT INTO EMP VALUES('123☺');
+1 row(s) inserted
+
+Conclusion:
+NCHAR(4) allows 4 characters
+CHAR(4) allows 4 bytes of characters
+
+CREATE TABLE
+(
+	COL1 INT,
+	COL2 CHAR(5),
+	COL3 VARCHAR2(30)
+);
+
+Demo:
+-----------
+CUSTOMER
+-----------------
+	ID	INT
+	NAME	VARCHAR2(100)
+	DOB	DATE
+	PHONE	varchar2(20)
+	ADDRESS	varchar2(100)
 
 
 
+CREATE TABLE CUSTOMER(
+    ID INT,
+    NAME VARCHAR(100),
+    DOB DATE,
+    PHONE VARCHAR2(20),
+    ADDRESS VARCHAR2(100)
+);
+Table created
 
 
 
+Task:
+PRODUCT
+	ID
+	NAME
+	MFG_DATE
+	PRICE
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Create a table using the information given above
 
 
 
