@@ -381,13 +381,153 @@ SELECT * FROM DUAL;
 INSERT INTO PRODUCT1
 SELECT * FROM PRODUCT;
 
+INSERT
+UPDATE
+DELETE
+
+UPDATE
+-------------
+UPDATE <<TABLENAME>> SET <<COLNAME1>>=<<VALUE>>,
+			<<COLNAME2>>=<<VALUE>>,.......
+			[WHERE <<CONDITION>>]
+
+
+UPDATE the price of all products as price +price * 0.1
 
 
 
+update product set price=price+price*.1;
+7 rows affected
 
+now, use WHERE clause to specify a condition so that, only those rows that meets this condition are updated
+
+
+update product set price=price+price*.1
+    WHERE MOD(ID,2)=0;
+3 rows affected
+
+update product set price=price+price*.1
+	WHERE NAME='Projector';
 
 	
+UPDATE PRODUCT SET NAME='Marker Pen', MFG_DATE=SYSDATE, PRICE=20 
+WHERE ID=13;
+1 row updated
+
+
+DELETE
+-------------
+DELETE [FROM] <<TABLENAME>>;
+
+Ex:
+	DELETE FROM PRODUCT;
+	or
+	DELETE PRODUCT;
+
+in both above statements, there is no condition. So, all rows are deleted.
+
+DELETE FROM PRODUCT WHERE ID=13;
+1 row deleted
+
+
+DELETE allows us to specify a condition so that only those rows meeting the condition are removed
+TRUNCATE does not allow us to specify condition, so it always remove all rows.
+
+DELETE can be rolled back.
+TRUNCATE cannot be rolled back.
+
+DML statements can be rolled back.
+
+rollback reverts the changes done (which are yet to be committed).
+
+DML
+	insert
+	update
+	delete
+
+TCL
+-----
+	Transaction Control Language
+		COMMIT
+		SAVEPOINT
+		ROLLBACK
+What is a transaction?
+	a transaction is a set of statements executed together as a single unit.
+	if transaction is successful, then all the statements are executed successfully.
+	if transaction is failure, then all statements are rolled back.
+
+a batch execution can be considered as a transaction, if it posses
+	ACID 
+Atomicity
+	All otherwise None
+Consistency
+	transaction should leave the data in a consistent state, no matter, the transcation is 
+		successful or failure
+Isolation
+	lock
+Durability
+	log
 
 
 
+statement1
+savepoint s1;
+statement2
+savepoint s2;
+statement3
+rollback s2;		//
+commit;			statement1 and 2 are committed
 
+-------------------------------------
+DCL
+------
+	Data Control Language
+
+GRANT
+REVOKE
+
+In oracle, the privileges are categorized into
+	System privileges
+	Object privileges
+
+System privileges 
+	are used to login, logout, create objects, etc
+	GRANT with admin option
+Object privileges
+	are specific to particular object
+	like INSERT ON EMPLOYEES table
+
+	GRANT with grant option
+
+Activity:
+	Identify the system privileges in oracle and the effect of WITH ADMIN OPTION
+	Identify the object privileges in oracle
+
+CREATE USER gagan
+    IDENTIFIED BY gagan 
+    DEFAULT TABLESPACE example 
+    QUOTA 10M ON example 
+    TEMPORARY TABLESPACE temp
+    QUOTA 5M ON system 
+    PROFILE app_user 
+    PASSWORD EXPIRE;
+
+
+https://docs.oracle.com/database/timesten-18.1/TTSQL/privileges.htm#BABECGGB
+-------------------------------------------------------
+
+--GRANT SELECT ON HR.DEPARTMENTS TO JAG;
+
+--CREATE USER gagan IDENTIFIED BY gagan;
+
+--GRANT CREATE SESSION TO gagan;
+
+--REVOKE CREATE SESSION FROM gagan;
+--revoke create session from jag;
+
+--GRANT SELECT ON HR.EMPLOYEES TO JAG WITH GRANT OPTION;
+--revoke SELECT ON HR.EMPLOYEES FROM JAG;
+
+--GRANT CREATE SESSION TO JAG WITH ADMIN OPTION;
+
+REVOKE CREATE SESSION FROM JAG;
