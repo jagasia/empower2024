@@ -259,7 +259,134 @@ in the product table,
 4) rename a column from PRICE to COST
 
 
+CREATE TABLE PRODUCT
+(
+    ID INT,
+    NAME VARCHAR2(50),
+    MFG_DATE DATE,
+    PRICE INT
+)
 
+1) add another column called "EXP_DATE
+ALTER TABLE PRODUCT ADD EXP_DATE DATE;
+Table altered
+
+2) modify the data type of price to NUMBER(6,2)
+ALTER TABLE PRODUCT MODIFY PRICE NUMBER(6,2);
+Table altered
+
+3) remove the EXP_DATE column
+ALTER TABLE PRODUCT DROP COLUMN EXP_DATE;
+Table altered
+
+4) rename a column from PRICE to COST
+ALTER TABLE PRODUCT RENAME COLUMN PRICE TO COST;
+Table altered
+
+
+
+
+insert into product values (1, 'Pencil',sysdate, 11.0);
+added
+
+DDL
+------
+what we have learned so far
+	CREATE TABLE
+	ALTER TABLE
+	DROP TABLE
+
+
+DROP TABLE <<TABLENAME>>
+
+
+TRUNCATE
+
+TRUNCATE TABLE <<TABLENAME>>
+
+
+CREATE TABLE EMP
+AS
+SELECT * FROM HR.EMPLOYEES;
+
+
+
+
+SELECT * FROM EMP;
+
+TRUNCATE TABLE EMP;
+Table truncated.
+
+select * from EMP;
+no data found
+
+-------------------------------------------------------
+DML
+-------
+INSERT
+UPDATE
+DELETE
+
+What are the different ways INSERT can be used?
+
+INSERT INTO <<TABLENAME>> VALUES (VAL1, VAL2, ...);
+	this is a common syntax
+but in this syntax,
+ we must supply the number of values equal to number of columns
+	and also in the correct order
+
+CREATE TABLE PRODUCT
+(
+    ID INT,
+    NAME VARCHAR2(50),
+    MFG_DATE DATE,
+    PRICE INT
+)
+
+For this table, 
+	INSERT INTO PRODUCT VALUES(11, 'Geometry Box', sysdate, 70);
+MFG DATE is not known for a product
+	INSERT INTO PRODUCT VALUES(12, 'Sharpner', NULL, 10);
+
+
+INSERT INTO PRODUCT VALUES(13, 'Eraser', 10);
+ORA-00947: not enough values 
+
+now, we got error while ignoring a field, so we use another syntax, where we specify the list of columns to which we supply values.
+
+INSERT INTO PRODUCT (ID, NAME, PRICE) VALUES (13, 'Pen', 10);
+1 row(s) inserted
+
+INSERT ALL
+	is used to add multiple rows using a single statement.
+
+
+
+INSERT ALL 
+    INTO PRODUCT (ID, NAME, MFG_DATE, PRICE) VALUES (21, 'One Plus 12', sysdate, 69999)
+ 	INTO PRODUCT (ID, NAME, MFG_DATE, PRICE)  VALUES (22, 'Projector', '19-Aug-24', 50000)
+SELECT * FROM DUAL;
+
+
+
+INSERT ALL 
+    INTO PRODUCT  VALUES (21, 'One Plus 12', sysdate, 69999)
+ INTO PRODUCT  VALUES (22, 'Projector', '19-Aug-24', 50000)
+SELECT * FROM DUAL;
+
+
+
+
+
+INSERT INTO PRODUCT1
+SELECT * FROM PRODUCT;
+
+
+
+
+
+
+	
 
 
 
