@@ -1,1 +1,106 @@
 Welcome
+https://github.com/jagasia/empower2024
+Jagadeeswaran
+livesql.oracle.com
+
+Oracle
+	SQL
+	PL/SQL
+Frontend
+Backend
+	Database
+
+while installing oracle server, the follows users are created
+	sys
+	system
+	hr
+	scott
+	
+sys and system are dba	
+
+Dr. E.F. Codd
+	Relational Algebra
+
+12 rules
+
+Relation
+Table
+column	/	attribute
+row	/	record	/tuple
+data
+null	is not a space/ is not zero
+
+SQL
+	ORACLE		isql
+	MS SQL Server	t-sql
+
+Structured Query Language
+	DDL - Data Definition Language
+	DML - Data Manipulation Language
+	DQL - Data Query Language
+	DCL - Data Control Language
+	TCL - Transaction Control Language
+
+DDL
+	Data Definition Language
+is used for defining data
+by creating a table, what we define?
+a row must follow this format
+
+CREATE	-	creates the db object
+ALTER	-	modifies the structure of the object
+DROP	-	removes the db object
+TRUNCATE -	removes all records of the table
+
+Database objects
+	Table
+	View
+	Index
+	Synonyms
+	Stored Procedures
+	Triggers
+	
+DML
+	INSERT	insert row into a table
+	UPDATE	update row(s) in a table
+	DELETE 	delete row(s) from a table
+
+DQL
+	SELECT
+		data from 1 or more tables
+DCL
+	GRANT
+	REVOKE
+TCL
+	COMMIT
+	SAVEPOINT
+	ROLLBACK
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
