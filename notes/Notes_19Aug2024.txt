@@ -10,6 +10,7 @@ Frontend
 Backend
 	Database
 
+sql developer
 while installing oracle server, the follows users are created
 	sys
 	system
@@ -76,8 +77,50 @@ TCL
 	SAVEPOINT
 	ROLLBACK
 
+DDL
+-------
+CREATE TABLE statement
 
+E-R diagram
+	you identify Entities and their Relationships
+
+Entities become table
+
+CUSTOMER
+-----------------
+	ID	INT
+	NAME	
+	DOB
+	PHONE
+	ADDRESS
 	
+	
+	
+SALES
+	ID
+	CUSTOMERID
+	PRODUCTID
+
+
+Task
+-------
+identify the data types used in Oracle SQL
+
+data type categories:-
+Character
+Numeric
+Date
+LOB
+RAW and LONG RAW
+ROWID and UROWID
+XML (XMLTYPE)
+
+
+https://blog.devart.com/oracle-data-types.html
+
+
+
+
 
 
 
