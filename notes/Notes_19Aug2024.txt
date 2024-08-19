@@ -660,3 +660,118 @@ Task:
 4) alter table and drop constraint primary key
 5) alter table and add primary key
 
+dictionary tables can be
+	USER_
+	ALL_
+	DBA_
+
+USER_TABLES
+USER_VIEWS
+USER_CONSTRAINTS
+USER_CONS_COLUMNS
+
+These are some of the dictionary tables, 
+	use SELECT statement on these tables
+	like
+		SELECT * FROM USER_TABLES;
+---------------------------------------------------------
+ALTER TABLE PRODUCT ADD CONSTRAINT pkpid1 PRIMARY KEY(ID, PID);
+This way, we can create composite primary key
+
+Every primary key uses a clustered index
+
+------------------------------
+DEFAULT
+CHECK
+NOT NULL
+UNIQUE
+
+
+CREATE TABLE TABLE1
+(
+    NAME VARCHAR2(20) UNIQUE
+);
+Table created.
+
+INSERT INTO TABLE1 VALUES(NULL);
+
+
+CREATE TABLE TABLE1
+(
+    NAME VARCHAR2(20) NOT NULL
+);
+Table created.
+
+insert into table1 values (null);
+ORA-01400: cannot insert NULL into ("SQL_XAILRSLZDFLQFNZSHSKOOEJMB"."TABLE1"."NAME") ORA-06512: at "SYS.DBMS_SQL", line 1721
+
+
+CHECK
+----------
+DROP TABLE TABLE1;
+Table dropped
+
+create table table1
+(
+    price int CHECK (price>100)
+);
+Table created
+
+insert into table1 values(10);
+ORA-02290: check constraint (SQL_XAILRSLZDFLQFNZSHSKOOEJMB.SYS_C00164433864) violated ORA-06512: at "SYS.DBMS_SQL", line 1721
+
+insert into table1 values(101);
+1 row(s) inserted.
+
+DEFAULT
+----------------
+some columns can have default values
+when user does not provide value for these columns, the default value can be taken
+
+
+create table EMP
+(
+    ID INT,
+    NAME VARCHAR2(20),
+    NATIONALITY VARCHAR2(20) DEFAULT 'INDIAN'
+)
+Table created.
+
+
+INSERT INTO EMP VALUES (1, 'Jag', DEFAULT);
+1 row inserted
+
+INSERT INTO EMP (ID, NAME) VALUES (2, 'Nitin');
+1 row inserted
+
+insert into emp values (3, 'Satish', 'USA');
+1 row inserted
+
+--------------------
+Activity:
+Identify what is FOREIGN KEY and how to use it
+
+FOREIGN KEY enforces referential integrity.
+
+example:
+	PRODUCT table contains product id as follows
+	1
+	2
+	3
+	4
+	5
+
+
+	SALES
+	ID, PID, CID,...
+in sales table, PID cannot be 6 or 7 or 8 
+only the ids present in PRODUCT.ID are allowed in SALES table PID
+
+
+what are the foreign key constraints?
+	RESTRICT
+	SET NULL
+	CASCADE
+
+
+
