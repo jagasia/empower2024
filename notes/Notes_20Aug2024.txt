@@ -367,3 +367,57 @@ The above is FULL OUTER JOIN
 
 Task:
 ------
+Bank_Hands_on_set1
+Kindly start solving from the above file
+
+
+Problem #3:
+Write a query to display account number, customer’s number, customer’s firstname,lastname,account opening date.
+
+
+Solution:
+select a.acnumber, a.custid, c.fname, c.ltname, a.aod 
+    from account a join customer c
+    on a.custid=c.custid;
+
+Problem # 4:
+Write a query to display the number of customer’s from Delhi. Give the count an alias name of Cust_Count.
+
+Solution:
+SELECT COUNT(*) Cust_Count FROM CUSTOMER
+    WHERE CITY='Delhi';
+
+
+Problem # 5:
+Write a query to display  the customer number, customer firstname,account number for the customer’s whose accounts were created after 15th of any month.
+
+Solution:
+SELECT c.custid, c.fname, a.acnumber--, a.aod, extract(day from a.aod)
+FROM CUSTOMER c JOIN ACCOUNT a
+ON c.custid=a.custid
+WHERE extract(day from a.aod)>15;
+
+Problem # 6:
+Write a query to display the customers firstname, city and account number who are not into business, service or studies.
+
+Solution:
+SELECT C.FNAME, C.CITY, A.ACNUMBER, C.OCCUPATION
+FROM CUSTOMER C JOIN ACCOUNT A
+    ON C.CUSTID=A.CUSTID
+WHERE C.OCCUPATION NOT IN('Business', 'Service', 'Student');
+
+Problem # 7:
+Write a query to display city name and count of branches in that city. Give the count of branches an alias name of Count_Branch.
+
+The following rows were added recently, so the problem 7 result will differ
+B00010	MG Road	Bengaluru
+B00011	OMR	Chennai
+B00012	New Branch	Coimbatore
+
+Solution:
+select BCITY, COUNT(BID) Count_Branch from branch
+GROUP BY BCITY;
+
+Problem # 8:
+Write a query to display account id, customer’s firstname, customer’s lastname for the customer’s whose account is Active.
+
