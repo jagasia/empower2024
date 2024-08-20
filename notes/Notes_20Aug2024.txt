@@ -615,3 +615,7 @@ from customer c join account a
 on c.custid=a.custid
 where a.astatus='Terminated';
 
+Task:
+Bank_Hands_on_set2.txt
+Bank_Hands_on_set3.txt
+
