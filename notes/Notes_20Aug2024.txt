@@ -191,3 +191,179 @@ solution 3:	(using NVL2)
 select custid, fname || ' ' || NVL2(mname, mname, ltname) Cust_Name from customer
 solution 4: (using COALESCE)
 select custid, fname || ' ' || COALESCE(mname, ltname) Cust_Name from customer
+ 
+
+-------------------------------------
+FUNCTIONS
+-------------------
+What are the functions you already know
+	NVL
+	NVL2
+	COALESCE
+	TO_CHAR
+	TO_DATE
+	TO_NUMBER
+	MOD
+	
+Among these, the following are conversion functions
+	TO_CHAR
+	TO_NUMBER
+	TO_DATE
+
+TO_CHAR
+	converts numbers or dates to CHAR type
+	select TO_CHAR(123456789.5,'FM99,99,99,999.00') from dual;
+
+TO_DATE
+	converts char into date
+
+TO_NUMBER
+	converts char into number
+
+Functions can be 
+	Single row function (or)
+	Aggregate function
+
+select FNAME, UPPER(FNAME) FROM CUSTOMER;
+SELECT SUM(TRANSACTION_AMOUNT) FROM TRANDETAILS;
+
+----------------------------------------
+What are aggregate functions?
+	functions that return aggregate value per relation or per group
+what is per relation?
+	SELECT SUM(TRANSACTION_AMOUNT) FROM TRANDETAILS;
+	in this example, you got 1 result per table (relation)
+per relation or
+per group
+
+SELECT DEPARTMENT_ID, SUM(SALARY), MIN(SALARY), MAX(SALARY), COUNT(SALARY) FROM HR.EMPLOYEES
+GROUP BY DEPARTMENT_ID;
+
+SELECT COUNT(COMMISSION_PCT) FROM HR.EMPLOYEES;
+
+Challenge
+--------------
+	display employee id, first name, salary, commission pct, bonus
+	bonus is salary * commission pct
+	if commission pct is null, then it is considered as .2
+
+hint:
+use HR.EMPLOYEES table in live sql
+
+Solution:
+select employee_id, first_name, salary, commission_pct, salary * NVL(commission_pct,.2) Bonus
+from hr.employees;
+
+Aggregation functions:
+	MIN
+	MAX
+	SUM
+	AVG
+	COUNT
+
+What is group by?
+	GROUP by is used to get 1 aggregate result per GROUP
+	
+challenge:
+SELECT DEPARTMENT_ID, AVG(SALARY) FROM HR.EMPLOYEES
+GROUP BY DEPARTMENT_ID;
+
+in the above query, modify so that, only departments where the average salary is above 9000
+
+
+SELECT DEPARTMENT_ID, AVG(SALARY) FROM HR.EMPLOYEES
+GROUP BY DEPARTMENT_ID
+HAVING AVG(SALARY)>9000;
+
+What is the difference between	WHERE and HAVING?
+
+
+Activity
+	identify the use of
+		ROLLUP
+		CUBE
+	in GROUP BY
+
+SELECT DEPARTMENT_ID, MANAGER_ID, COUNT(EMPLOYEE_ID) FROM HR.EMPLOYEES
+GROUP BY rollup(DEPARTMENT_ID, MANAGER_ID)
+
+
+SELECT DEPARTMENT_ID, MANAGER_ID, COUNT(EMPLOYEE_ID) FROM HR.EMPLOYEES
+GROUP BY CUBE(DEPARTMENT_ID, MANAGER_ID)
+
+DISTINCT
+	is used to display or return each row only once
+
+--------------------------------------------
+
+JOIN
+-------
+1990s syntax is theta join
+later JOIN syntax was introduced
+
+theta join
+
+display EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID, DEPARTMENT NAME
+from whatever tables required.
+
+SELECT EMPLOYEE_ID, FIRST_NAME, E.DEPARTMENT_ID, DEPARTMENT_NAME 
+    FROM HR.EMPLOYEES E, HR.DEPARTMENTS D
+	WHERE E.DEPARTMENT_ID=D.DEPARTMENT_ID;
+
+Observation:
+	HR.EMPLOYEES table has 107 records
+	but the above query returned only 106 records. 
+	An employee "Kimberely Grant" does not have department id (ie., department_id is null)
+	as per join condition, only rows that meet the join condition will be displayed, but 
+	null department_id does not match with any row in HR.DEPARTMENTS table.
+
+This type of join is called as INNER join.
+
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, DEPARTMENT_NAME 
+    FROM HR.EMPLOYEES E, HR.DEPARTMENTS D
+	WHERE E.DEPARTMENT_ID(+)=D.DEPARTMENT_ID;
+
+-- select * from hr.departments;
+
+LEFT OUTER JOIN
+	all rows from left side table and matching rows from right side table
+	if no matching then null
+
+
+RIGHT OUTER JOIN
+	all rows from right side table and matching rows from left side table
+	if no matching then null
+
+FULL OUTER JOIN
+	all rows from left table and matching rows from right side table
+	all rows from right side table and matching rows from left side table
+	this is not possible in theta join
+
+JOIN syntax for joins
+----------------------------
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, DEPARTMENT_NAME 
+    FROM HR.EMPLOYEES E JOIN HR.DEPARTMENTS D
+	ON E.DEPARTMENT_ID=D.DEPARTMENT_ID;
+
+The above is INNER JOIN
+
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, DEPARTMENT_NAME 
+    FROM HR.EMPLOYEES E LEFT JOIN HR.DEPARTMENTS D
+	ON E.DEPARTMENT_ID=D.DEPARTMENT_ID;
+
+The above is LEFT OUTER JOIN
+
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, DEPARTMENT_NAME 
+    FROM HR.EMPLOYEES E RIGHT OUTER JOIN HR.DEPARTMENTS D
+	ON E.DEPARTMENT_ID=D.DEPARTMENT_ID;
+
+The above is RIGHT OUTER JOIN
+
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, DEPARTMENT_NAME 
+    FROM HR.EMPLOYEES E FULL OUTER JOIN HR.DEPARTMENTS D
+	ON E.DEPARTMENT_ID=D.DEPARTMENT_ID;
+
+The above is FULL OUTER JOIN
+
+Task:
+------
