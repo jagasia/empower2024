@@ -421,3 +421,146 @@ GROUP BY BCITY;
 Problem # 8:
 Write a query to display account id, customer’s firstname, customer’s lastname for the customer’s whose account is Active.
 
+Solution:
+SELECT A.ACNUMBER, C.FNAME, C.LTNAME FROM ACCOUNT A JOIN CUSTOMER C
+    ON A.CUSTID=C.CUSTID
+    WHERE ASTATUS='Active';
+
+
+Sub Queries
+----------------
+Scenario
+
+Find the first name of customers who belong to the city where Rahul belongs to.
+
+SELECT FNAME FROM CUSTOMER WHERE CITY=(SELECT CITY FROM CUSTOMER WHERE FNAME='Rahul');
+
+here, sub query was used 
+
+INSERT INTO CUSTOMER VALUES('C00010','Rahul',null,'Dravid','Bengaluru','989898','Coach', '01-Jun-1972');
+
+now,
+SELECT FNAME FROM CUSTOMER WHERE CITY=(SELECT CITY FROM CUSTOMER WHERE FNAME='Rahul');
+ORA-01427: single-row subquery returns more than one row
+
+
+SELECT FNAME, CITY FROM CUSTOMER WHERE CITY IN(SELECT CITY FROM CUSTOMER WHERE FNAME='Rahul');
+
+
+
+
+SELECT * FROM CUSTOMER C WHERE EXISTS
+    (SELECT * FROM LOAN L WHERE L.CUSTID=C.CUSTID);
+The above example shows use of a correlated sub query.
+the sub query cannot be executed independently.
+the sub query depends on outer query for execution/ existence.
+that is called correlated sub query
+
+EXIST operator
+
+
+Task:
+Identify the rules for sub queries
+1) paranthesis (brackets) are used for sub queries
+2) sub queries are used in right side of the expression with outer query
+3) sub query returning more than one row must be used with 
+	IN
+	NOT IN
+	EXISTS
+	ANY
+	ALL
+operators
+otherwise, sub query must return single row
+4) the sub query select column must match with outer query condition except when EXISTS operator is used
+5) sub query need not use ORDER BY except during TOP N analysis
+
+TOP N analysis
+---------------------
+Display only the first row of a result. How to do?
+SELECT * FROM CUSTOMER WHERE ROWNUM=1;
+
+These top N analysis will not return all records when they have same value
+For example, if the top 2 rows are equal, only 1 will be retrieved by ROWNUM=1
+
+Challenge
+----------------
+Display the department which spends maximum amount for salary for their employees
+explanation:
+	each department has sum of salaries of their employees
+	which sum is highest among the departments
+display department id, and sum of salary
+
+use HR.EMPLOYEES table
+columns:
+	department_id
+	salary
+
+
+SELECT DEPARTMENT_ID, SUM(SALARY) 
+FROM HR.EMPLOYEES
+GROUP BY DEPARTMENT_ID
+HAVING SUM(SALARY)>=ALL(
+    SELECT SUM(SALARY) 
+FROM HR.EMPLOYEES
+GROUP BY DEPARTMENT_ID
+);
+
+--------------------
+Types of JOINs
+1) INNER
+2) OUTER
+	LEFT
+	RIGHT
+	FULL
+3) CROSS
+4) NATURAL
+5) SELF
+6) NON EQUI JOIN
+
+CROSS JOIN
+--------------------
+	is cartesian product
+	5 rows in first table, 5 rows in second table, then 5 * 5 = 25 rows
+
+HR.EMPLOYEES table has 9 rows (with our condition)
+HR.DEPARTMENTS table has 27 rows
+
+if we cross join these 2 tables, we will get 107 * 27 rows
+
+9 * 27 = 243
+
+SELECT * FROM HR.EMPLOYEES E CROSS JOIN HR.DEPARTMENTS D
+    WHERE E.SALARY<10000 AND E.FIRST_NAME LIKE 'A%';
+
+NATURAL JOIN
+-----------------------
+When 2 relations naturally have a common column, NATURAL JOIN can identify that and join
+and avoids cross or cartesian product. 
+If both relations having common column names also same, then we can use USING function.
+
+SELECT * FROM ACCOUNT A NATURAL JOIN CUSTOMER C;
+SELECT * FROM ACCOUNT A JOIN CUSTOMER C USING (CUSTID);
+
+
+Challenge
+	in HR.EMPLOYEES table, 
+	we have EMPLOYEE_ID and MANAGER_ID
+	Write a SELECT statement to display
+	EMPLOYEE_ID
+	FIRST_NAME of the employee
+	MANAGER NAME 
+
+HR.EMPLOYEES E		manager_id
+HR.EMPLOYEES M		employee_id
+
+
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, M.FIRST_NAME MANAGER_NAME
+FROM HR.EMPLOYEES E LEFT JOIN HR.EMPLOYEES M
+ON E.MANAGER_ID=M.EMPLOYEE_ID
+    ORDER BY E.EMPLOYEE_ID;
+
+The above query displays steven king also but he do not have manager id.
+we get this using left outer join.
+
+NON EQUI JOIN
+------------------------
