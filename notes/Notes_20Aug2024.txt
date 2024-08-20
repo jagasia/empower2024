@@ -143,3 +143,51 @@ SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, SALARY- 2 "Bonus"
 	WHERE SALARY IN (1000, 2000, 3000, 4000, 5000, 6000, 7000)
 	AND EMPLOYEE_ID<170
 
+-----------------------------------------------------------------------
+pending: FUNCTIONS
+ORDER BY clause:
+--------------------------
+is used to sort the result by expression
+
+
+select * from hr.employees
+order by department_id desc, manager_id;
+
+asc for ascending
+desc for descending
+and no mention means, asc
+
+
+how to extract year from date?
+
+Problem #1:
+Write a query to display the customer number , firstname, customer’s date of birth . Display in a sorted order of date of birth year and within that sort by firstname.
+select CUSTID, FNAME, dob from customer
+order by to_char(dob, 'yyyy'), fname;
+
+
+Problem #2:
+Write a query to display customer’s number, first name and middle name. The customer’s who don’t have middle name, for them display the last name. Give the alias name as Cust_Name.
+
+solution 1:
+select custid, fname || ' ' || mname Cust_Name from customer
+where mname is not null
+union
+select custid, fname || ' ' || ltname Cust_Name from customer
+where mname is null;
+
+
+we can also use NULL functions 
+what are the null functions:
+
+NVL
+NVL2
+COALESCE
+
+
+solution 2:	(using NVL)
+select custid, fname || ' ' || NVL(mname, ltname) Cust_Name from customer
+solution 3:	(using NVL2)
+select custid, fname || ' ' || NVL2(mname, mname, ltname) Cust_Name from customer
+solution 4: (using COALESCE)
+select custid, fname || ' ' || COALESCE(mname, ltname) Cust_Name from customer
