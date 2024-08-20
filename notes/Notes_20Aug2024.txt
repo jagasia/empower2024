@@ -1,0 +1,145 @@
+Yesterday, we learned 
+DDL
+DML
+DCL
+TCL
+
+Today, we learn DQL
+Data Query Language
+Data Retrieval Language
+SELECT statement
+	to retrieve data from the table(s)
+
+yesterday we used simple SELECT statements
+	
+ex:
+	SELECT * FROM PRODUCT;
+
+What is this *?
+	all columns
+
+SELECT * FROM PRODUCT
+	retrieves all rows and all columns
+	but * means all columns
+
+	we get all rows, because, we haven't specified any condition
+
+SELECT * FROM PRODUCT WHERE ID=23;
+	//here, we retrieve rows where ID is 23
+
+Relational Operators:
+------------------------------
+PROJECTION
+	projecting only the relevant columns
+SELECTION
+	selecting only the relevant rows
+UNION
+	combining rows from 2 relation, and common rows are shown only once
+	duplicates are displayed only once, so 5 + 8 was 11	(2 duplicates)
+UNION ALL
+	combining rows from 2 relation, and includes duplicates also. so 5 + 8 was 13
+PRODUCT
+	multiplication
+	also called as cartesian product
+	whenever we use JOINs, without join condition, we get this cartesian product
+	also done using CROSS JOIN
+MINUS
+	all records of first result minus the common between the second
+INTERSECT
+	COMMON rows found in both relations
+
+
+
+
+
+SELECT * FROM HR.DEPARTMENTS WHERE MANAGER_ID>110
+    UNION ALL
+SELECT * FROM HR.DEPARTMENTS WHERE MANAGER_ID<130;
+
+SELECT * FROM HR.DEPARTMENTS WHERE MANAGER_ID>110
+    minus
+SELECT * FROM HR.DEPARTMENTS WHERE MANAGER_ID<130;
+
+SELECT * FROM HR.DEPARTMENTS WHERE MANAGER_ID>110
+    intersect
+SELECT * FROM HR.DEPARTMENTS WHERE MANAGER_ID<130;
+
+SELECT syntax
+	SELECT COL1, COL2, .....
+	FROM TABLE1, TABLE2,....
+	[WHERE CONDITION1 AND|OR CONDITION....]
+	[GROUP BY EXP] HAVING EXP]
+	[ORDER BY EXP]
+	
+
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, SALARY*.1 "Bonus" 
+    FROM HR.EMPLOYEES;
+
+where clause
+------------------
+is used for SELECTION
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, SALARY*.1 "Bonus" 
+    FROM HR.EMPLOYEES
+	WHERE SALARY>15000
+
+What are the operators that can be used here?
+	i used > operator
+Task:
+Identify as many operators in sql
++, -, *, /, 
+-
++
+
+>, <, >=, <=,
+
+not equal to can be either != 		or 	<>
+
+NOT
+AND
+OR
+
+BETWEEN
+NOT BETWEEN
+
+LIKE 
+NOT LINE
+
+IN 
+NOT IN
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, SALARY- 2 "Bonus" 
+    FROM HR.EMPLOYEES
+	WHERE SALARY NOT BETWEEN 15000 AND 25000
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, SALARY- 2 "Bonus" 
+    FROM HR.EMPLOYEES
+	WHERE FIRST_NAME LIKE 'D%'
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, SALARY- 2 "Bonus" 
+    FROM HR.EMPLOYEES
+	WHERE FIRST_NAME LIKE 'A%a'
+
+LIKE operator uses wild card characters
+	%
+	_
+
+% means, 0 or more characters
+_ means, 1 character
+
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, SALARY- 2 "Bonus" 
+    FROM HR.EMPLOYEES
+	WHERE SALARY IN (1000, 2000, 3000, 4000, 5000, 6000, 7000)
+
+LOGICAL operators
+AND
+OR
+can be used when there are multiple conditions
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY, SALARY- 2 "Bonus" 
+    FROM HR.EMPLOYEES
+	WHERE SALARY IN (1000, 2000, 3000, 4000, 5000, 6000, 7000)
+	AND EMPLOYEE_ID<170
+
