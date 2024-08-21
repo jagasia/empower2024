@@ -531,3 +531,138 @@ you can use
 	while loop
 	for loop
 
+
+
+DECLARE
+    FNAME HR.EMPLOYEES.FIRST_NAME%TYPE;
+	SAL HR.EMPLOYEES.SALARY%TYPE;
+	X INT:=100;
+BEGIN
+	LOOP
+        SELECT FIRST_NAME, SALARY INTO FNAME, SAL
+    	FROM HR.EMPLOYEES
+    	WHERE EMPLOYEE_ID=X;
+		DBMS_OUTPUT.PUT_LINE(FNAME || ' '|| SAL);
+		X:=X+1;
+		EXIT WHEN X>=120;
+    END LOOP;
+END;
+
+-----------------using while loop---------------
+DECLARE
+    FNAME HR.EMPLOYEES.FIRST_NAME%TYPE;
+	SAL HR.EMPLOYEES.SALARY%TYPE;
+	X INT:=100;
+BEGIN
+	WHILE X<=120
+    LOOP
+        SELECT FIRST_NAME, SALARY INTO FNAME, SAL
+    	FROM HR.EMPLOYEES
+    	WHERE EMPLOYEE_ID=X;
+		DBMS_OUTPUT.PUT_LINE(FNAME || ' '|| SAL);
+		X:=X+1;		
+    END LOOP;
+END;
+
+----------------------------
+using for loop:
+DECLARE
+    FNAME HR.EMPLOYEES.FIRST_NAME%TYPE;
+	SAL HR.EMPLOYEES.SALARY%TYPE;
+	X INT;
+BEGIN
+	FOR X IN 100 .. 120
+    LOOP
+        SELECT FIRST_NAME, SALARY INTO FNAME, SAL
+    	FROM HR.EMPLOYEES
+    	WHERE EMPLOYEE_ID=X;
+		DBMS_OUTPUT.PUT_LINE(FNAME || ' '|| SAL);
+    END LOOP;
+END;
+
+
+
+----------------------------------
+So far, we have created PLSQL programs that are executed, 
+but not stored in the database as object.
+
+These are called as anonymous blocks
+
+then what are named blocks?
+	they are stored in the database as objects and they have name
+
+ex:
+	PROCEDUREs
+	FUNCTIONs
+
+are named plsql blocks.
+
+PROCEDURES
+--------------------
+Procedures in plsql are db objects and they are stored plsql programs.
+we can also call them as Stored Procedures
+
+How to create a procedure
+	CREATE PROCEDURE
+
+
+CREATE PROCEDURE PRC1
+AS
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Hi this is prc1 procedure');  
+END;
+procedure created.
+
+How to call the procedure?
+BEGIN
+    PRC1;
+END;
+
+You can call a Procedure from
+	a plsql block
+	a procedure
+	a function
+	a trigger
+
+
+
+
+scanf("%d",&x);
+
+
+
+printf(x);
+
+
+
+
+create or replace procedure prcAkil(x int, y out int)
+as
+begin
+    y:=x*x;
+end;
+
+what will happen:
+create or replace procedure prcAkil(x int, y out int)
+as
+begin
+    y:=x*x;
+end;
+------------------------------------------
+declare
+    result int;
+begin
+    prcAkil(2, result);
+	dbms_output.put_line(result);
+end;
+
+
+------------------------
+Challenge:
+Create a plsql procedure to accept employee_id and
+return the full name  (combination of first and last name)
+and salary
+the outputs must be stored in output parameters
+
+call the procedure from a plsql program and 
+display the outputs obtained while calling the procedure
