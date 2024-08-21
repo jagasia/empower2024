@@ -836,3 +836,129 @@ BEGIN
     END LOOP;
 	DBMS_OUTPUT.PUT_LINE(total || ' are above average');
 END;
+
+-----------------------------------------------------------
+DECLARE
+    CURSOR CUR1 IS SELECT * FROM HR.EMPLOYEES FOR UPDATE OF SALARY;
+	AVGSAL NUMBER(6,2);
+	total int:=0;
+BEGIN
+    SELECT AVG(SALARY) INTO AVGSAL FROM HR.EMPLOYEES;
+	dbms_output.put_line(avgsal);
+	FOR X IN CUR1
+	LOOP
+         IF X.SALARY>20000 THEN
+         	UPDATE HR.EMPLOYEES SET SALARY=SALARY+1 WHERE  CURRENT OF CUR1;-- EMPLOYEE_ID=X.EMPLOYEE_ID;
+         END IF;
+		IF X.SALARY>AVGSAL THEN
+            total:=total+1;
+            DBMS_OUTPUT.PUT_LINE(X.SALARY);
+        END IF;
+    END LOOP;
+	DBMS_OUTPUT.PUT_LINE(total || ' are above average');
+END;
+
+-------------------------------------
+Exception Handling
+
+DECLARE
+BEGIN
+EXCEPTION
+END;
+
+
+
+DECLARE
+    X INT;
+	abcd_efgh exception;
+	pragma exception_init(abcd_efgh, -20001);
+BEGIN
+    -- SELECT SALARY INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=1000;
+    RAISE_APPLICATION_ERROR(-20001,' no data');
+EXCEPTION
+    WHEN abcd_efgh THEN
+    	DBMS_OUTPUT.PUT_LINE('There is no employee for the given id');
+--     WHEN TOO_MANY_ROWS THEN
+--     	DBMS_OUTPUT.PUT_LINE('More than 1 row found');
+-- 	WHEN NO_DATA_FOUND THEN
+--     	DBMS_OUTPUT.PUT_LINE('No records found');
+END;
+
+DECLARE
+    JAG_EXCEPTION EXCEPTION;
+    PRAGMA EXCEPTION_INIT(JAG_EXCEPTION,-20000);
+BEGIN
+    RAISE_APPLICATION_ERROR(-20000,'Jag raised this exception');
+EXCEPTION
+    WHEN JAG_EXCEPTION THEN
+    	DBMS_OUTPUT.PUT_LINE('Jag exception is handled now');
+END;
+
+--------------------------------
+Trigger
+	is also a plsql procedure, but executed during an event
+	
+System Trigger
+Object Trigger
+
+Object trigger can fire during any of the following
+	BEFORE
+	AFTER
+	INSTEAD OF
+
+
+DML triggers
+	BEFORE INSERT ON HR.EMPLOYEES
+	AFTER INSERT ON HR.DEPARTMENTS
+	
+BEFORE INSERT
+BEFORE UPDATE
+BEFORE DELETE
+
+
+PRODUCT
+ID	NAME	STOCK
+1	PENCIL	100
+2	PEN	50
+
+
+
+SALES
+ID	PID	QTY
+111	1	20
+
+
+Magic table in oracle triggers
+
+:new
+:old
+
+INSERT will use :new 
+DELETE will use :old
+UPDATE will use :new and :old
+
+
+CREATE TABLE PRODUCT1
+(
+ID INT PRIMARY KEY,
+NAME VARCHAR2(50),
+STOCK INT
+);
+
+
+CREATE TABLE SALES1
+(
+ID INT PRIMARY KEY,
+PID INT,
+QTY INT
+);
+
+
+CREATE OR REPLACE TRIGGER TRGJAG1
+AFTER INSERT ON SALES1
+BEGIN
+    UPDATE PRODUCT1 SET STOCK=STOCK-:new.QTY 
+    WHERE ID=:new.PID;
+    DBMS_OUTPUT.PUT_LINE('Product stock is updated now...');
+END;
+
