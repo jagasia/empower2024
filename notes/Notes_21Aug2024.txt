@@ -242,9 +242,37 @@ Task:
 ----------
 1) Write a plsql program to find the number of employees in department 90.
 Store the result in a variable and print it.
+Solution:
+DECLARE
+    N INT;
+BEGIN
+    SELECT COUNT(EMPLOYEE_ID) INTO N FROM HR.EMPLOYEES
+    WHERE DEPARTMENT_ID=90;
+	DBMS_OUTPUT.PUT_LINE(N);
+END;
 
 2) Write a plsql program to find the manager of employee whose id is 110.
 Display the manager name.
+
+DECLARE
+    MID HR.EMPLOYEES.EMPLOYEE_ID%TYPE;
+	MNAME HR.EMPLOYEES.FIRST_NAME%TYPE;
+BEGIN
+    SELECT MANAGER_ID INTO MID
+    FROM HR.EMPLOYEES
+    WHERE EMPLOYEE_ID=110;
+	SELECT FIRST_NAME INTO MNAME
+        FROM HR.EMPLOYEES 
+        WHERE EMPLOYEE_ID=MID;
+	DBMS_OUTPUT.PUT_LINE(MNAME);
+END;
+
+The same is done without plsql in below method:
+SELECT M.FIRST_NAME MNAME
+FROM HR.EMPLOYEES E JOIN HR.EMPLOYEES M
+    ON E.MANAGER_ID=M.EMPLOYEE_ID
+WHERE E.EMPLOYEE_ID=110;
+
 
 3) Write a plsql program to store the 
 	employee first name
@@ -255,3 +283,5 @@ hint:
 	use user defined record type
 4) retrieve the row based on employee id 112 and store it in a row type variable
 	and display only the firstname and salary
+
+
