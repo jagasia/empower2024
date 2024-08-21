@@ -666,3 +666,66 @@ the outputs must be stored in output parameters
 
 call the procedure from a plsql program and 
 display the outputs obtained while calling the procedure
+
+CREATE OR REPLACE PROCEDURE PRC2(EID INT, NAME OUT VARCHAR2, SALARY OUT INT)
+AS
+BEGIN
+    SELECT SALARY, FIRST_NAME || ' ' || LAST_NAME
+    INTO SALARY, NAME
+    FROM HR.EMPLOYEES 
+    WHERE EMPLOYEE_ID=EID;
+END;
+
+Call the above procedure from a plsql program:
+DECLARE
+    SAL INT;
+	NAME VARCHAR2(100);
+BEGIN
+    PRC2(100, NAME, SAL);
+	DBMS_OUTPUT.PUT_LINE(SAL);
+	DBMS_OUTPUT.PUT_LINE(NAME);
+END;
+-------------------------------------------
+Functions
+----------------
+Functions must return a single value
+
+CREATE OR REPLACE FUNCTION FN1
+RETURN NUMBER
+AS
+BEGIN
+    RETURN 100;
+END;
+
+Create a function that accepts the employee id as input parameter and return the bonus
+Bonus will be 10% of the salary.
+
+create or replace function fnBonus(eid int)
+return number
+as
+    bonus number(6,2);
+begin
+    select salary * 0.1 INTO bonus
+    from hr.employees where employee_id=eid;
+	return bonus;
+end;
+
+now, lets call this function
+
+ 
+
+select employee_id, salary, fnBonus(employee_id)
+from hr.employees;
+
+
+select fnBonus(100) from dual;
+
+Challenge:
+-------------
+Create a function fnName, that accepts employee id as 
+input and returns the full name as output.
+
+call this function as follows
+
+select employee_id, fnName(employee_id)
+from hr.employees.
