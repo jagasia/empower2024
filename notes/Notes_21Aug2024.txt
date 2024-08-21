@@ -317,3 +317,217 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE(EMPREC.FIRST_NAME);
 	DBMS_OUTPUT.PUT_LINE(EMPREC.SALARY);
 END;
+
+--------------------------------------------
+Procedural capabilities/ programming constructs
+
+IF
+IF ELSE
+IF ELSIF ELSE
+SELECT CASE
+BASIC LOOP
+WHILE LOOP
+FOR LOOP
+
+
+
+
+DECLARE
+    X INT:=100;
+BEGIN
+    IF X > 50 THEN
+    	DBMS_OUTPUT.PUT_LINE('Higher');
+    END IF;
+END;
+
+if condition with else
+DECLARE
+    X INT:=50;
+BEGIN
+    IF X > 50 THEN
+    	DBMS_OUTPUT.PUT_LINE('Higher');
+	ELSE
+        DBMS_OUTPUT.PUT_LINE('Lower');
+    END IF;
+END;
+
+
+
+
+
+DECLARE
+    X INT:=510;
+BEGIN
+    IF X > 50 THEN
+    	DBMS_OUTPUT.PUT_LINE('Higher');
+		DBMS_OUTPUT.PUT_LINE(' than 50');
+	ELSE
+        DBMS_OUTPUT.PUT_LINE('Lower');
+		DBMS_OUTPUT.PUT_LINE(' than 50....');
+    END IF;
+END;
+
+
+Task:
+-------
+Write a plsql program to determine the grade of the employees based on salary
+SALARY
+	>20,000		A
+	>10,000 <=20,000	B
+	>5,000 <=10,000	C
+	otherwise		D
+
+salary variable is assigned a value and tested
+
+Hint: 
+use ELSIF	
+
+Solution:
+DECLARE
+    SALARY INT:=10000;
+BEGIN
+    IF SALARY>20000 THEN
+    	DBMS_OUTPUT.PUT_LINE('A');
+	ELSIF SALARY>10000 THEN
+        DBMS_OUTPUT.PUT_LINE('B');
+	ELSIF SALARY>5000 THEN
+        DBMS_OUTPUT.PUT_LINE('C');
+	ELSE
+        DBMS_OUTPUT.PUT_LINE('D');
+	END IF;
+END;
+
+-----------------------------------------------
+select case
+--------------
+Syntax:
+	SELECT COL1, COL2,.....
+	CASE EXP
+	WHEN VALUE1 THEN <<WHATTODO>>
+	.....
+	.....
+	ELSE	<<WHATTODO>>
+	END
+FROM <<TABLENAME>>.....
+
+
+
+SELECT ACNUMBER, TRANSACTION_TYPE, TRANSACTION_AMOUNT, 
+CASE TRANSACTION_TYPE WHEN 'Deposit' THEN TRANSACTION_AMOUNT
+    WHEN 'Withdrawal' THEN TRANSACTION_AMOUNT*-1
+    END
+    FROM TRANDETAILS;
+
+
+
+
+
+SELECT T1.ACNUMBER, SUM(AMT) FROM 
+    (SELECT ACNUMBER, TRANSACTION_TYPE, TRANSACTION_AMOUNT, CASE TRANSACTION_TYPE WHEN 'Deposit' THEN TRANSACTION_AMOUNT
+    WHEN 'Withdrawal' THEN TRANSACTION_AMOUNT*-1
+    END AMT
+    FROM TRANDETAILS) T1
+GROUP BY T1.ACNUMBER;
+
+
+
+A00001	-3000
+A00002	-2000
+A00007	14000
+----------------------
+In PLSQL, we can also use SELECT CASE statements
+
+declare
+    X CHAR:='A';
+begin
+    CASE X
+    WHEN 'A' THEN
+    	DBMS_OUTPUT.PUT_LINE('Excellent');
+	WHEN 'B' THEN
+        DBMS_OUTPUT.PUT_LINE('Good');
+	END CASE;
+end;
+-------------------------------
+declare
+    X CHAR:='A';
+begin
+    CASE 
+    WHEN x='A' THEN
+    	DBMS_OUTPUT.PUT_LINE('Excellent');
+	WHEN x='B' THEN
+        DBMS_OUTPUT.PUT_LINE('Good');
+	END CASE;
+end;
+
+Challenge:
+----------------
+Write a plsql program to find the account balance of an account by acnumber
+
+DECLARE
+    deposits int;
+	withdrawals int;
+	ano char(6):='A00001';
+BEGIN
+    SELECT SUM(TRANSACTION_AMOUNT) INTO deposits
+    FROM TRANDETAILS WHERE ACNUMBER=ano
+    AND TRANSACTION_TYPE='Deposit';
+    SELECT SUM(TRANSACTION_AMOUNT) INTO withdrawals
+    FROM TRANDETAILS WHERE ACNUMBER=ano
+    AND TRANSACTION_TYPE='Withdrawal';
+	DBMS_OUTPUT.PUT_LINE(deposits-withdrawals);
+END;
+
+-----------------------------------------
+Basic Loop in PLSQL
+---------------------------
+DECLARE
+	X INT:=1;
+BEGIN
+    LOOP
+    	DBMS_OUTPUT.PUT_LINE(X);
+		X:=X+1;
+		EXIT WHEN X=10;
+    END LOOP;
+END;
+
+
+What is WHILE LOOP?
+DECLARE
+	X INT:=1;
+BEGIN
+    WHILE X<10
+    LOOP
+    	DBMS_OUTPUT.PUT_LINE(X);
+		X:=X+1;
+		-- EXIT WHEN X=10;
+    END LOOP;
+END;
+
+---------------------------
+FOR LOOP
+---------------
+DECLARE
+	X INT;
+BEGIN
+	FOR X IN 1 .. 9
+    LOOP
+    	DBMS_OUTPUT.PUT_LINE(X);
+		-- X:=X+1;
+		-- EXIT WHEN X=10;
+    END LOOP;
+END;
+
+
+Task:
+-------
+Write a plsql program to display the 
+	FIRST_NAME
+	SALARY
+of employees whose ID between 
+	100 and 200
+
+you can use
+	basic loop
+	while loop
+	for loop
+
