@@ -729,3 +729,110 @@ call this function as follows
 
 select employee_id, fnName(employee_id)
 from hr.employees.
+
+CREATE OR REPLACE FUNCTION FNNAME(EID INT)
+RETURN VARCHAR2
+AS
+    NAME VARCHAR2(100);
+BEGIN
+    
+    SELECT FIRST_NAME || LAST_NAME 
+    INTO NAME
+    FROM HR.EMPLOYEES 
+    WHERE EMPLOYEE_ID=EID;
+	RETURN NAME;
+END;
+
+-------------------------------------------------
+CURSOR
+
+SQL
+	is the name of implicit cursor
+
+attributes of cursor
+	FOUND
+	NOTFOUND
+	ROWCOUNT
+
+
+
+
+
+ CREATE TABLE "CUSTOMER_MASTER" 
+   (	"CUSTOMER_ID" VARCHAR2(10 BYTE), 
+	"CUSTOMER_NAME" VARCHAR2(30 BYTE), 
+	"CONTACT_NO" NUMBER(10,0), 
+	"CONTACT_ADD" VARCHAR2(20 BYTE), 
+	"DATE_OF_REGISTRATION" DATE, 
+	"AGE" VARCHAR2(15 BYTE)
+   ) 
+
+---------------------------------------
+Cursor life cycle
+	DEFINE CURSOR
+	OPEN CURSOR
+	FETCH a row
+	CLOSE CURSOR
+
+Example:
+DECLARE
+    CURSOR CUR1 IS SELECT * FROM HR.EMPLOYEES;
+	X HR.EMPLOYEES%ROWTYPE;
+BEGIN
+    OPEN CUR1;
+	LOOP
+		FETCH CUR1 INTO X;
+		EXIT WHEN CUR1%NOTFOUND;
+		DBMS_OUTPUT.PUT_LINE(X.FIRST_NAME);
+	END LOOP;
+	DBMS_OUTPUT.PUT_LINE(CUR1%ROWCOUNT || ' names displayed');
+	CLOSE CUR1;
+	
+END;
+
+Task:
+Create a plsql program to display only the salary of employees
+where the salary is above average salary.
+use cursor to print all firstname, salary of eligible rows
+
+DECLARE
+    CURSOR CUR1 IS SELECT * FROM HR.EMPLOYEES;
+	X HR.EMPLOYEES%ROWTYPE;
+	AVGSAL NUMBER(6,2);
+	total int:=0;
+BEGIN
+    SELECT AVG(SALARY) INTO AVGSAL FROM HR.EMPLOYEES;
+	dbms_output.put_line(avgsal);
+	OPEN CUR1;
+	LOOP
+        FETCH CUR1 INTO X;
+		EXIT WHEN CUR1%NOTFOUND;
+		IF X.SALARY>AVGSAL THEN
+            total:=total+1;
+            DBMS_OUTPUT.PUT_LINE(X.SALARY);
+        END IF;
+    END LOOP;
+	DBMS_OUTPUT.PUT_LINE(total || ' are above average');
+	CLOSE CUR1;
+END;
+
+
+-------------------------------------
+If we use cursor for loop for the above example
+
+DECLARE
+    CURSOR CUR1 IS SELECT * FROM HR.EMPLOYEES;
+	AVGSAL NUMBER(6,2);
+	total int:=0;
+BEGIN
+    SELECT AVG(SALARY) INTO AVGSAL FROM HR.EMPLOYEES;
+	dbms_output.put_line(avgsal);
+	FOR X IN CUR1
+	LOOP
+		IF X.SALARY>AVGSAL THEN
+            total:=total+1;
+            DBMS_OUTPUT.PUT_LINE(X.SALARY);
+        END IF;
+    END LOOP;
+	DBMS_OUTPUT.PUT_LINE(total || ' are above average');
+END;
