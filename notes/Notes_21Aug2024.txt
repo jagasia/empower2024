@@ -1,0 +1,257 @@
+Basics, Normalization, SQL(DDL, DML, TCL, DRL, DCL) Commands, Joins
+Select statement with all clauses, Set Operators, Predefined functions, Indexs, Views
+PL/SQL Basics, Cursors, Procedures, Functions, Triggers
+Pending so far:
+Normalization
+Index
+View
+---------------
+Normalization is a scientific, systematic, step by step approach for designing database tables
+so far, we have used the following tables:
+HR.EMPLOYEES
+HR.DEPARTMENTS
+
+CUSTOMER
+ACCOUNT
+BRANCH
+TRANDETAILS
+LOAN
+
+LOAN
+
+Normalization aims to reduce the redundancy
+What is redundancy?
+	Unnecessary repeatation of data
+
+Table once we arrived from E-R diagram can be found as large table
+that large table can be moved to 1NF when
+every row has only 1 data.
+every data is atomic
+
+2 NF
+already the table should be in 1NF and then all attributes are functionally dependent on whole table
+
+
+CUSTOMER
+CID	NAME	DNO	STREET	CITY	PINCODE	STATE		COUNTRY
+1	Raja	1	MG Road	Bengaluru	500068	KARNATAKA	INDIA
+
+
+1NF
+2NF
+3NF
+BCNF
+
+Index
+	enforce uniqueness
+	is useful only when we use SELECT statement using condition on indexed column
+
+SELECT * FROM HR.EMPLOYEES WHERE UPPER(JOB_ID)='HR_EXEC';
+
+create index idx1 on CUSTOMER(CID, FNAME);
+
+VIEWS
+----------
+Query is not a database object
+Views are like stored queries
+
+CREATE VIEW vw1
+AS
+SELECT * FROM HR.EMPLOYEES WHERE DEPARTMENT_ID=90;
+
+SELECT * FROM vw1;
+
+
+CAN YOU UPDATE a VIEW?
+	UPDATE statement?
+
+SELECT DEPARTMENT_ID, SUM(SALARY)
+    FROM HR.EMPLOYEES 
+    GROUP BY DEPARTMENT_ID
+having sum(salary)=
+(select max(t1.total) from (select department_id did, sum(salary) total from hr.employees group by department_id) t1)
+
+DML on views 
+	are allowed if it affects column(s) of a single underlying table
+	are not allowed if it affects computed column or derived column
+	are not allowed if view uses group by
+	
+Task:
+Create a view that returns the department and the total number of employees in that department (vwNoOfEmps)
+Create a query that returns the department which has highest number of employees.
+
+Identify the conditions when DML is allowed on views
+
+	
+CREATE VIEW vwNoOfEmps 
+AS
+SELECT DEPARTMENT_ID, COUNT(EMPLOYEE_ID) Total
+FROM HR.EMPLOYEES 
+GROUP BY DEPARTMENT_ID;
+
+select DEPARTMENT_ID, TOTAL from vwNoOfEmps
+    WHERE TOTAL=(SELECT MAX(TOTAL) FROM vwNoOfEmps);
+
+CREATE VIEW vwDept
+    AS
+SELECT * FROM HR.DEPARTMENTS;
+
+INSERT INTO VWDEPT VALUES(280,'Personal', null, 1700);
+
+
+
+https://github.com/oracle-samples/db-sample-schemas/tree/main/human_resources
+you can run
+	hr_create.sql
+	hr_populate.sql
+
+for getting hr schema in your oracle database.
+--------------------------------------------------------------
+PL/SQL
+----------
+Procedural Language extension to SQL
+SQL limitations
+	increases traffic when multiple statements are sent to oracle server
+	procedural capabilities like CONDITIONS, LOOPS, VARIABLES, EXCEPTION HANDLING are missing in SQL
+
+The block structure of PLSQL:
+	DECLARE		//optional block
+	BEGIN
+	EXCEPTION	//optional block
+	END;
+
+
+
+
+example:
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Hello world');
+END;
+
+
+in livesql, the output is always turned on. so we get output.
+in most of oracle clients, server output is turned off. by default.
+
+so we can turn 
+
+SET SERVEROUTPUT ON;
+
+DBMS_OUTPUT is a package that contains functions and procedures related to output.
+we use a procedure PUT_LINE which is present in this package.
+
+Data types
+	we can create variables and constants in a plsql program
+
+DECLARE
+    X INT:=20;
+BEGIN
+    X:=X+1;
+    DBMS_OUTPUT.PUT_LINE(X);
+END;
+
+
+
+BEGIN
+	SELECT * FROM HR.EMPLOYEES;
+END;
+The above plsql program does not execute successfully because, in PLSQL, select statements should have INTO clause.
+---------------------------------
+DECLARE
+    X INT;
+BEGIN
+	SELECT SALARY INTO X FROM HR.EMPLOYEES;
+	DBMS_OUTPUT.PUT_LINE(X);
+END;
+
+The  above program produces error because, select query returns more than 1 row.
+
+Finally
+
+DECLARE
+    X INT;
+BEGIN
+	SELECT SALARY INTO X FROM HR.EMPLOYEES;
+	DBMS_OUTPUT.PUT_LINE(X);
+END;
+
+
+This worked.
+-------------------------
+Instead of specifying a type to the variable,
+can we use refering the type from a column
+
+DECLARE
+    X HR.EMPLOYEES.SALARY%TYPE;
+BEGIN
+	SELECT SALARY INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100;
+	DBMS_OUTPUT.PUT_LINE(X);
+END;
+
+-0----------------------------
+if i want to retrieve entire row and store it in a variable?
+
+DECLARE
+    X HR.EMPLOYEES%ROWTYPE;
+BEGIN
+	SELECT * INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100;
+	DBMS_OUTPUT.PUT_LINE(X.FIRST_NAME || ' '|| X.SALARY);
+END;
+
+
+Sometime, we use select statement like this
+
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY
+FROM HR.EMPLOYEES 
+WHERE EMPLOYEE_ID=100;
+
+In that case:
+
+DECLARE
+    EID INT;
+	FNAME VARCHAR2(45);
+	SAL INT;
+BEGIN
+	SELECT EMPLOYEE_ID, FIRST_NAME, SALARY 
+    	INTO EID, FNAME, SAL
+	FROM HR.EMPLOYEES 
+	WHERE EMPLOYEE_ID=100;
+	DBMS_OUTPUT.PUT_LINE(EID);
+	DBMS_OUTPUT.PUT_LINE(FNAME);
+	DBMS_OUTPUT.PUT_LINE(SAL);
+END;
+
+The same can be done with an user defined type record variable
+DECLARE
+	TYPE EMPREC IS RECORD(
+    	EID INT,
+    	FNAME VARCHAR2(45),
+    	SALARY INT
+    );
+	X EMPREC;
+BEGIN
+	SELECT EMPLOYEE_ID, FIRST_NAME, SALARY 
+    	INTO X
+	FROM HR.EMPLOYEES 
+	WHERE EMPLOYEE_ID=100;
+	DBMS_OUTPUT.PUT_LINE(X.EID);
+	DBMS_OUTPUT.PUT_LINE(X.FNAME);
+	DBMS_OUTPUT.PUT_LINE(X.SALARY);
+END;
+----------------------
+Task:
+----------
+1) Write a plsql program to find the number of employees in department 90.
+Store the result in a variable and print it.
+
+2) Write a plsql program to find the manager of employee whose id is 110.
+Display the manager name.
+
+3) Write a plsql program to store the 
+	employee first name
+	department name
+	salary
+where the employee id =111
+hint:	
+	use user defined record type
+4) retrieve the row based on employee id 112 and store it in a row type variable
+	and display only the firstname and salary
