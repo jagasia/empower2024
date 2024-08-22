@@ -295,3 +295,170 @@ Enter Value 1:
 Enter Value 2:
 6
 Invalid Input 
+
+
+Pending:
+class, method, variable, constant, package conventions
+Scanner methods
+	Scanner class provides lot of methods including
+		nextInt
+		nextLine
+		nextLong
+		nextFloat
+		nextDouble
+		nextBoolean
+		next
+
+Scanner sc=new Scanner(System.in);
+
+among these methods,
+	nextLine() is the only method that accepts input until "newline" character is found.	(return/ enter button)
+	all other methods of Scanner, accepts input until any delimiter is found
+
+
+what is a delimiter?
+	if your input is
+		1 2	3
+		4
+between 1 and 2, what is the delimiter?
+	space
+
+between 2 and 3?
+	tab
+between 3 and 4
+	newline
+
+
+Task:
+Accept rollno, name and salary as input
+and print the same.
+
+sample input:
+121
+Nithin B S
+10000
+
+
+How can you get input from the user as a character input?
+
+	sc.next().charAt(0);
+
+lets decode this
+	sc.next()	returns a String.		String class has instance methods like charAt(index) to retrieve a character at a particular index
+
+old:
+-----
+String str=sc.next();
+char c=str.charAt(0);
+
+new:
+-------
+the above 2 lines are shortened as:
+	char c=sc.next().charAt(0);
+
+
+
+Solution for Dice 1:
+-------------------------
+import java.util.Scanner;
+
+public class Dice1 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int no1=sc.nextInt();
+		int no2=sc.nextInt();
+		
+		if(no1<0 || no2<0 || no1>6 || no2>6)
+		{
+			System.out.println("Invalid Input");
+			System.exit(0); 	//stop execution
+		}
+		
+		int result=no1+no2;
+		if(no1==no2)
+		{
+			result*=2;
+		}
+		System.out.println("The points scored is "+result);
+	}
+
+}
+
+
+Dice Game II
+Each player will be allowed to throw a dice 2 times. The points for each player will be calculated as follows :
+The points scored is the absolute difference between 8 and the sum of the 2 values, provided the sum of the 2 values is less than 8.
+In all other cases, the point  scored is double the absolute difference between 8 and the sum of the 2 values.
+
+Write a program to calculate the points scored by a player.
+
+Input and Output Format:
+Input consists of 2 integers. The valid range of inputs is from 0 to 6.
+Output the points scored. In case of invalid inputs, print “Invalid Input”.
+
+Refer sample input and output for formatting specificaions.
+
+[All text in bold corresponds to input and the rest corresponds to output.]
+Sample Input and Output 1:
+
+Enter Value 1:
+5
+Enter Value 2:
+6
+The points scored is 6
+
+Sample Input and Output 2:
+
+Enter Value 1:
+3
+Enter Value 2:
+2
+The points scored is  3
+
+Sample Input and Output 3:
+
+Enter Value 1:
+8
+Enter Value 2:
+6
+Invalid Input 
+ 
+Introductory Algebra I
+One of the assignments given to the kids in the Introductory Algebra class is to write one 2-digit positive number and one 2-digit negative number. They can write the numbers in any order.
+All the kids have written 2 numbers each.
+Can you write a program to ease out the teacher's task?
+
+Input and Output Format:
+
+Input consists of 2 integers. A valid input should contain only 2 digits. If any of the integers is not a 2-digit number, then the input is invalid.
+
+Output is a string.  Output is either “Correct” or “Incorrect” or “Invalid Input”.
+
+Refer sample input and output for formatting specificaions.
+
+[All text in bold corresponds to input and the rest corresponds to output.]
+
+Sample Input and Output 1:
+
+Enter Value 1:
+-51
+Enter Value 2:
+60
+Correct
+
+Sample Input and Output 2:
+
+Enter Value 1:
+31
+Enter Value 2:
+35
+Incorrect
+
+Sample Input and Output 3:
+
+Enter Value 1:
+3
+Enter Value 2:
+-35
+Invalid Input 
