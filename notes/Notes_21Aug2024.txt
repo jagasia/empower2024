@@ -953,12 +953,51 @@ PID INT,
 QTY INT
 );
 
-
 CREATE OR REPLACE TRIGGER TRGJAG1
 AFTER INSERT ON SALES1
+FOR EACH ROW
 BEGIN
     UPDATE PRODUCT1 SET STOCK=STOCK-:new.QTY 
     WHERE ID=:new.PID;
     DBMS_OUTPUT.PUT_LINE('Product stock is updated now...');
 END;
 
+//The above trigger will now be modified to check if sufficient stock available, before allowing sales.
+
+
+CREATE OR REPLACE TRIGGER TRGJAG1
+BEFORE INSERT ON SALES1
+FOR EACH ROW
+BEGIN
+
+    UPDATE PRODUCT1 SET STOCK=STOCK-:new.QTY 
+    WHERE ID=:new.PID;
+    DBMS_OUTPUT.PUT_LINE('Product stock is updated now...');
+END;
+
+
+CREATE OR REPLACE TRIGGER TRGJAG1
+BEFORE INSERT ON SALES1
+FOR EACH ROW
+DECLARE
+STK INT;
+BEGIN
+    SELECT STOCK INTO STK FROM PRODUCT1 WHERE ID=:NEW.PID;
+    IF STK<:NEW.QTY THEN
+      RAISE_APPLICATION_ERROR (-20001, 'There is no enough stock to sell this much quantity');
+    END IF;
+
+    UPDATE PRODUCT1 SET STOCK=STOCK-:new.QTY 
+    WHERE ID=:new.PID;
+    DBMS_OUTPUT.PUT_LINE('Product stock is updated now...');
+END;
+
+DECLARE
+   NO_STOCK EXCEPTION;
+   PRAGMA EXCEPTION_INIT(NO_STOCK, -20001);
+BEGIN
+   INSERT INTO SALES1 VALUES (113, 1, 100);
+EXCEPTION
+  WHEN NO_STOCK THEN
+   DBMS_OUTPUT.PUT_LINE('Stock is lesser than required quantity');
+END;

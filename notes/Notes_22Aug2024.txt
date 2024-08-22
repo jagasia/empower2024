@@ -1,0 +1,178 @@
+
+CREATE TABLE PRODUCT1
+(
+ID INT PRIMARY KEY,
+NAME VARCHAR2(50),
+STOCK INT
+);
+
+
+CREATE TABLE SALES1
+(
+ID INT PRIMARY KEY,
+PID INT,
+QTY INT
+);
+
+CREATE OR REPLACE TRIGGER TRGJAG1
+AFTER INSERT ON SALES1
+FOR EACH ROW
+BEGIN
+    UPDATE PRODUCT1 SET STOCK=STOCK-:new.QTY 
+    WHERE ID=:new.PID;
+    DBMS_OUTPUT.PUT_LINE('Product stock is updated now...');
+END;
+
+//The above trigger will now be modified to check if sufficient stock available, before allowing sales.
+
+
+CREATE OR REPLACE TRIGGER TRGJAG1
+BEFORE INSERT ON SALES1
+FOR EACH ROW
+BEGIN
+
+    UPDATE PRODUCT1 SET STOCK=STOCK-:new.QTY 
+    WHERE ID=:new.PID;
+    DBMS_OUTPUT.PUT_LINE('Product stock is updated now...');
+END;
+
+
+CREATE OR REPLACE TRIGGER TRGJAG1
+BEFORE INSERT ON SALES1
+FOR EACH ROW
+DECLARE
+STK INT;
+BEGIN
+    SELECT STOCK INTO STK FROM PRODUCT1 WHERE ID=:NEW.PID;
+    IF STK<:NEW.QTY THEN
+      RAISE_APPLICATION_ERROR (-20001, 'There is no enough stock to sell this much quantity');
+    END IF;
+
+    UPDATE PRODUCT1 SET STOCK=STOCK-:new.QTY 
+    WHERE ID=:new.PID;
+    DBMS_OUTPUT.PUT_LINE('Product stock is updated now...');
+END;
+
+DECLARE
+   NO_STOCK EXCEPTION;
+   PRAGMA EXCEPTION_INIT(NO_STOCK, -20001);
+BEGIN
+   INSERT INTO SALES1 VALUES (113, 1, 100);
+EXCEPTION
+  WHEN NO_STOCK THEN
+   DBMS_OUTPUT.PUT_LINE('Stock is lesser than required quantity');
+END;
+---------------------------------------------------
+Java
+--------
+How to check java installed version in our computer?
+in cmd:
+	java -version
+java version "21.0.2" 2024-01-16 LTS
+Java(TM) SE Runtime Environment (build 21.0.2+13-LTS-58)
+Java HotSpot(TM) 64-Bit Server VM (build 21.0.2+13-LTS-58, mixed mode, sharing)
+
+java compilation 
+	i) java compiler (javac) translates java code into byte code
+	ii) at runtime, java runtime environment has another compiler called JIT (Just In Time) compiler
+		that will convert byte code into machine specific machine language code
+----------------------
+Data types
+--------------
+There are 8 data types in java.
+
+data type = primitive data type only
+
+all others are "types"
+
+those 8 data types are:
+	byte
+	short
+	int
+	long
+-----------------the above are integer family----------------------------
+	boolean
+--------------the above is boolean------------
+	char
+-----------the above is character-------------
+	double
+	float
+------------the above are floating point numbers----------------like		1.2		
+
+
+Activity:
+idenfiy the range of each datatype in java
+ex:
+	byte		-128	to	127
+
+
+
+public class App
+{
+	public static void main(String []jags)
+	{
+		byte marks=127;
+		marks+=1;
+		//byte ranges from -128 to 127
+		System.out.println(marks);
+	}
+}
+
+public class App
+{
+	public static void main(String []jags)
+	{
+		int i=010;	//OCTAL		8
+		System.out.println(i);
+	}
+}
+
+
+
+
+public class App
+{
+	public static void main(String []jags)
+	{
+		int i=0xA;		//Hexa decimal 10
+		System.out.println(i);
+	}
+}
+
+public class App
+{
+	public static void main(String []jags)
+	{
+		System.out.println(Long.MIN_VALUE);
+	}
+}
+
+
+
+Data type ranges
+----------------------
+byte	1 byte	(8 bit)		-128			to	127
+short	2 bytes	(16 bit)		-32768			to	-32767
+int	4 bytes 	(32 bit)		-2,14,74,83,648		to	2,14,74,83,647
+long	8 bytes	(64 bit)		-9,223,372,036,854,775,808 	to 	9,223,372,036,854,775,807
+float	4 bytes
+double	8 bytes
+char	2 bytes
+boolean 	1 bit
+
+IDE	-	Integrated Development Environment
+we can use the following IDEs to write, build, debug java codes
+	Netbeans
+	Eclipse
+	Spring Tool Suite
+	IntelliJ
+	Visual Studio Code
+	etc
+
+
+After break, we will start using Spring Tool Suite to create Java Projects.
+
+
+
+
+
