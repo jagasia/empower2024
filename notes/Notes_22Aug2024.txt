@@ -170,9 +170,128 @@ we can use the following IDEs to write, build, debug java codes
 	etc
 
 
-After break, we will start using Spring Tool Suite to create Java Projects.
+
+Now, you have opened "Spring Tool Suite" in your system,
+and chosen the workspace location.
+
+Now lets create a java project.
+
+File -> New -> Java Project
+	name:	22-aug-01
+	execution environment:	Java SE 17
+
+	Finish
+
+Right click the project and create 
+	new Class
+class name:	App
+tick the checkbox for public static void main
+
+	Finish
+
+inside main method:
+	System.out.println("Hello world");
+this can be done by short cut also using:
+	syso	ctrl+space		enter
+
+To run the program:
+	ctrl + F11
+in some computer, F11 needs 	Function button +F11
+	it ask you to choose:		Java Application
+
+
+Java Language features:
+---------------------------------
+if
+if else
+if else if else
+switch case
+while loop
+do while loop
+for loop
+for each		for arrays and collections
+
+Task:
+identify the operators used in java language
+
+
+in c, c++ language, the following is allowed
+	int i=0;
+	if(i)
+		//true portion
+	else
+		//false portion
+
+But IN JAVA, THE ABOVE IS NOT ALLOWED
+if statement requires a valid boolean expression that returns true or false
+
+	0 is not considered as false in java
+
+
+
+
+when you write conditions for if
+you can use operators
+	i>20
+
+Task:
+identify the operators used in java language
+
+
+How to get input from the user?
+	Scanner class belongs to java.util package
+	so we import 
+		import java.util.Scanner;
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+Dice Game I
+
+Each player will be allowed to throw  a dice 2 times. The points for each player will be calculated as follows :
+If the values thrown are different, the points scored is equal to the sum of the 2 values.
+If the values thrown are the same, the points scored is equal to double the sum of the 2 values.
+
+Write a program to calculate the points scored by a player.
+
+Input and Output Format:
+
+Input consists of 2 integers. The valid range of inputs is from 0 to 6. [ Both 0 and 6 inclusive]
+Output the points scored. In case of invalid inputs, print “Invalid Input”.
+
+Refer sample input and output for formatting specificaions.
+
+[All text in bold corresponds to input and the rest corresponds to output.]
+Sample Input and Output 1:
+
+Enter Value 1:
+5
+Enter Value 2:
+6
+The points scored is 11
+
+Sample Input and Output 2:
+
+Enter Value 1:
+5
+Enter Value 2:
+5
+The points scored is  20
+
+Sample Input and Output 3:
+
+Enter Value 1:
+8
+Enter Value 2:
+6
+Invalid Input 
