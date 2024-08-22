@@ -730,31 +730,32 @@ arrays are
 
 
 
-Lucky Prize IV
- 
+Lucky Prize IV 
 In all the theatres in the Amphi Multiplex, prizes will be given to few lucky winners every day.
 The lucky winners will be decided based on the ticket number and the criteria set for that day.
- 
 The criteria set for day 4 is that prizes will be given to all ticket holders whose ticket number satisy both the conditions given below :
 1.	The ticket number is a palindrome
-2.	The sum of the digits in the ticket number is even
- 
+2.	The sum of the digits in the ticket number is even 
 Given a ticket number, write a program to determine whether that ticket holder will be a lucky prize winner or not.
- 
 Input and Output Format:
- 
 Input consists of an integer that corresponds to the ticket number.
 Output consists of a string that is either “Winner” or “Not a winner”
- 
+
 Sample Input 1:
-525
- 
+525 
 Sample Output 1:
 Winner
- 
+
 Sample Input 2:
 7896
- 
 Sample Output 2:
 Not a winner
- 
+
+
+
+SELECT C.CUSTID, C.FNAME, C.CITY, B.BCITY
+FROM CUSTOMER C JOIN ACCOUNT A
+ON C.CUSTID=A.CUSTID
+JOIN BRANCH B
+ON B.BID=A.BID
+WHERE C.CITY!=B.BCITY;
