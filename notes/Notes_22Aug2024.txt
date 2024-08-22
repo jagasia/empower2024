@@ -462,3 +462,299 @@ Enter Value 1:
 Enter Value 2:
 -35
 Invalid Input 
+
+
+import java.util.Scanner;
+
+public class IntroAlgebra1 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Value 1:");
+		int input1=sc.nextInt();
+		System.out.println("Enter Value 2:");
+		int input2=sc.nextInt();
+		
+		if(Math.abs(input1)<10 || Math.abs(input2)<10 || Math.abs(input1)>99 || Math.abs(input2)>99)
+		{
+			System.out.println("Invalid Input");
+			System.exit(0);
+		}
+		
+		boolean check1=input1<10;
+		boolean check2=input2<10;
+		
+//		if(check1 ^ check2)
+//		{
+//			System.out.println("Correct");
+//		}else
+//		{
+//			System.out.println("Incorrect");
+//		}
+		
+		System.out.println((check1 ^ check2)?"Correct":"Incorrect");
+	}
+
+}
+--------------------------------------
+Conventions to be followed while naming
+	package
+	class
+	variable
+	method
+	constant
+	
+package 
+	is a group of classes and interfaces
+	name of the package must be in small letters only
+
+class
+	a class is an user defined type
+	or a container for a program that contains methods and data members
+	class name
+		must start with upper case only
+		must be a noun	(not verb)
+		multiple words can be identified by each word starting in upper case 
+			ex:	ArrayIndexOutOfBoundsException
+variable
+	first letter is in lower case
+		ex:		noOfEmployees
+constant
+	all UPPER case separated by _
+	ex:		MAX_VALUE
+			MIN_VALUE
+	in java, constants are created using "final"
+		final int MAX_VALUE=20;
+		final String COMPANY_NAME="EMPOWER";
+
+method
+	method names must be a combination of "verb" and "noun"
+	ex:
+		calculateSimpleInterest	
+	it sounds like 	doThis
+
+Conclusion:
+	if condition can be used in the following ways:
+		nested if
+		if with logical operators
+
+simple if can be done using tenary operator also.
+
+if(true)
+{
+	//statement 1
+	//statement 2
+}
+
+
+	int i=0;
+	String name="";
+
+
+
+
+1) every variable declared, must be initialized
+2) unused variables must be removed
+3) if true part and else part shall have {} even if there is a single statement
+4) comments
+	//	single line comment
+	/*	multi line
+		comment
+			*/	
+
+
+Good comment:
+	a good comment will describe the following code
+	a bad comment is any java code, which is striked out. They must be removed instead of commented out.
+5) functions must return only once
+	if(true)
+		return something
+	else
+		return something
+
+instead of this
+	x="something"
+	if(true)
+		x="value";
+	else
+		x="different value";
+
+	return x;
+
+
+
+--------------------------------
+switch case
+import java.util.Scanner;
+
+public class SwitchDemo {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		char input=sc.next().toUpperCase().charAt(0);
+		switch(input)
+		{
+		case 'A':
+		case 'E':
+		case 'I':
+		case 'O':
+		case 'U':
+			System.out.println("Vowel");
+			break;
+		default:
+			System.out.println("Not vowel");
+			break;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+import java.util.Scanner;
+
+public class SwitchDemo {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		char input=sc.next().charAt(0);
+		switch(input)
+		{
+		case 'A':
+			System.out.println("Excellent");
+			break;
+		case 'B':
+			System.out.println("Good");
+			break;
+		case 'C':
+			System.out.println("OK");
+			break;
+		case 'D':
+			System.out.println("Poor");
+			break;
+		default:
+			System.out.println("Invalid");
+			break;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+------------------------
+loops
+	while loop
+	do while loop
+	for loop
+	for each 		(arrays and collections)
+
+
+what is the difference between while and do while?
+	while loop uses entry condition to enter the loop and to repeat the loop
+	do while loop uses exit condition to exit or repeat the loop.
+
+while(condition)
+{
+}
+
+do
+{
+}while(condition);
+
+------------------------------
+String
+-------
+what is String?
+	String is a class in java.lang package
+	is used to store lot of characters
+
+String str="hello world";
+
+	
+identify methods of String class
+	length()		returns the number of characters present in the String variable
+	charAt(index)	returns the character present at the specified index
+	substring()
+	replace()
+	equals()
+	isEmpty()
+	toUpperCase()
+	toLowerCase()
+	toCharArray()
+
+
+when should i use 
+	==
+	equals()
+
+
+a==b
+	a and b are called as operands
+	== compares the values of a and be if 	a and b are value types (primitive)
+	== compares the references of a and b if	a and b are reference types (objects)
+
+a=20
+	a is a locker,
+	open the locker, what you see,
+	you see 20 in that
+
+
+String a="hello world";
+	a is not a value type
+
+
+Stack =	Last In First Out
+
+
+Array
+	is a data structure
+	when we want to store multiple values in same name but different index
+
+in c, c++
+array syntax is different
+
+in java,
+arrays are
+	declared
+	initialized
+
+
+
+
+Lucky Prize IV
+ 
+In all the theatres in the Amphi Multiplex, prizes will be given to few lucky winners every day.
+The lucky winners will be decided based on the ticket number and the criteria set for that day.
+ 
+The criteria set for day 4 is that prizes will be given to all ticket holders whose ticket number satisy both the conditions given below :
+1.	The ticket number is a palindrome
+2.	The sum of the digits in the ticket number is even
+ 
+Given a ticket number, write a program to determine whether that ticket holder will be a lucky prize winner or not.
+ 
+Input and Output Format:
+ 
+Input consists of an integer that corresponds to the ticket number.
+Output consists of a string that is either “Winner” or “Not a winner”
+ 
+Sample Input 1:
+525
+ 
+Sample Output 1:
+Winner
+ 
+Sample Input 2:
+7896
+ 
+Sample Output 2:
+Not a winner
+ 
