@@ -168,3 +168,48 @@ run with a test case:
 12	22	32	45	31
 42	52	26	77	85
 27	82	29	34	90
+
+
+
+Task:
+for a single dimension array
+
+Array Product
+
+Write a program to find the product of all 2 digit numbers in an array.
+
+If the size of the input array is negative or if any of the input elements is negative , print “Invalid Input” and terminate the program.
+
+Input and Output Format:
+
+Input consists of n+1 integers. The first integer corresponds to n, the number of elements in the array. The next 'n' integers correspond to the elements in the array.
+Output consists of an integer that corresponds to the product.
+
+Refer sample output for formatting specifications.
+Assume that the maximum number of elements in the array is 20.
+
+Sample Input 1:
+6
+2
+7
+10
+3
+13
+100
+
+Sample Output 1:
+130
+
+Sample Input 2:
+-4
+
+Sample Output 2:
+Invalid Input
+
+Sample Input 3:
+4
+1
+-2
+
+Sample Output 3:
+Invalid Input 
