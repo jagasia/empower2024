@@ -320,9 +320,56 @@ EEEE	week day	ex:		Friday
 
 
 
-MCQ Link:
-https://forms.office.com/r/53gTQiRFV5
+System.out.printf("%d",20);
+System.out.format("%d",20);
+-------------------------------------
+String.format("%d",20);
 
-Coding Link:
-https://forms.office.com/r/ptmndgJVGZ
 
+
+
+Pending
+casting			
+conversion
+
+
+Integer.parseInt("");		converts String into int
+Integer.valueOf("");		converts String into Integer
+
+
+Example for polymorphism?
+	Method overloading
+	Method overriding
+
+What is method overloading?
+	is a feature of oop language that allows us to create multiple methods with same name but
+		different signature
+
+what  is a signature?
+	number of arguments
+	type of arguments
+	order of type of arguments
+
+the return type is not part of signature.
+
+if 2 methods (functions) have same name, then there must be a difference in signature.
+if return type is the only difference, then it is not allowed.
+
+----------------------------------------
+Method overloading is used to exihibit static polymorphism
+
+Method overriding is used to exihibit dynamic polymorphism
+
+
+Employee raja;
+raja=new Programmer();
+raja=new Developer();
+raja=new ProjectManager();
+
+
+1) inheritance
+2) overloading
+3) overriding
+4) abstract class
+5) abstract method
+6) interface
