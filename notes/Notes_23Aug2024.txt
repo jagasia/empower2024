@@ -247,3 +247,12 @@ public class ArrayProduct {
 
 
 --------------------
+OOP
+	Object Oriented Programming
+
+4 pillers of OOP
+	Abstraction
+	Inheritence
+	Encapsulation
+	Polymorphism
+
