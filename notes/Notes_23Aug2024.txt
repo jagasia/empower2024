@@ -256,3 +256,70 @@ OOP
 	Encapsulation
 	Polymorphism
 
+
+
+	Scanner sc=new Scanner(System.in);
+
+
+
+https://github.com/jagasia/empower2024/blob/jag/Java/Java_Mock_11.docx
+
+download this word document
+and attempt the Requirement 1
+
+
+in java how can we work on Date?
+there are some types for date in java
+	java.util.Date
+	java.sql.Date
+	java.time.LocalDate
+	java.time.LocalTime
+
+we will use java.util.Date now
+
+Date is a class
+	every millisecond, is represented as a long data type value
+
+how to convert a String into Date?
+	java.text.SimpleDateFormat
+		use object of this class to 
+			convert String into Date		Date dt=sdf.parse(str);
+			convert Date into String		String str=sdf.format(dt);
+
+
+
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateDemo {
+
+	public static void main(String[] args) throws ParseException {
+		String str="23/Aug/2000";
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MMM/yyyy");
+		Date dt=sdf.parse(str);
+		System.out.println(sdf.format(dt));
+	}
+
+}
+
+
+
+
+
+
+dd	2 digit day
+MM	2 digit month
+mm	2 digit minutes
+yy	2 digit year
+yyyy	4 digit year
+EEE	week day	ex:		Fri
+EEEE	week day	ex:		Friday
+
+
+
+
+https://forms.office.com/r/53gTQiRFV5
+
