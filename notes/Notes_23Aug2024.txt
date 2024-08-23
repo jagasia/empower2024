@@ -1,0 +1,170 @@
+Access specifiers
+
+wrapper classes
+int	Integer
+short	Short
+byte	Byte
+long	Long
+float	Float
+double	Double
+char	Character		
+boolean	Boolean
+
+
+static
+final
+creating properties, methods
+array types and methods	single, multi
+String class, StringBuilder, StringBuffer
+-------------------------------
+What is class and what is object?
+	Scanner sc=new Scanner(System.in);
+	//here, Scanner is a class
+	//sc is an object of Scanner  class
+we can create several objects of a class
+then what is a class?
+	class is a blueprint of objects
+what is object?
+	object is an instance of a class
+
+
+static
+	static member of a class can be accessed without need of an object of the class
+	static member of a class does not belong to any particular instance (object) of the class.
+	static members are class member (not object members)
+in c++,
+	void count()
+	{
+		static int i=0;
+		i++;
+	}
+
+But in java, you cannot declare static variables inside a method (function)
+
+in java
+
+class Employee
+{
+	int id;
+	String name;
+	static String company;
+}
+
+Employee nitin=new Employee();
+nitin.id=1212;
+nitin.name="Nitin";
+Employee.company="Empower";
+nitin.company="Empower";		//not good idea
+
+
+static variable	(class member)
+static method	(class member)
+	we can call a static method, even before creating any object of the class
+		we dont need to call
+			objname.staticmethodname
+			classname.staticmethodname
+static block
+	is executed very early, even before 1st line of main method
+
+
+static method cannot access instance variable or instance methods.
+instance methods can access static variables and methods.
+
+
+final
+---------
+	final class
+	final method
+	final data member
+
+
+final class cannot be inherited
+final method cannot be overriddent
+final data member should be assigned a value during declaration itself, which cannot be modified later
+
+
+why should we declare a final data member as static? in a class level
+
+
+property
+	property of class?
+		a non public data member of a class which has getter or setter or both, is a property
+
+
+Array
+--------
+	Java arrays are jagged arrays
+
+int [][]arr=new int[3][	];
+	arr[0] is first row
+	arr[0]=new int[3];
+	arr[1]=new int[5];
+	arr[2]=new int[4];
+
+
+
+Task:
+	create an array of x and y size
+	you get value of x and y from the user
+	and create the array like
+		arr[x][y]
+
+then get input for all elements of array
+and store them in array
+
+then display the values of array as output.
+
+
+
+
+
+
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ArrayDemo1 {
+
+	public static void main(String[] args) {
+		int arr[][];
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter value for x:");
+		int x=sc.nextInt();
+		System.out.println("Enter value for y:");
+		int y=sc.nextInt();
+		arr=new int[x][y];
+		
+		//get input for array elements
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr[i].length;j++)
+			{
+				System.out.printf("arr[%d][%d]",i,j);
+				arr[i][j]=sc.nextInt();
+			}
+		}
+		//lets display the array
+		System.out.println();
+		System.out.println("Displaying the array values now:");
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr[1].length;j++)
+			{
+				System.out.print(arr[i][j]+"\t");
+			}
+			System.out.println();
+		}
+	}
+
+}
+
+
+
+run with a test case:
+
+3
+4
+12	22	32	45	31
+42	52	26	77	85
+27	82	29	34	90
