@@ -425,3 +425,32 @@ catch(Exception ex)
 {
 	ex.getMessage());
 }
+
+Task:
+-------
+create an Employee class
+	id Integer
+	name String
+	dob java.util.Date
+
+the setter methods validate the data and throw apporpriate exceptions
+
+rules:
+	id must be 6 digit number
+		if not, InvalidIdException
+	name must begin with upper case and followed by lower case
+		minimum 4 characters
+		if not, InvalidNameException
+	dob must be past tense only
+		if not, InvalidDobException
+
+while throwing exception, 
+	mention the invalid value also in the message.
+	ex:
+		The id "121" is not valid
+
+
+in App.java
+	main method
+		create the object of Employee and set the values and 
+		at runtime, the exceptions must be handled
