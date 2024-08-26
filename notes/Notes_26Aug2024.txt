@@ -464,3 +464,119 @@ check this
 folder in java
 	26-aug-exceptions-demo
 
+
+-------------------------------------------------------------------------------------
+Collections
+----------------
+There are the limitations of array?
+	array length cannot be changed once created.
+	static memory allocation
+	array elements are present in contiguous memory locations
+
+
+to overcome these limitations,
+	we use collections 
+
+collections allow us to create
+
+ArrayList
+LinkedList
+Vector
+Stack
+
+
+HashSet
+TreeSet
+LinkedHashSet
+
+
+
+Map		is an application of Collection
+
+HashMap
+TreeMap
+LinkedHashMap
+
+
+Suppose, you are creating method like this
+
+	public int[] primes(int from, int to)
+	{
+		//return an array that contains, all the prime numbers between from and to
+		//write your code here	
+
+		//store each prime number in ArrayList		
+	}
+
+
+Demo:
+	
+input format:
+
+from:	22
+to:	122
+
+display all magic prime numbers
+
+a magic prime number is a prime number, whose each digit is prime.
+
+
+ifPrime(x)
+
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class MagicPrime {
+
+	public static boolean isPrime(int num)
+	{
+		if(num<2)
+			return false;
+		if(num==2)
+		{
+			return true;
+		}
+		for(int denom=2;denom<=Math.sqrt(num);denom++)
+		{
+			if(num%denom==0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static int[] primes(int from, int to)
+	{
+		ArrayList<Integer> list=new ArrayList<>();
+		for(int i=from;i<=to;i++)
+		{
+			if(isPrime(i))
+			{
+				list.add(i);
+			}
+		}
+		int[] arr= new int[list.size()];
+		for (int i = 0; i < arr.length; i++) {
+		    arr[i] = list.get(i);
+		}
+		
+		return arr;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int from=sc.nextInt();
+		int to=sc.nextInt();
+		
+		int[] result = primes(from, to);
+		
+		System.out.println(Arrays.toString(result));
+	}
+
+}
+
+
