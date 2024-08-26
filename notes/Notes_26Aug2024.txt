@@ -447,10 +447,20 @@ rules:
 while throwing exception, 
 	mention the invalid value also in the message.
 	ex:
-		The id "121" is not valid
+		The id "121" is invalid
 
 
 in App.java
 	main method
 		create the object of Employee and set the values and 
 		at runtime, the exceptions must be handled
+
+
+123456, Rama, 27-Aug-2024
+
+
+The solution is pushed to git
+check this 
+folder in java
+	26-aug-exceptions-demo
+
