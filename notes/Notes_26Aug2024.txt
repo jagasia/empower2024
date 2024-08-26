@@ -1,0 +1,236 @@
+1) inheritance
+2) overloading
+3) overriding
+4) abstract class
+5) abstract method
+6) interface
+
+consider the following classes 
+
+abstract class Shape
+{
+	public abstract calculateArea();	
+}
+
+class Triangle extends Shape
+{
+	public void calculateArea()
+	{
+		System.out.println("0.5 * b *h");
+	}
+}
+
+class Rectangle extends Shape
+{
+	public void calculateArea()
+	{
+		System.out.println("l * b");
+	}
+}
+
+class Circle extends Shape
+{
+	public void calculateArea()
+	{
+		System.out.println("3.14f * r * r");
+	}
+}
+
+
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) {
+		Shape s=null;		//what is s? s is a ref var 
+		System.out.println("1: Triangle\r\n"
+				+ "2: Rectangle\r\n"
+				+ "3: Circle\r\n"
+				+ "x: Exit");
+		Scanner sc=new Scanner(System.in);
+		int choice=0;
+		
+		do
+		{
+			choice=sc.nextInt();
+			switch(choice)
+			{
+			case 1:		//triangle
+				s=new Triangle();
+				break;
+			case 2:		//rectangle
+				s=new Rectangle();
+				break;
+			case 3:		//circle
+				s=new Circle();
+				break;
+			}
+			s.calculateArea();
+		}while(choice<=3 && choice>=1);
+	}
+
+}
+
+
+
+1) abstract class cannot be instantiated
+	create an object is called instantiated
+2) only abstract class/ interface can contain abstract methods
+3) abstract class can contain methods with body also.
+4) if a class class does not override the abstract method of super class, then sub class must be declared abstract.
+
+interface
+----------
+
+
+
+
+interface A
+interface B
+
+class C implements A, B
+
+interfaces
+	provide highest level of abstraction
+	uptio 1.7 version of java, interfaces, never allowed methods with body
+	from 1.8 onwards, interfaces can have
+		abstract methods
+		static methods with body		(<<interfacename>>.methodname())
+		default methods with body		
+	you cannot create object of interface
+		but create objects of classes that implements interfaces
+
+
+
+interface Shape
+
+class Triangle implements Shape
+
+class Rectangle implements Shape
+
+
+public class App
+{
+	public void draw(Shape s)		//s=new Triangle		s=new Rectangle
+	{
+		s.drawShape();
+	}
+}
+
+s=new Triangle();
+s=new Rectangle();
+
+Abstract class vs Interface
+--------------------------------
+OOPS
+	inheritance
+	encapsulation & abstraction		(getters and setters, non public data members
+	polymorphis			(overloading, overriding)
+
+
+overriding rules
+	1) super class method and sub class method are same name
+	2) super class method and sub class method are same signature
+	3) super class method and sub class method have same return type
+	4) sub class method cannot reduce visibility	
+		means, 
+		if super class method is public, then sub class method must be public only
+		if super class method is protected, then sub class method must be public, protected
+		if super class method is default, then sub class method must be public, protected, default
+
+private members of a class are not availble to sub classes.
+	
+
+acces specifiers
+	public 	
+	protected
+	default
+	private
+
+
+public:
+	accessible everywhere
+	
+protected:
+	accessible within same package
+	accessible from sub classes of same or any package
+
+default:
+	accessible within same package
+
+private:
+	accessible within same class only
+
+
+what is a package?
+	group of classes and interfaces
+
+void display()			no access specifier, then it is default scope. they are package scope
+
+
+Activity:
+	packages
+	diff between interfaces and abstract class
+
+
+interface:
+-----------
+can contain
+	constants.	implicitly public static final		data members
+
+
+
+interface Person
+{
+	public static final int MAX_MARKS=100;
+	int MIN_MARKS=0;
+	void speak();
+	public void run();
+}
+
+class Employee implements Person
+{
+	public void speak()
+	{
+		System.out.println("Employee speaks");
+	}
+}
+
+class App
+{
+	public static void main(String args[])
+	{
+		Employee raja=new Employee();
+		raja.speak();		//what is the output
+	}
+}
+
+interface
+	contains datamembers as 	public static final
+		they must be initialized with a value
+		even if we do not mention public static final, also, they are public static final
+	methods, data members, all are public only.
+
+	methods in interface
+		can be
+			abstract (do not mention as abstract, but they are abstract)
+			default	(with body)	java 1.8 onwards
+			static	(with body)	java 1.8 onwards
+
+
+
+
+Activity:
+-----------
+understand
+	abstract class
+	interface
+	difference between abstract class and interfaces
+	overriding rules
+	access specifiers
+
+
+
+
+Regular expressions
+--------------------------
