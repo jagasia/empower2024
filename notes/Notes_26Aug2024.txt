@@ -600,3 +600,53 @@ Task:
 ------
 University Requirement 2
 ------------------------------
+
+
+Refer to the demo 
+	MobileBrandReq2
+
+and complete the University req 2
+
+
+how to iterate a list?
+	i) for loop
+	ii) for each loop
+	iii) iterator
+
+
+for example, for List<Integer>
+//for loop
+for(int i=0;i<list.size();i++)
+{
+	System.out.println(list.get(i));
+}
+
+//for each loop
+for(Integer x : list)
+{
+	System.out.println(x);
+}
+
+//iterator
+
+Iterator<Integer> it=list.iterator();
+while(it.hasNext())
+{
+	Integer x=it.next();
+	System.out.println(x);
+}
+
+
+Iterator has only 3 methods:
+	hasNext()			returns true if any more elements are available to iterate
+	next()			returns the next element
+	remove()			removes the current element
+
+ListIterator	(works only for list category)
+	hasNext()
+	next()	
+	remove()
+	hasPrevious()		returns true if there are any elements to move previous
+	previous()		returns the previous element
+
+ListIterator does not work for Set
