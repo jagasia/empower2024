@@ -579,4 +579,24 @@ public class MagicPrime {
 
 }
 
+List vs Set
 
+List
+	allows duplicate elements
+	allows any number of nulls
+	is ordered, it remembers the order in which elements are added
+
+Set
+	rejects duplicate elements
+	one null is allowed, another null is rejected as duplicate
+	set order is based on the type of set
+		HashSet uses order based on hashCode method
+		TreeSet sorts the elements based on Comparable/ Comparator
+		LinkedHashSet maintains elements in the same order in which they are added (similar to List)
+
+
+
+Task:
+------
+University Requirement 2
+------------------------------
