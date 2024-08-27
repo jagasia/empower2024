@@ -222,3 +222,48 @@ use Collections.sort like
 	Collections.sort(list, new CollegeFounderComparator());		//sorts by Founder
 	Collections.sort(list, new CollegeLocationComparator());		//sorts by Location
 
+--------------------------------------------------------------
+Set
+
+HashSet
+	like other sets, HashSet also rejects duplicate entries.
+
+
+Set<College> collegeSet=new HashSet<>();
+
+
+HashSet
+	identifies duplicates with the help of 	hashCode() and equals() method
+
+-------------------------
+Treeset
+
+	maintains elements in sorted manner
+	sorting is based on Comparable or Comparator
+
+
+--------------
+LinkedHashSet
+	maintains the order in which the elements are added	(similar to list, but rejects duplicates)
+	
+
+
+
+Task:
+1) create a hashset of Employee
+	set should reject duplicates based on
+		same employee id is duplicate
+
+2) create a treeset of employee
+	Employee implements comparable and compare by id
+	EmployeeNameComparator 
+
+in main method,
+	use Comparator to the constructor of TreeSet
+
+3) LinkedHashSet
+	add elements in random order and print the elements
+	observe that duplicates are eliminated but order is maintained
+
+
+
