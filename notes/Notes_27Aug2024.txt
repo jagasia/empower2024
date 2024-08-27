@@ -184,3 +184,16 @@ create an arraylist of college
 and sort the list by name
 asc and then change the code to sort by name desc
 
+
+when we want to sort based on different criteria,
+we can create multiple comparators for an entity		(Employee)	College
+
+
+Comparator		(external class)
+
+	EmployeeNameComparator
+
+
+
+Employee class itself implements means, we use Comparable
+If we create an external class then it uses Comparator
