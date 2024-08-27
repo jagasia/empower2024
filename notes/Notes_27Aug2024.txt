@@ -1,0 +1,186 @@
+in Collections
+
+Reminder:
+	Lambda
+	Stream API
+
+List
+	iterators
+		Iterator
+		ListIterator
+	Collections.sort
+		sorting asc, desc
+		Comparable, Comparator
+
+Set
+	HashSet
+	TreeSet
+	LinkedHashSet
+
+Map
+	HashMap
+	TreeMap
+	LinkedHashMap
+
+Generics vs non-generic collections
+-------------------------------------------------------------------------------------------------------
+List is an interface in collections. This interface is implemented by the following classes
+
+	Vector		legacy class and synchronized
+	Stack		legacy class 		LIFO
+	LinkedList		not contiguous memory	
+	ArrayList		contiguous memory
+
+all list category classes have index
+
+
+Set
+	HashSet		
+	TreeSet
+	LinkedHashSet
+
+Map
+	HashMap
+	TreeMap
+	LinkedHashMap
+
+Demo:
+--------
+How to sort an array?
+	Arrays.sort method
+
+		int arr[]= {19,92,39,94,59,16,71,18};
+		Arrays.sort(arr);
+		System.out.println(Arrays.toString(arr));
+
+
+for desc order:
+
+import java.util.Arrays;
+
+public class App {
+
+	public static void main(String[] args) {
+		Integer arr[]= {19,92,39,94,59,16,71,18};
+		Arrays.sort(arr,(a,b)->b-a);
+		
+		System.out.println(Arrays.toString(arr));
+	}
+
+}
+
+
+How to sort a collection?
+	Collections.sort method
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ArrayListDemo1
+{
+	public static void main(String[] args) {
+		List<Integer> marks=new ArrayList<>();
+		marks.add(610);
+		marks.add(120);
+		marks.add(210);
+		marks.add(101);
+		marks.add(310);
+		marks.add(18);
+		marks.add(190);
+		marks.add(1010);
+		marks.add(111);
+		marks.add(127);
+		
+		//how to sort a List?
+		Collections.sort(marks);	//works only with List
+		System.out.println(marks);
+	}
+}
+
+
+
+
+
+import java.util.Date;
+
+public class Employee {
+	private Integer id;
+	private String name;
+	private Date dob;
+	private Double salary;
+	
+	public Employee() {}
+
+	public Employee(Integer id, String name, Date dob, Double salary) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dob = dob;
+		this.salary = salary;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public Double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", dob=" + sdf.format(dob) + ", salary=" + salary + "]";
+	}
+	
+}
+
+
+
+
+
+6
+24,Rida,01-Sep-2002,123456.0
+12,Arun,12-Nov-2000,12345.0
+33,Ankit,08-Sep-2003,183456.0
+18,Suresh,01-Jan-2002,223456.0
+22,Nitin,01-Feb-2004,823456.0
+17,Arjun,01-Jan-2002,223456.0
+
+
+List<Employee> is not comparable so it is not sortable also.
+
+So, Employee class must implement Comparable
+
+
+Task:
+you already have a college class.
+
+create an arraylist of college
+and sort the list by name
+asc and then change the code to sort by name desc
+
