@@ -197,3 +197,28 @@ Comparator		(external class)
 
 Employee class itself implements means, we use Comparable
 If we create an external class then it uses Comparator
+
+
+
+1: Sort by Id
+2: Sort by Name
+3: Sort by Dob
+4: Sort by Salary
+5: Exit
+
+Task:
+------
+Create the following comparators for college
+
+	CollegeWebsiteComparator
+	CollegeFounderComparator
+	CollegeLocationComparator
+
+College itself implements Comparable to compare by name
+
+use Collections.sort like
+	Collections.sort(list);		//sorts by name
+	Collections.sort(list, new CollegeWebsiteComparator());		//sorts by website
+	Collections.sort(list, new CollegeFounderComparator());		//sorts by Founder
+	Collections.sort(list, new CollegeLocationComparator());		//sorts by Location
+
