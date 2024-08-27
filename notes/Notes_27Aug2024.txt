@@ -267,3 +267,102 @@ in main method,
 
 
 
+-----------------------------------------------------------------
+Map
+-----
+	is a key - value pair
+	2 dimensions	-	Key	-	Value			K,V
+
+HashMap
+TreeMap
+LinkedHashMap
+
+in each map, 
+	the key is a Set
+
+
+
+List, Set are collections. We add elements to the collections.
+But in Map, we add, "entry" to the collection
+
+what is an entry
+	key, value is called as entry
+
+how can we add an entry to a Map?
+	put(k,v)
+	get(k)	returns v
+
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class App {
+
+	public static void main(String[] args) {
+		Map<Integer, String> cm=new LinkedHashMap<>();
+		cm.put(5, "Australia");
+		cm.put(1, "India");
+		cm.put(2, "Japan");
+		cm.put(2, "China");
+		cm.put(4, "Pakistan");
+		
+		//there are several ways we can iterate a map
+		//1) using iterator. There is no iterator for map.
+		//but all keys can be obtained using keyset() method
+		
+//		Set<Integer> keys = cm.keySet();
+//		Iterator<Integer> it = keys.iterator();
+//		while(it.hasNext())
+//		{
+//			Integer key = it.next();
+//			System.out.println(key+"\t"+cm.get(key));
+//		}
+		
+		
+		//using entrySet
+		
+//		Set<Entry<Integer, String>> entries = cm.entrySet();
+//		Iterator<Entry<Integer, String>> it = entries.iterator();
+//		while(it.hasNext())
+//		{
+//			Entry<Integer, String> entry = it.next();
+//			System.out.println(entry.getKey()+"\t"+entry.getValue());
+//		}
+		
+		
+		
+		//3) using for each loop
+		//for each loop not possible on map. but get entries as a set
+		for(Entry<Integer, String> entry:cm.entrySet())
+		{
+			System.out.println(entry.getKey()+'\t'+entry.getValue());
+		}
+		
+	}
+
+}
+
+
+Task:
+Accept a sentence from the user as input.
+for example the input is:
+	this sentence is typed by the user
+
+the output should be each character and its occurrence
+
+t	4
+h	1
+i	2
+s	3
+ 	6
+e	5
+n	2
+c	1
+y	2
+p	1
+d	1
+b	1
+u	1
+r	1
