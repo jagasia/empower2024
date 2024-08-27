@@ -3,6 +3,7 @@ in Collections
 Reminder:
 	Lambda
 	Stream API
+	::		method reference
 
 List
 	iterators
@@ -353,9 +354,9 @@ for example the input is:
 the output should be each character and its occurrence
 
 t	4
-h	1
+h	2
 i	2
-s	3
+s	4
  	6
 e	5
 n	2
@@ -366,3 +367,175 @@ d	1
 b	1
 u	1
 r	1
+
+
+Demo of the above task:
+--------------------------------
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+public class AppCharCount {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String input=sc.nextLine();
+		Map<Character, Integer> map=new LinkedHashMap<>();
+		for(int i=0;i<input.length();i++)
+		{
+			char c=input.charAt(i);
+			map.put(c, map.getOrDefault(c, 0)+1);
+		}
+		
+		for(Entry<Character, Integer> e:map.entrySet())
+		{
+			System.out.println(e.getKey()+"\t"+e.getValue());
+		}
+		
+	}
+
+}
+
+
+--------------------------------------------------
+Lambda
+---------
+	is used to provide quick implementation of a functional interface
+
+What is functional interface
+-------------------------------
+	an interface that contains only 1 abstract method is called as functional interface
+	ex:
+		Runnable (run), Comparator (compare) 
+
+what is marker interface
+----------------------------
+	an interface that contains no abstract method is called as marker interface
+
+	ex:	Serializable
+
+
+
+Stream API
+-------------
+	is used to work with collections
+	just like we use SELECT query for tables, 		WHERE, ORDER BY, GROUP BY
+	we can do those operations on collections in java
+
+	
+why it is called as stream?
+	stream means cascading
+	every operation, returns another stream
+
+there are 
+	intermediate operations		return another stream
+	terminal operations			either, we collect the output or display the output or iterate the output
+
+
+
+
+
+
+converting List int Set and vice versa
+
+List<String> list=new ArrayList();
+//convert this list into set
+
+Set<String> set=new HashSet<>(list);
+
+
+
+
+
+Demo:
+		List<Employee> empList=new ArrayList<>();
+		empList.add(new Employee(8, "Raja", "ECE", 100000));
+		empList.add(new Employee(4, "Ankit", "AIML", 100000));
+		empList.add(new Employee(7, "Zaheer", "AIML", 100000));
+		empList.add(new Employee(9, "Sachin", "AIDS", 100000));
+		empList.add(new Employee(1, "Vishnu", "AIDS", 100000));
+		empList.add(new Employee(5, "Dravid", "AIML", 100000));
+		empList.add(new Employee(6, "Bumrah", "CSE", 100000));
+		empList.add(new Employee(3, "Chahal", "ECE", 100000));
+		empList.add(new Employee(10, "Siraj", "ECE", 100000));
+		empList.add(new Employee(2, "Kohli", "CSE", 100000));
+from this list,
+display the department and the sum of salary for each department
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+public class AppEmployees {
+
+	public static void main(String[] args) {
+		List<Employee> empList=new ArrayList<>();
+		empList.add(new Employee(8, "Raja", "ECE", 100000));
+		empList.add(new Employee(4, "Ankit", "AIML", 100000));
+		empList.add(new Employee(7, "Zaheer", "AIML", 100000));
+		empList.add(new Employee(9, "Sachin", "AIDS", 100000));
+		empList.add(new Employee(1, "Vishnu", "AIDS", 100000));
+		empList.add(new Employee(5, "Dravid", "AIML", 100000));
+		empList.add(new Employee(6, "Bumrah", "CSE", 100000));
+		empList.add(new Employee(3, "Chahal", "ECE", 100000));
+		empList.add(new Employee(10, "Siraj", "ECE", 100000));
+		empList.add(new Employee(2, "Kohli", "CSE", 100000));
+		
+//		empList.stream()
+//		.filter((t)->t.getDepartment().equals("ECE"))
+//		.sorted((a,b)->a.getName().compareTo(b.getName()))
+//		.map((e)->e.getName().length())
+//		.forEach(System.out::println);
+
+		Map<String, Integer> result = empList.stream()
+		.collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingInt(Employee::getSalary)));;
+	
+		for(Entry<String, Integer> e:result.entrySet())
+			System.out.println(e.getKey()+"\t"+e.getValue());
+	
+	}
+
+}
+
+
+
+-----------------------------
+Method reference
+------------------------
+	::
+
+
+
+interface Person
+{
+	void speak();
+}
+
+class Employee
+{
+	public void talk()
+	{
+		System.out.println("Employee talks");
+	}
+	
+	public static void read()
+	{
+		System.out.println("Employee reads it louder");
+	}
+}
+
+public class App {
+
+	public static void main(String[] args) {		
+		Employee emp=new Employee();
+//		Person raja=emp::talk;
+		Person raja=Employee::read;
+
+		raja.speak();
+	}
+
+}
