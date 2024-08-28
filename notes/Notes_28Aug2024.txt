@@ -1,0 +1,147 @@
+IO
+	Input
+	Output
+
+
+
+list the type of files
+	jpg
+	csv
+	png
+	mp3
+	mp4
+	mkv
+	pdf
+	xls
+	doc
+	
+
+	txt
+
+
+
+characters
+binary
+
+input = read
+output = write
+
+
+if program reads characters, then it uses "Reader"s
+if program writes characters, then it uses "Writer"s
+
+if program reads bytes, then it uses "InputStream"s
+if program writes bytes, then it uses "OutputStream"s
+
+
+in java.io package
+	there are several classes
+
+
+FileInputStream
+FileWriter
+
+there are some streams=> node streams
+there are some filter streams that work on node stream
+
+
+node stream
+	reads/ writes from / to a definite node
+
+	FileInputStream, FileReader, FileOutputStream, FileWriter are example for node streams
+
+
+filterstreams work on other streams to provide some functionality
+
+BufferedReader
+BufferedWriter
+BufferedInputStream
+BufferedOutputStream
+
+DataInputStream				read primitive type data from source
+DataOutputStream				write primitive type data to target
+
+ObjectInputStream
+ObjectOutputStream
+
+
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class App2 {
+
+	public static void main(String[] args) throws IOException {
+		//read chars from keyboard
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+//		BufferedInputStream bis=new BufferedInputStream(System.in);
+//		char c=(char) br.read();
+//		System.out.println("Your input is "+c);
+		
+		String input = br.readLine();
+		System.out.println(input);
+	}
+
+}
+
+
+
+
+
+		BufferedReader br=new BufferedReader(new FileReader("nitin.txt"));
+		String input = br.readLine();
+		System.out.println(input);
+
+java.io 
+	File
+
+
+
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class AppFileCopy {
+
+	public static void main(String[] args) throws IOException {
+		File f=new File("C:\\Users\\rjaga\\Pictures\\pizza1.jfif");
+		long len = f.length();
+		byte []data=new byte[(int) len];
+		FileInputStream fis=new FileInputStream(f);
+		fis.read(data);
+		fis.close();
+		
+		//write all the bytes to a new file
+		File f1=new File("guru.jfif");
+		FileOutputStream fos=new FileOutputStream(f1);
+		fos.write(data);
+		fos.flush();
+		fos.close();
+	}
+
+}
+
+
+
+
+
+
+If you write an object into a stream, this is called as "Serialization"
+
+
+
+
+Problem:		when i write an object of Employee to a stream, i get following error:
+Exception in thread "main" java.io.NotSerializableException: Employee
+	at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1187)
+	at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:350)
+	at AppObjectOutputDemo.main(AppObjectOutputDemo.java:15)
+
+
+Solution:
+class Employee implements Serializable
