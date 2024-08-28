@@ -184,3 +184,204 @@ DataOutputStream
 ObjectInputStream
 ObjectOutputStream
 
+
+
+
+BufferedReader br=new BufferedReader(fr);		//fr is object of FileReader
+
+--------------------------------------------
+Multi-Threading
+-----------------
+So far, you have created lot of java programs, can you tell me how many threads were there in your programs?
+	1
+
+any program which has main method, can be executed.
+
+Employee class, doesn't have a main method.
+
+
+
+When we execute a program,
+	it becomes a process for the cpu
+
+Process is a running instance of a program
+
+CPU allocates resources for each process
+	resource means?
+		time
+		memory
+
+
+A process can contain thread(s)
+	main method is the beginning of the flow of execution
+	so main method becomes a "main" thread
+
+
+	so far, we executed lot of programs, each became process
+		single threaded process.
+
+	if we add child threads, then they become
+		multi-threaded process
+
+
+What is the need for multithreading?
+	the CPU time, can be utilized effectively by using multi-threading
+
+2.3 GHz
+	1/time
+
+	for 1 second		2.3 * 1024 * 1024 * 1024
+
+1 thread
+	0 %
+
+2 thread
+	50 %
+
+3 thread
+	66 %
+
+4 thread
+	75 %
+
+
+what is performance?
+	effective utilization of resources
+
+
+
+2 work using 2 processes?
+	cpu allocates resource for each process
+
+2 works using 1 process , 2 threads inside the 1 process
+	cpu allocates resource for process only
+		threads share the resources of the process
+
+
+advantages of multi threading:
+	1) improves performance
+	2) concurrency/ parallelism
+
+
+
+
+How to create child threads?
+	i)	extends Thread
+	ii) 	implements Runnable
+
+
+demo1:
+	extends Threads
+
+class Odd extends Thread
+{
+	public void run()
+	{
+		for(int i=1;i<30;i+=2)
+		{
+			System.out.println(Thread.currentThread().getName()+": "+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+class Even extends Thread
+{
+	public void run()
+	{
+		for(int i=2;i<30;i+=2)
+		{
+			System.out.println(getName()+": "+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+
+public class App {
+
+	public static void main(String[] args) {
+		Odd o=new Odd();
+		o.setName("Odd thread");
+		Even e=new Even();
+		e.setName("Even thread");
+		
+		o.start();
+		e.start();
+		
+
+	}
+
+}
+
+
+
+-----------------------------------------
+ii) implements Runnable
+
+class Black implements Runnable
+{
+	public void run()
+	{
+		for(int i=0;i<20;i++)
+		{
+			System.out.println("Black");
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+class White implements Runnable
+{
+	public void run()
+	{
+		for(int i=0;i<20;i++)
+		{
+			System.out.println("WHite");
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+
+public class App2 {
+
+	public static void main(String[] args) {
+		Thread t1=new Thread(new Black());
+		Thread t2=new Thread(new White());
+		
+		t1.start();
+		t2.start();
+
+	}
+
+}
+
+
+Task:
+-----------
+1) Java PF coding challenges
+2) Java Mock 11	OOPS requirements 1- 6
+3) IO streams
+4) Multi threading
+
