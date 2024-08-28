@@ -138,10 +138,49 @@ If you write an object into a stream, this is called as "Serialization"
 
 Problem:		when i write an object of Employee to a stream, i get following error:
 Exception in thread "main" java.io.NotSerializableException: Employee
-	at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1187)
+	at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:1187)
 	at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:350)
 	at AppObjectOutputDemo.main(AppObjectOutputDemo.java:15)
 
 
 Solution:
 class Employee implements Serializable
+
+
+
+Task:
+--------
+create a java program to display all files present in a given location
+
+hint:
+	File class provides methods 
+		list()		returns String[]		the name of files and folders
+		listFiles()		returns File[]		the array of File objects
+
+use listFiles() method and get array of File and
+	check each element if it is a file or folder
+	and display only file
+	or display only folders
+
+Activity:
+Identify the purpose of each class
+
+File
+
+FileReader
+FileWriter
+
+FileInputStream
+FileOutputStream		
+
+BufferedReader
+BufferedWriter
+BufferedInputStream
+BufferedOutputStream
+
+DataInputStream				
+DataOutputStream				
+
+ObjectInputStream
+ObjectOutputStream
+
