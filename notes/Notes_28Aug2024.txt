@@ -385,3 +385,112 @@ Task:
 3) IO streams
 4) Multi threading
 
+------------------------------------------------------------
+Thread methods:
+	start()
+	wait()
+	notify()
+	notifyAll()
+	yield()
+	join()
+	
+
+
+Life cycle of thread
+	when we create a thread				new thread state
+	when we call the start method			runnable state
+	when a thread is sleeping, blocked by another thread, 	not runnable state
+	when a thread completes the work of run method		dead state
+	when the process that contains the thread is killed	dead state
+
+
+
+	
+wait() vs sleep()
+	sleep has time limit			milliseconds
+	wait 		waits until notify
+
+notify
+notifyAll
+	can bring thread(s) to runnable stte
+
+yield
+	will make the current monitor to give up the monitor and choose a thread arbitrarily the monitor
+
+join
+	ensures, the currently running threads to continue but all other threads (which are yet to start) to wait untile
+	started threads complete
+
+
+
+
+class MyThread extends Thread
+{
+
+	@Override
+	public void run() {
+		for(int i=0;i<10;i++)
+		{
+			System.out.println(Thread.currentThread().getName()+":"+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+}
+
+
+
+public class App {
+
+	public static void main(String[] args) throws InterruptedException {
+		MyThread t0=new MyThread();
+		MyThread t1=new MyThread();
+		MyThread t2=new MyThread();
+		MyThread t3=new MyThread();
+		MyThread t4=new MyThread();
+		
+		t0.start();
+		t1.start();
+		t2.start();
+		t1.join();	
+		t3.start();
+		t4.start();
+		
+		
+		
+		
+	}
+
+}
+
+
+
+Synchronization
+------------------
+	ensures that that no two threads allowed to access a shared resource at a time
+
+
+	either the entire method can be synchronized
+	or
+	a portion of the method can be synchronized
+
+
+
+disadvantages of multi-threading:
+	Race condition			cannot predict the order of outcome
+	Lock starvation			low priority thread waits for its turn
+	Dead lock				both thread wait for each other
+
+
+---------------------------------------------
+Project
+	should be a web application
+	ReactJs front end
+	Sprint boot microservices back end
+	Oracle database
+
