@@ -1,0 +1,105 @@
+hostname:	it can be ip address or machine name
+port:		normally it is 1521
+username:	
+password:
+SID or service name:	
+
+
+
+CREATE TABLE in oracle with prefix
+	JAG_EMPLOYEE
+
+ID
+NAME
+DEPARTMENT
+SALARY
+
+
+
+INSERT Lot of records for practise
+
+---------------------------------------------------------------------------------------------------------------
+JDBC
+	Java Database Connectivity
+
+This is an API, that allows java programs to connect with RDBMS
+
+How is it possible?
+	Java provides some interfaces,
+		the database vendors provide the implementation of those interfaces
+
+
+jar	java archive
+war	web archive
+ear	enterprise archive
+
+
+jar	
+
+every RDBMS vendor provides .jar files for jdbc
+Oracle
+	ojdbc.jar
+
+we need to add this jar to the classpath of the project
+	1) copy the jar file to your project folder
+	2) right click project -> properties -> java build path -> libraries tab -> Add external jar button -> locate the jar -> Apply
+
+
+in my laptop,
+	i access oracle using any client (like sql developer, etc) using the following details
+
+		host:	localhost		127.0.0.1
+		port:	1521
+		username:	hr
+		password:	hr
+		sid:		xe
+
+
+Steps for jdbc to access a database
+----------------------------
+1) add ojdbc8.jar to the classpath of the project
+	i have copied jar to bin folder of my project
+	
+2) load the driver	(now a days, it is not necessary)
+3) get connection by providing the URL, username, password
+	url:	jdbc:oracle:thin:@localhost:1521:xe
+4) connection object is used to work with the database
+
+
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class App {
+
+	public static void main(String[] args) throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM EMPLOYEES");
+		while(rs.next())
+		{
+			System.out.println(rs.getString("first_name"));
+		}
+		System.out.println("Hello world");
+	}
+
+}
+
+
+-------------------
+Task:
+write a java program to connect with oracle
+with your oracle credentials:
+
+
+
+
+
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+		System.out.println("Hello world");
+
