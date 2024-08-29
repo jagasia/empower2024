@@ -315,4 +315,78 @@ public class App3 {
 
 }
 
+-----------------------------------------
+CUSTOMER entity
+	
+customer table
+	id
+	name
+	dob
+	address
+	phone
 
+
+DAO	-	Data Access Objects
+
+
+CustomerDao	interface
+CustomerDaoImpl	class	that implements CustomerDao interface
+
+
+
+
+
+Product.java		entity
+	private data members
+	constructors		
+	getters and setters
+	toString
+
+
+ProductDao.java
+	interface
+		declaration of methods only
+	
+ProductDaoImpl.java
+	implementation of the methods
+	
+
+	Create		an entity is being created		INSERT statement
+	Read						SELECT
+	Update						UPDATE
+	Delete						DELETE
+
+CRUD
+
+
+dEMO:
+-----------
+Product is the entity
+	id
+	name
+	price
+	category
+
+
+	
+
+
+
+CREATE TABLE JAG_PRODUCT 
+(
+id int primary key,
+name varchar2(50) not null,
+description varchar2(200),
+price number(10,2)
+);
+
+
+
+CREATE TABLE JAG_CUSTOMER
+(
+	id int primary key,
+	name varchar2(50) not null,
+	dob date,
+	address varchar2(100),
+	phone varchar2(15)
+);
