@@ -119,3 +119,165 @@ refer to these files
 run these scripts in sql developer
 
 
+----------------------------------------------------
+The type of statements:
+	Statement
+	PreparedStatement
+	CallableStatement
+
+
+Statement
+	can be used for simple sql statements that does not require parameters
+
+PreparedStatement
+	accepts parameters at runtime
+	addresses sql injection
+
+CallableStatement
+	used to access stored procedures or functions (PL/SQL)
+
+----------------------------------------------------------------
+To execute
+	
+	executeQuery()
+		SELECT statements that returns result set
+
+	executeUpdate()
+		execute DML statements that returns the no of rows affected
+
+	execute()
+		it is a void statement
+		for any sql statement
+
+-------------------------------------------------------------------------------
+		
+
+
+
+
+select * from user_master where username='idontknow' or 1=1 --' and password='idontcare'
+
+
+
+
+
+idontknow' or 1=1 --
+idontcare
+
+
+this is called as sql injection
+
+
+
+Statement example:
+--------------------------
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) throws SQLException {
+		Scanner sc=new Scanner(System.in);
+		String username=sc.nextLine();
+		String password=sc.nextLine();
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+		Statement st = con.createStatement();
+		String sql="select * from user_master where username='"+username+"' and password='"+password+"'";
+		ResultSet rs = st.executeQuery(sql);
+		if(rs.next())
+		{
+			System.out.println("Login is successful");
+		}else
+		{
+			System.out.println("Login is failure");
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+PreparedStatement example:
+----------------------------------
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class App2 {
+
+	public static void main(String[] args) throws SQLException {
+		Scanner sc=new Scanner(System.in);
+		String username=sc.nextLine();
+		String password=sc.nextLine();
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+		PreparedStatement st = con.prepareStatement("SELECT * FROM USER_MASTER WHERE USERNAME=? AND PASSWORD=?");
+		st.setString(1, username);
+		st.setString(2, password);
+		ResultSet rs = st.executeQuery();
+		if(rs.next())
+		{
+			System.out.println("Login is successful");
+		}else
+		{
+			System.out.println("Login is failure");
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+----------------------------------------------------
+Task:
+------
+Create a java program to retrieve rows from 
+	jag_departments table
+
+display the output
+
+
+example code:
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class App {
+
+	public static void main(String[] args) throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM EMPLOYEES");
+		while(rs.next())
+		{
+			System.out.println(rs.getString(1));
+		}
+		System.out.println("Hello world");
+	}
+
+}
