@@ -390,3 +390,33 @@ CREATE TABLE JAG_CUSTOMER
 	address varchar2(100),
 	phone varchar2(15)
 );
+
+
+Task:
+Create CRUD for Customer
+
+1) create a project
+2) add .jar file
+3) Customer.java
+4) CustomerDaoImpl.java
+5) extract interface CustomerDao
+
+
+
+
+
+for date:
+	st.setDate(3, new java.sql.Date(customer.getDob().getTime());
+
+
+
+	rs.getDate()		will return java.sql.Date
+	to convert from java.sql.Date to java.util.Date:
+		new Date(rs.getDate(3).getTime())
+
+when you read:
+
+	Customer customer=
+		new Customer(rs.getInt(1), rs.getString(2), new Date(rs.getDate(3).getTime()), rs.getString(4), rs.getString(5));
+
+

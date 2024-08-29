@@ -1,7 +1,9 @@
 package com.empower.ecom.entity;
 
 import java.sql.SQLException;
-import java.util.List;
+
+import com.empower.ecom.dao.ProductDao;
+import com.empower.ecom.dao.ProductDaoImpl;
 
 public class App {
 
