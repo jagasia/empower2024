@@ -105,3 +105,17 @@ with your oracle credentials:
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
 		System.out.println("Hello world");
 
+	
+
+---------------
+scripts to create tables and insert rows:
+----------------------------------------------
+https://github.com/jagasia/empower2024/
+
+	create_table_script.txt
+	insert_rows_script.txt
+
+refer to these files
+run these scripts in sql developer
+
+
