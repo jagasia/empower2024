@@ -42,7 +42,7 @@ Oracle
 
 we need to add this jar to the classpath of the project
 	1) copy the jar file to your project folder
-	2) right click project -> properties -> java build path -> libraries tab -> Add external jar button -> locate the jar -> Apply
+	2) right click project -> properties -> java build path -> libraries tab -> click classpath -> Add external jar button -> locate the jar -> Apply
 
 
 in my laptop,
