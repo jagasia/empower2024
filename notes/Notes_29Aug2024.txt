@@ -420,3 +420,34 @@ when you read:
 		new Customer(rs.getInt(1), rs.getString(2), new Date(rs.getDate(3).getTime()), rs.getString(4), rs.getString(5));
 
 
+---------------------------------------------
+Concurrency
+	means, the ability to run multiple transactions simultaneously
+	when multiple transactions access a record(s), problems might occur
+
+what are the problems of concurrency:
+	Dirty read	(Read uncommitted)
+	Phantom read	(Read committed)
+			(non Repeatable Read)
+
+Concurrency control
+	
+
+	con.setAutoCommt(false);
+
+Isolaton level:
+	Read uncommitted
+	Read committed
+	Repeatable read
+	serializable
+
+
+
+Metadata
+	in jdbc, 
+		Database Metadata
+		Resultset Metadata
+
+
+
+
