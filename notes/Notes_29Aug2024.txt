@@ -96,7 +96,9 @@ Task:
 write a java program to connect with oracle
 with your oracle credentials:
 
-
+1) create a java project
+2) add ojdbc8.jar to class path
+3) write code and run
 
 
 
