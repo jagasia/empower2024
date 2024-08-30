@@ -225,3 +225,40 @@ public class MathematicsTest {
 
 
 
+-----------------------
+Task steps:
+1) create a project
+2) create aut		ex:	Mathematics.java
+	with methods	ex:	sum, product, difference
+3) create testing class	ex:	MathematicsTest.java
+
+right click project -> New -> JUnitTestcase
+
+	before, after, beforeClass, afterClass	(are optional)
+
+	create test methods
+		a method with @Test annotation is a test method
+
+
+you can tick the before after methods
+and "browse" for Mathematics class
+
+Next -> choose 
+	sum
+	product
+	difference
+
+Finish
+
+4) in test methods, 
+	use assert methods
+
+identify what are the types of 
+	assert methods available
+
+ex:
+	assertEquals
+	assertNotEquals
+	assertNotNull
+	assertSame
+
