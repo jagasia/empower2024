@@ -1,9 +1,10 @@
 package com.empower.demo.model;
 
 public class Mathematics {
+	
 	public int sum(int i, int j)
 	{
-		return i+j;
+		return i+j-2;
 	}
 	
 	public int difference(int i, int j)

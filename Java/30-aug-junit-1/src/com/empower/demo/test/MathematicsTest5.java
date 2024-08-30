@@ -17,13 +17,13 @@ import com.empower.demo.model.Mathematics;
 /**
  * 
  */
-public class MathematicsTest {
+public class MathematicsTest5 {
 
-	int x=0;
-	int y=0;
-	int total=0;
-	int minus=0;
-	int multiply=0;
+	int x=9;
+	int y=8;
+	int total=17;
+	int minus=1;
+	int multiply=72;
 	
 	Mathematics maths=null;
 	/**
@@ -71,7 +71,7 @@ public class MathematicsTest {
 	 * Test method for {@link com.empower.demo.model.Mathematics#sum(int, int)}.
 	 */
 	@Test
-	@Category(Admin.class)
+	@Category(Customer.class)
 	public void testSum() {		
 		int expected=total;
 		int actuals=maths.sum(x, y);
@@ -82,7 +82,7 @@ public class MathematicsTest {
 	 * Test method for {@link com.empower.demo.model.Mathematics#difference(int, int)}.
 	 */
 	@Test
-	@Category(Customer.class)
+	@Category(Admin.class)
 	public void testDifference() {
 		int expected=minus;
 		int actuals=maths.difference(x, y);

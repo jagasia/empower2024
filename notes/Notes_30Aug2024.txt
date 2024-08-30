@@ -262,3 +262,225 @@ ex:
 	assertNotNull
 	assertSame
 
+----------
+How to run the tests using main method?
+import java.util.List;
+
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
+import com.empower.demo.test.MathematicsTest;
+
+public class App {
+
+	public static void main(String[] args) {
+		Result result = JUnitCore.runClasses(MathematicsTest.class);
+		List<Failure> failures = result.getFailures();
+		for(Failure f :failures)
+		{
+			System.out.println(f.getMessage());
+		}
+	}
+
+}
+
+
+---------------------
+Test Suite
+----------
+	What is a test suite?
+		collection of test cases
+
+
+Suppose we have lot of test classes
+	MathematicsTest.java
+	MathematicsTest2.java
+	MathematicsTest3.java
+	MathematicsTest4.java
+	MathematicsTest4.java
+
+
+we can create a test suite and mention the test classes that belong to the suite and
+	run the test suite
+
+using test runner
+
+
+@Ignore
+
+
+
+
+Test Runner types:
+	Suite
+	Categories
+	Parameterized
+
+
+package com.empower.demo.test;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({MathematicsTest.class, MathematicsTest2.class, MathematicsTest5.class})
+public class AppSuite {
+
+}
+
+
+--------------------------------------
+What is categorized
+
+to create category, create interfaces
+
+
+
+package com.empower.demo.test;
+
+import org.junit.experimental.categories.Categories;
+import org.junit.experimental.categories.Categories.ExcludeCategory;
+import org.junit.experimental.categories.Categories.IncludeCategory;
+import org.junit.experimental.categories.Category;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Categories.class)
+@SuiteClasses({MathematicsTest.class, MathematicsTest2.class, MathematicsTest5.class})
+//@IncludeCategory({Admin.class})
+@ExcludeCategory({Admin.class})
+public class AppSuite {
+
+}
+
+
+
+
+-----------------------------------------------------------------
+Parameterized
+	we want to use one test class that can be instantiated for 
+		lot of test cases
+
+we can keep those test cases in an array list
+and for each element in arraylist, the same test class is instantiated and repeatedly executed.
+
+
+Demo:
+Mathematics.java
+-----------------
+package com.empower.demo.model;
+
+public class Mathematics {
+	
+	int no1;
+	int no2;
+	int expected;
+	public Mathematics(int no1, int no2, int expected)
+	{
+		this.no1=no1;
+		this.no2=no2;
+		this.expected=expected;
+	}
+	
+	public int sum()
+	{
+		return no1+no2;
+	}
+	
+	public int difference()
+	{
+		return no1-no2;
+	}
+	
+	public int product()
+	{
+		return no1*no2;
+	}
+	
+}
+
+
+
+
+
+
+MathematicsTest.java
+
+package com.empower.demo.test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import com.empower.demo.model.Mathematics;
+
+@RunWith(Parameterized.class)
+public class MathematicsTest {
+	Mathematics maths=null;
+	
+	int no1, no2, expectedResult;
+	
+	public MathematicsTest(int no1, int no2, int expectedResult)
+	{
+		this.no1=no1;
+		this.no2=no2;
+		this.expectedResult=expectedResult;
+	}
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		maths=new Mathematics(no1, no2, expectedResult);
+		System.out.printf("Running the test using %d, %d, %d\n",no1, no2, expectedResult);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testSum() {
+		int actual = maths.sum();
+		assertEquals(actual, expectedResult);
+	}
+
+	@Parameterized.Parameters
+	public static Collection anything()
+	{
+		return Arrays.asList(new Object[][] {
+			 { 2, 3, 5 },
+	         { 6, 3, 9 },
+	         { 19, 1, 20 },
+	         { 22, 1, 23 },
+	         { 23, 1, 24 },
+	         {1,2,3},
+	         { 2, 11, 13 },
+	         { 21, 1, 22 }
+		});
+	}
+	
+}
+
+
+
+

@@ -10,14 +10,13 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.empower.demo.model.Mathematics;
 
 /**
  * 
  */
-public class MathematicsTest {
+public class MathematicsTest4 {
 
 	int x=0;
 	int y=0;
@@ -48,11 +47,11 @@ public class MathematicsTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		x=2;
-		y=3;
-		total=5;
-		multiply=6;
-		minus=-1;
+		x=100;
+		y=100;
+		total=200;
+		multiply=10000;
+		minus=0;
 		maths=new Mathematics();
 		
 		System.out.println("Before method is executed");
@@ -71,7 +70,6 @@ public class MathematicsTest {
 	 * Test method for {@link com.empower.demo.model.Mathematics#sum(int, int)}.
 	 */
 	@Test
-	@Category(Admin.class)
 	public void testSum() {		
 		int expected=total;
 		int actuals=maths.sum(x, y);
@@ -82,7 +80,6 @@ public class MathematicsTest {
 	 * Test method for {@link com.empower.demo.model.Mathematics#difference(int, int)}.
 	 */
 	@Test
-	@Category(Customer.class)
 	public void testDifference() {
 		int expected=minus;
 		int actuals=maths.difference(x, y);
@@ -93,7 +90,6 @@ public class MathematicsTest {
 	 * Test method for {@link com.empower.demo.model.Mathematics#product(int, int)}.
 	 */
 	@Test
-	@Category(Customer.class)
 	public void testProduct() {
 		int expected=multiply;
 		int actuals=maths.product(x, y);
