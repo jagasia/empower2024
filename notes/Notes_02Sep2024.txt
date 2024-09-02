@@ -277,3 +277,21 @@ if you use <constructor-arg> tag, then you are using
 
 Test the code in App.java
 
+
+
+Task:
+-------
+
+Create an Employee bean with following properties
+	id
+	name
+	address
+
+configure xml file and inject following values for the properties
+	121
+	Raja
+	Bengaluru
+
+in App.java
+	getBean of employee and display the values of properties
+
