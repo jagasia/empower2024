@@ -104,6 +104,15 @@ Remember, when you created a College class
 			that allows users to create an object and inject values there itself
 
 
+DI is used whenever 2 classes have
+	Composition		(A has B and B cannot exist independently)
+	Aggregation		(A and B can exist independently and A has B)
+
+relationship
+
+A has B
+Car has Audio
+
 How to you do this DI in spring framework using xml configuration?
 
 Spring framework uses lot of .jar files
@@ -701,3 +710,177 @@ public class App
 
 
 -----------------------------------------------------------------------------
+Task:
+--------
+Do the spring project with annotation based configuration by yourself.
+---------------------------------------------------------------------------------
+What is the status of completion of the task?
+
+Why nobody is the doing the task i have given today?
+
+
+Those who have not done the tasks given,
+	immediately start now
+
+Create a bean and get bean from ioc container
+Create loosely coupled dependency injection 
+
+IOC
+	This is called as inversion of control 
+	because, the consumer is allowed to choose
+	the implementation of audio while buying the car
+
+
+spring container is called as IOC container.
+
+
+
+
+
+
+-----------------------
+using p namespace
+----------------------
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean name="maths" class="com.empower.demo.Mathematics" p:no1="51" p:no2="41">
+	</bean>
+
+</beans>
+
+
+How can we configure list of dependencies
+
+
+Demo:
+A Book has list of Authors
+
+package com.empower.demo;
+
+public class Author {
+	private Integer id;
+	private String name;
+	
+	public Author() {}
+
+	public Author(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Author [id=" + id + ", name=" + name + "]";
+	}
+	
+	
+}
+
+
+package com.empower.demo;
+
+import java.util.List;
+
+public class Book {
+	private Integer id;
+	private String title;
+	private List<Author> authors;
+	
+	public Book() {}
+
+	public Book(Integer id, String title, List<Author> authors) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.authors = authors;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public List<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", authors=" + authors + "]";
+	}
+	
+	
+}
+
+
+
+	<bean id="a1" class="com.empower.demo.Author">
+		<property name="id" value="1" />
+		<property name="name" value="Jagadeeswaran" />
+	</bean>
+
+	<bean id="a2" class="com.empower.demo.Author">
+		<property name="id" value="2" />
+		<property name="name" value="Dinesh" />
+	</bean>
+
+	<bean id="b1" class="com.empower.demo.Book">
+		<property name="id" value="2001" />
+		<property name="title" value="We can win" />
+		<property name="authors">
+			<list>
+				<ref bean="a1"/>
+				<ref bean="a2"/>
+			</list>			
+		</property>
+	</bean>
+
+
+---------------------------------------------------
+Try this by yourself.
+
+Identify how we can define a bean with
+	List
+	Set
+	Map
+

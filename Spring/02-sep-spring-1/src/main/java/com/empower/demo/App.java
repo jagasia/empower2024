@@ -18,8 +18,12 @@ public class App
     	
     	
 //    	Car car=(Car) ctx.getBean("car");
-    	Car car=ctx.getBean(Car.class);
-    	car.playMusic();
+//    	Car car=ctx.getBean(Car.class);
+//    	car.playMusic();
+    	
+//    	ctx.getBean("b1");
+    	Book book = ctx.getBean(Book.class);
+    	System.out.println(book);
     	
     }
 }
