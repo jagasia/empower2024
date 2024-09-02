@@ -295,3 +295,409 @@ configure xml file and inject following values for the properties
 in App.java
 	getBean of employee and display the values of properties
 
+
+----------------------------------------------------------------------------------
+Two methods of dependency injections:
+	constructor based DI
+	setter based DI
+
+what is IOC?
+	Inversion of Control
+
+
+
+interface Audio
+{
+	void play();
+}
+
+class Sony implements Audio
+{
+	public void play()
+	{
+		System.out.println("Sony makes good sound");
+	}
+}
+
+class Jbl implements Audio
+{
+	public void play()
+	{
+		System.out.println("Jbl sounds nice");
+	}
+}
+
+class Car
+{
+	Sony sony;	//tightly coupled
+}
+
+
+
+//suppose, car provides a provision for audio
+
+class Car
+{
+	Audio audio;	//now we can inject either Sony or Jbl here
+			//this is called as loosely coupled
+}
+
+
+
+
+
+
+
+getBean() gets an instance of bean from IOC container
+
+-----------------------------
+Demo:
+--------
+package com.empower.demo;
+
+public interface Audio {
+	void play();
+}
+
+
+
+
+package com.empower.demo;
+
+public class Sony implements Audio
+{
+
+	@Override
+	public void play() {
+		System.out.println("Sony makes good sound");		
+	}
+
+}
+
+
+
+
+
+package com.empower.demo;
+
+public class Jbl implements Audio {
+
+	@Override
+	public void play() {
+		System.out.println("Jbl music is nice");
+	}
+
+}
+
+
+
+package com.empower.demo;
+
+public class Car {
+	private Audio audio;		//loose coupled because, either Sony/ Jbl can be injected
+
+	public Car() {}
+
+	public Car(Audio audio) {
+		super();
+		this.audio = audio;
+	}
+
+	public Audio getAudio() {
+		return audio;
+	}
+
+	public void setAudio(Audio audio) {
+		this.audio = audio;
+	}
+	
+	public void playMusic()
+	{
+		audio.play();
+	}
+}
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean name="maths" class="com.empower.demo.Mathematics">
+		<property name="no1" value="5" />
+		<property name="no2" value="4" />
+		<!-- <constructor-arg name="no1" value="8" /> <constructor-arg name="no2" 
+			value="5" /> -->
+	</bean>
+
+	<bean name="sony" class="com.empower.demo.Sony">
+	</bean>
+
+	<bean name="jbl" class="com.empower.demo.Jbl">
+	</bean>
+
+	<bean id="car" class="com.empower.demo.Car">
+		<property name="audio" ref="jbl" />
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+package com.empower.demo;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("spring.xml");
+//    	Mathematics maths= (Mathematics) ctx.getBean("maths");
+//    	maths.add();
+//    	System.out.println(maths.getResult());
+//        System.out.println( "Hello World!" );
+    	
+    	
+//    	Car car=(Car) ctx.getBean("car");
+    	Car car=ctx.getBean(Car.class);
+    	car.playMusic();
+    	
+    }
+}
+
+
+
+-----------------------------------------------------
+Autowiring
+------------
+so far, we have injected the dependencies 
+instead of manually injecting the dependencies, 
+we can choose the bean to autowire the dependency that is found
+
+
+Autowire
+	byType
+	byName
+
+
+byType
+	Car has a dependency of type Audio
+	so when we use byType autowiring, 
+		any implementation of Audio will be eligible to inject
+
+But when our configuration has more than 1 implementation of Audio
+	Sony
+	Jbl
+
+we get error because, spring IOC Container does not know which implementation of Audio must be injected 
+	expected single matching bean but found 2: sony,jbl
+
+such situations, 
+	byName can help
+
+
+when multiple implementations are matching,
+	every bean have a different name
+	so use byName there
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean name="maths" class="com.empower.demo.Mathematics">
+		<property name="no1" value="5" />
+		<property name="no2" value="4" />
+		<!-- <constructor-arg name="no1" value="8" /> <constructor-arg name="no2" 
+			value="5" /> -->
+	</bean>
+
+	<bean name="sony" class="com.empower.demo.Sony">
+	</bean>
+
+	<bean name="audio" class="com.empower.demo.Jbl">
+	</bean>
+
+	<bean id="car" class="com.empower.demo.Car" autowire="byName">
+		
+	</bean>
+
+</beans>
+
+---------------------------------------------------------------------------
+Spring configuration using annotations
+----------------------------------------------
+same dependencies in pom.xml
+	spring-context
+	spring-context-support
+
+instead of xml configuration, we are going to use annotations
+	to mark a class as a bean, we have 2 options in annotation:
+		i) @Component
+		ii) @Bean
+
+@Component
+	is used above the class definition
+
+sometimes, we want to mark a predefined class as a bean
+in that case, we will use 
+
+@Bean
+	is used above a method that returns object of a bean
+
+Ideally, whenever we use annotation based configuration 
+	we can create a configuration class
+
+
+
+
+ 
+package com.empower.demo;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages = "com")
+public class MyConfig {
+
+	
+	@Bean
+	public Jbl jbl()
+	{
+		return new Jbl();
+	}
+}
+
+
+
+
+
+
+package com.empower.demo;
+
+public interface Audio {
+	void play();
+}
+
+
+
+package com.empower.demo;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Sony implements Audio
+{
+
+	@Override
+	public void play() {
+		System.out.println("Sony makes good sound");
+	}
+
+}
+
+
+
+
+package com.empower.demo;
+
+//@Component("jbl")		becomes bean defined in Myconfig class
+public class Jbl implements Audio
+{
+
+	@Override
+	public void play() {
+		System.out.println("Jbl sounds nice");
+	}
+
+}
+
+
+
+
+
+
+package com.empower.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Car {
+	@Autowired
+	@Qualifier("jbl")
+	Audio audio;
+	
+	public Car() {}
+
+	public Car(Audio audio) {
+		super();
+		this.audio = audio;
+	}
+
+	public Audio getAudio() {
+		return audio;
+	}
+
+	public void setAudio(Audio audio) {
+		this.audio = audio;
+	}
+	
+	public void playMusic()
+	{
+		audio.play();
+	}
+}
+
+
+
+package com.empower.demo;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	AnnotationConfigApplicationContext ctx=new AnnotationConfigApplicationContext(MyConfig.class);
+//    	ctx.scan("com");
+//    	ctx.refresh();
+    	Car car = ctx.getBean(Car.class);
+    	car.playMusic();
+        System.out.println( "Hello World!" );
+    }
+}
+
+
+-----------------------------------------------------------------------------
