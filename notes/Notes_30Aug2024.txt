@@ -482,5 +482,12 @@ public class MathematicsTest {
 }
 
 
+Task:
+-------
+Run tests using main method
+Test runners
+	Suite
+	Categories
+	Parameterized
 
 

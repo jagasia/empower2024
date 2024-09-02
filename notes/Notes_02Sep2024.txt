@@ -1,0 +1,279 @@
+What is Spring, Spring Core(Dependancy Injection, Inversion of Control
+---------------------------------
+We need to understand what is bean?
+	a java bean
+		is a java code that is re-usable
+		is independent of the type of project (console, web, windows, web service)
+		that code must not contain something specific to a particular type of project
+			System.out.println, Scanner are useful for console applications only
+	ideally a java bean has class, methods, properties, thats all
+
+EJB	Enterprise Java Beans
+EJB provided the following services for beans
+
+	scalability	- ability of the application/ component to adapt to increasing or decreasing needs/req
+		i subscribe for 50 gb airtel data when i have a need
+		next month i subscribe only 10 gb
+		next month i may not even subscribe data
+	
+		with the given infra, if you are able to adapt to changing requirement
+	elasticity
+		ablility to provision more or infra, to scale
+
+there will be something called as "Container"
+	container is a special jvm
+		it provided generic services viz.
+
+
+scalability, life cycle management
+persistence, transaction management
+security
+
+EJB was considered as winter season for programmers
+the simplified version of ejb was introduced as
+Spring season for programmers
+
+
+Spring provides env for programmers, that they can use beans as POJO classes
+
+EJB interfaces forced the beans to implement
+	ejbCreate()
+	ejbDestroy()
+	ejbActivate()
+	ejbPassivate()
+
+A bean management system is expected to handle
+	the life cycle of the bean
+
+
+
+generic services are common requirements for any application. They are provided by the Container
+application specific services are to be focused by the bean developer
+
+
+configuration system in spring f/w:
+	i) xml based configuration
+	ii) annotation based configuration
+
+
+Spring modules:
+------------------
+	Core Container	
+		heart of the spring fw. 
+		implementation for IOC
+		support for DI
+		maintain objects life cycle
+
+	Data Access/Integration
+		JDBC
+		ORM
+		JMS		
+		Transaction
+	Web
+		MVC
+
+	AOP
+		Cross-cutting concerns like transactions, logging, security, etc
+	Instrumentation
+	Testing
+		junit, mock
+
+	REST
+		restful webservices
+
+
+Core:
+-------
+learn how to configure a java bean?
+	using xml
+
+Dependency Injection
+Autowiring
+
+We have done dependency injection using
+	Constructor
+	Setter
+
+Remember, when you created a College class
+	you had
+		constructor without argument
+			that allows users to create an object 
+			and then use setter methods to inject the dependent values
+
+		constructor with argument
+			that allows users to create an object and inject values there itself
+
+
+How to you do this DI in spring framework using xml configuration?
+
+Spring framework uses lot of .jar files
+so it is difficult to manage
+
+Maven is a project build tool, that effectively manages the .jar files
+
+in a normal project, if you add jar, the project size is huge
+in a maven project, the jar files are not part of the project, only the dependent jar files are mentioned in the config file, so when you pull the project to your computer, your maven will download, if not available
+
+So lets first create a maven project and execute in our system.
+Demo:
+--------
+i am creating a maven project of
+	quick start archetype
+
+	group id can be same as package name
+	artifact id is the name of the project
+
+once we created a project, we have
+	App.java
+
+that prints Hello World
+
+Run the project as java application
+
+Did you notice that whenever we create a maven project,
+a pom.xml file is being created
+
+Project Object Model
+
+
+
+Demo:
+-------
+i will create a Mathematics class and inject
+no1 and no2 using 
+	setter
+	constructor
+
+based injection in xml configuration.
+
+
+
+All my spring demos will be in "Spring" folder and not java folder
+
+
+
+i) create a maven project of quickstart arche type
+ii) 	group:	com.empower.demo
+	artifact:	02-sep-spring-1
+iii) go to pom.xml and add the following spring dependencies:
+
+	  <dependency>
+	  	<groupId>org.springframework</groupId>
+	  	<artifactId>spring-context</artifactId>
+	  	<version>6.1.11</version>
+	  </dependency>
+	  
+	  <dependency>
+	  	<groupId>org.springframework</groupId>
+	  	<artifactId
+
+
+	
+
+1) i will create a Mathematics class with following properties:
+	no1
+	no2
+	result
+
+2) a method 
+	add()
+		that will update the result=no1+no2;
+
+
+
+
+
+package com.empower.demo;
+
+public class Mathematics {
+	private Integer no1;
+	private Integer no2;
+	private Integer result;
+	
+	public Mathematics() {}
+
+	public Mathematics(Integer no1, Integer no2, Integer result) {
+		super();
+		this.no1 = no1;
+		this.no2 = no2;
+		this.result = result;
+	}
+
+	public Integer getNo1() {
+		return no1;
+	}
+
+	public void setNo1(Integer no1) {
+		this.no1 = no1;
+	}
+
+	public Integer getNo2() {
+		return no2;
+	}
+
+	public void setNo2(Integer no2) {
+		this.no2 = no2;
+	}
+
+	public Integer getResult() {
+		return result;
+	}
+
+	public void setResult(Integer result) {
+		this.result = result;
+	}
+	
+	public void add()
+	{
+		result=no1+no2;
+	}
+}
+
+
+
+
+
+xml configuration file
+	name can be
+		appConfig.xml
+		applicationConfig.xml
+		spring.xml
+		bean.xml
+
+any name can be used for xml file
+but the file must be present directly inside
+	src/main/java folder
+		not inside any package
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p = "http://www.springframework.org/schema/p"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+   
+<bean name="maths" class="com.empower.demo.Mathematics">
+		<property name="no1" value="5" />
+		<property name="no2" value="4" />
+		<!-- <constructor-arg name="no1" value="8" />
+		<constructor-arg name="no2" value="5" /> -->
+		
+	</bean> 
+   
+   
+</beans>
+
+
+--------------------------------------
+if you use <property> tag, then you are using 
+	setter based injection
+
+if you use <constructor-arg> tag, then you are using
+	constructor based injection
+
+
+Test the code in App.java
+
