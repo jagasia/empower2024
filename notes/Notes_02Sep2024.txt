@@ -884,3 +884,48 @@ Identify how we can define a bean with
 	Set
 	Map
 
+Also, try with annotations instead of xml
+
+------------------------------------
+Spring Jdbc
+-------------
+
+
+
+DriverManagerDataSource ds=new DriverManagerDataSource();
+    	ds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+    	ds.setUsername("hr");
+    	ds.setPassword("hr1");
+//    	ds.setDriverClassName("");
+    	
+    	JdbcTemplate jt=new JdbcTemplate();
+    	jt.setDataSource(ds);
+    	
+    try
+    {
+    	jt.execute("SELECT * FROM EMPLOYEES");
+    }catch(Exception ex)
+    {
+    	System.out.println(ex);
+    }
+
+    	
+    	System.out.println("Hello world");
+    
+
+
+
+
+there are 2 annotations 
+	@Component
+	@Bean
+
+
+
+since JdbcTemplate is not our class,
+we cannot modify the source code of this class
+
+so we cannot use @Component
+
+
+we use @Bean annotation in config class

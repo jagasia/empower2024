@@ -23,24 +23,24 @@
 		
 	</bean>
 	
-	<bean id="a1" class="com.empower.demo.Author">
-		<property name="id" value="1" />
-		<property name="name" value="Jagadeeswaran" />
-	</bean>
-
-	<bean id="a2" class="com.empower.demo.Author">
-		<property name="id" value="2" />
-		<property name="name" value="Dinesh" />
-	</bean>
-
-	<bean id="b1" class="com.empower.demo.Book">
-		<property name="id" value="2001" />
-		<property name="title" value="We can win" />
-		<property name="authors">
-			<list>
-				<ref bean="a1"/>
-				<ref bean="a2"/>
-			</list>			
-		</property>
-	</bean>
+		<bean id="a1" class="com.empower.demo.Author">
+			<property name="id" value="1" />
+			<property name="name" value="Jagadeeswaran" />
+		</bean>
+	
+		<bean id="a2" class="com.empower.demo.Author">
+			<property name="id" value="2" />
+			<property name="name" value="Dinesh" />
+		</bean>
+	
+		<bean id="b1" class="com.empower.demo.Book">
+			<property name="id" value="2001" />
+			<property name="title" value="We can win" />
+			<property name="authors">
+				<list>
+					<ref bean="a1"/>
+					<ref bean="a2"/>
+				</list>			
+			</property>
+		</bean>
 </beans>
