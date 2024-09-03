@@ -1,0 +1,178 @@
+Servlets & JSP
+----------------
+Using Java, if we develop web applications, then we use Servlets and JSP
+
+what is a servlet?
+	servlet is a web component developed using java language
+	it is a server side script 
+
+what is server side script?
+	in a web application, 
+		we see the web page in browser
+		but some code may not run in browser, but run in server
+
+	what is server?
+		server is the computer where out web pages are stored
+		some part of the program, will run in server and some will run in browser (client)
+		client side script
+			javascript
+			vbscript
+			
+		server side script
+			ASP
+			JSP
+			PHP
+			Servlet
+
+
+in order to run a web application, what we need is a server
+	example for server?
+		Apache tomcat server	(we use)
+		JBoss
+		Weblogic		
+		Websphere	(IBM)
+		IIS
+		Frontpage extension server
+
+
+
+
+Basically we create servlets by
+	creating a class in java
+		that extends HttpServlet
+
+
+HttpServlet is sub class of GenericServlet
+
+life cycle of servlet
+	init		
+	service
+		doGet
+		doPost
+	destroy
+
+
+http methods:
+	get		read
+	post		insert
+	put		update
+	delete		delete
+	patch		update (partial)
+
+
+Demo:
+----------
+Hello world program in servlet
+
+1) create dynamic web project
+	File -> new -> Other
+		Dynamic Web Project
+
+	Project name:		03-sep-servlet-1
+
+	Target runtime:		apache tomcat 10.1
+
+Finish
+
+2) create a servlet inside the project
+	Right click projectname 
+		new
+			Servlet
+
+	package:	com.empower.demo
+	class:	MyServlet
+
+	finish
+
+3) in servlet coding
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Hello world").append(request.getContextPath());
+	}
+
+
+i just added "Hello world"
+
+4) Run the project
+	right click project
+		Run As -> Run on server
+
+
+Error:
+	port 8080 is already in use
+
+Solution:
+	i) we can kill the process running in 8080 using task manager
+	or
+	ii) can the port in which our servlet should run
+
+i) to find the process running in port 8080
+in cmd:
+	netstat -aon
+
+see which pid runs  in 8080 port
+
+ii) in task manager
+	view the PID and end the task for that process
+
+---------------------------------------
+to change the port
+
+in window, show view
+	servers
+
+	in servers, tomcat server is there
+
+double click server and chage the port 
+save
+and run again
+---------------------------------------
+Lets decode service method
+
+doGet	
+	there are 2 parameters for doGet and doPost
+		HttpServletRequest		(to get input from the client)
+		HttpServletResponse	(to give output to the client)
+
+
+PrintWriter out=response.getWriter();
+
+
+
+		PrintWriter out = response.getWriter();
+		out.print("Hi this is empower batch");
+
+
+
+http://localhost:8080/03-sep-servlet-2/MyServlet?no1=5&no2=33
+
+
+this is called URL re-writing
+also called as Query string
+
+
+
+
+Task:
+---------
+username:	raja
+password:	raja@123
+
+create a dynamic web project
+	login.html
+		Username:____________________
+		Password:____________________
+		<<Login button>>
+
+on submitting this form,
+it must be sent to "LoginServlet"
+
+use POST method to check username and password
+
+if login failed, then display "Login Failed. Click here to go to login page" message in red color.
+there should be hyperlink when clicking "here" it takes to login page again
+
+else
+
+"Login successful" in green color
+

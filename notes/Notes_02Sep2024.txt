@@ -929,3 +929,14 @@ so we cannot use @Component
 
 
 we use @Bean annotation in config class
+
+-----------------------------
+Task:
+
+Kindly refer to 
+	02-sep-spring-jdbc
+
+and create the dao impl for customer
+you already have a customer table
+
+---------------------------------------------
