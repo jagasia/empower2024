@@ -217,9 +217,50 @@ response.sendRedirect("login.html");
 
 
 ------------------------------
-Test links
--------------
-Core Java MCQ Link
-https://forms.office.com/r/EpmhJXArjH
+JSP
+----------------------------------
+	JSP stands Java Server Pages
 
 
+Servlets and JSP both are same (they are web components created using java)
+
+at runtime, the JSP is converted into a Servlet class
+	index.jsp	
+		will become
+			Index_Jsp.java
+				this is further compiled to get a class
+				any compilation error, will give JasperException
+
+
+<%	%>		Scriplet
+<%=	%>		Expression
+<%!	%>		Declaration
+<%@	%>		Directives		(page, taglib, include)
+
+
+Expression
+	<%=	%>
+
+this is translated into
+		out.print()
+
+ex:
+	<%= 20*20 %>
+	is equalent to 		out.print(20*20);
+
+
+
+
+EL	=	Expression Language
+
+${	}
+
+this language is used by jsp only to display output
+----------------------------------------------
+
+
+
+
+
+Core Java Coding test link
+https://forms.office.com/r/KrW1gMpiAg

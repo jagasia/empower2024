@@ -2,21 +2,17 @@ package com.empower.demo.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.HttpCookie;
 
 /**
  * Servlet implementation class LoginServlet
  */
-
-interface Person
-{
-	
-	
-}
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,29 +28,32 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uid=request.getParameter("username");
-		String pwd=request.getParameter("password");
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		String remember=request.getParameter("remember");
 		
+		System.out.println(username);
+		System.out.println(password);
 		PrintWriter out = response.getWriter();
-		//to process html code
-		response.setContentType("text/html");		//initially it was text/plain
+		if(remember!=null)
+		{
+			Cookie cookie1=new Cookie("username", username);
+			Cookie cookie2=new Cookie("password1", password);
+			cookie1.setMaxAge(1000*60*60*24);
+			cookie2.setMaxAge(1000*60*60*24);
+			response.addCookie(cookie1);
+			response.addCookie(cookie2);
+			out.println("You are remembered");
+		}
 		
-		if(uid.equals("raja") && pwd.equals("raja@123"))
-		{
-			out.print("<font color=green>Login is successful</font>");
-		}
-		else
-		{
-			out.print("<font color=red>Login is failure. Click <a href=login.html>here </a>to go to login page and retry!</font>");
-		}
+		
 	}
 
 }
