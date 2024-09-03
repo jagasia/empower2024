@@ -30,5 +30,6 @@
     <url-pattern>/LoginServlet</url-pattern>
     <url-pattern>/login</url-pattern>
     <url-pattern>/ls</url-pattern>
+    <url-pattern>/jag</url-pattern>
   </servlet-mapping>
 </web-app>

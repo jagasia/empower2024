@@ -216,3 +216,10 @@ Hint:
 response.sendRedirect("login.html");
 
 
+------------------------------
+Test links
+-------------
+Core Java MCQ Link
+https://forms.office.com/r/EpmhJXArjH
+
+
