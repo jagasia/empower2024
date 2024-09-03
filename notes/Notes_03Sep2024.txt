@@ -210,3 +210,9 @@ else
 Hint:
 	<font color="green">
 	</font>
+
+
+
+response.sendRedirect("login.html");
+
+
