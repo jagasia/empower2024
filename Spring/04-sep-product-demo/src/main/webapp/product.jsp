@@ -14,13 +14,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+
 <%
-	ProductDao pdao=new ProductDaoImpl();
-	List<Product> products=pdao.read();
-	session.setAttribute("products", products);
-
+	if(session.getAttribute("products")==null)
+	{
+		out.print("You are not authorized to visit this url.");
+		return;
+	}
 %>
-
 <div class="container-fluid p-5 bg-success text-white text-center">
   <h1>Product Page</h1>
   <p>Admin can use this page to manage the Products!</p> 
@@ -34,10 +36,10 @@
     <div class="col-sm-4">
     	<h3> Products </h3>
 	<form method="post" action="product">
-		Id:<input type="number" name="id" class="form-control" />
-		Name:<input type="text" name="name" class="form-control" />
-		Description:<input type="text" name="description" class="form-control" />
-		Price:<input type="number" name="price" class="form-control" />
+		Id:<input type="number" name="id" class="form-control" value="${product.id }" />
+		Name:<input type="text" name="name" class="form-control" value="${product.name }" />
+		Description:<input type="text" name="description" class="form-control" value="${product.description }" />
+		Price:<input type="number" name="price" class="form-control" value="${product.price }" />
 		<br/>
 		<input type="submit" name="btn" value="Add" class="btn btn-success" />&nbsp;
 		<input type="submit" name="btn" value="Update" class="btn btn-warning" />&nbsp;
@@ -65,7 +67,9 @@
 					<td>${p.name }</td>
 					<td>${p.description }</td>
 					<td>${p.price }</td>
-					<td></td>
+					<td>
+					<a href="select?id=${p.id }">Select</a>
+					</td>
 				</tr>
 				</c:forEach>
 			</tbody>

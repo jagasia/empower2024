@@ -20,4 +20,27 @@
     <url-pattern>/ProductServlet</url-pattern>
     <url-pattern>/product</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectServlet</display-name>
+    <servlet-name>SelectServlet</servlet-name>
+    <servlet-class>com.empower.demo.controller.SelectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectServlet</servlet-name>
+    <url-pattern>/SelectServlet</url-pattern>
+    <url-pattern>/select</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HomeServlet</display-name>
+    <servlet-name>HomeServlet</servlet-name>
+    <servlet-class>com.empower.demo.controller.HomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomeServlet</servlet-name>
+    <url-pattern>/HomeServlet</url-pattern>
+    <url-pattern>/home</url-pattern>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 </web-app>
