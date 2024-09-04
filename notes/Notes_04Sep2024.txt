@@ -1,0 +1,73 @@
+JSTL
+-----
+	JSP Standard Tag Library
+
+	JSTL libraries includes 
+		core
+		html
+		sql
+
+if you want to use core library:
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+	<c:set var="x" value="20" />
+
+
+core
+	if
+	forEach
+	out
+
+web.xml	
+	deployment descriptor
+	here only servlets were configured
+
+MVC
+	Model	
+		any code that 
+			defines data
+			access data
+	View
+		any code that
+			gets input
+			gives output
+	Controller
+		is between model and view
+		if controller is not there, then model can be accessed by view only if both are in same process (computer)
+		by using controller, we are allowing views from anywhere in the world to access the model
+
+Demo:
+-------
+product dao and impl
+we use in our web application
+where will you put the .jar files in web application?
+	
+1) create a dynamic web project
+	04-sep-product-demo
+
+2) since we use oracle database, we add ojdbc8.jar
+
+	copy and paste this into WEB-INF/lib folder
+
+3) model?
+	model package contains code that either
+		define data
+		access data
+
+
+in this project
+	model package contains
+		Product.java
+		ProductDao.java
+		ProductDaoImpl.java
+
+
+the above 3 classes are copied to our project under
+	src/main/java
+		com.empower.demo.model
+
+4) product.jsp
+
+
+5) ProductServlet
+	url:	product
