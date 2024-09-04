@@ -71,3 +71,10 @@ the above 3 classes are copied to our project under
 
 5) ProductServlet
 	url:	product
+
+Refer to:
+https://github.com/jagasia/empower2024/tree/jag/Spring/04-sep-product-demo
+
+-----------------------------
+Task:
+create a web application for Customer CRUD (ignore dob)
