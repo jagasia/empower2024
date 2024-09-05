@@ -1,0 +1,62 @@
+Spring MVC
+What is MVC
+	Model
+		any code that 
+			defines data
+			access data
+	View
+		any code that
+			gets input
+			gives output
+	Controller
+		allows views from anywhere
+		to access model
+		and controller can also provide business logic	(middle tier)
+Steps: for spring boot mvc
+ --------------------------------
+1) Create a spring boot project
+	05-sep-mvc-1
+
+2) dependencies:
+	spring web
+
+3) generated the project and
+	unzip
+	move to workspace folder
+
+4) import as existing maven project
+
+5) check with a hello world in main
+
+MVC steps:
+-------------
+1) in application.properites:
+	spring.mvc.view.prefix=/WEB-INF/views/
+	spring.mvc.view.suffix=.jsp
+
+	server.port=5001
+
+2) we mentioned the prefix, but actually, this folder is not there, 
+	we should create that inside "webapp" folder		src/main
+
+3) we created the folder as per prefix location
+	now, create the jsp files there only
+
+4) create the controller classes 
+	either inside the base package
+	or its sub package
+
+what is base package?
+	the package that contains the Application class
+
+
+
+
+Error:
+------
+2024-09-05T10:01:35.173+05:30  WARN 3324 --- [05-sep-mvc-1] [nio-5001-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : "Path with "WEB-INF" or "META-INF": [WEB-INF/views/index.jsp]"
+
+
+
+Solution:
+-----------

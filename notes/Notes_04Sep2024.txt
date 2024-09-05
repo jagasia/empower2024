@@ -79,3 +79,81 @@ https://github.com/jagasia/empower2024/tree/jag/Spring/04-sep-product-demo
 Task:
 create a web application for Customer CRUD (ignore dob)
 ----------------------------------------------------------------------
+
+
+
+Spring MVC
+-------------
+2 reasons for spring mvc from Servlet/ JSP
+	1) Servlet is not a POJO class
+		in spring mvc, we will create controller classes as POJO classes
+
+	2) all URLs are received by the controller only		(no direct access to any page/ jsp)
+
+
+Demo
+-------
+1) create a dynamic web project
+		04-sep-spring-mvc-1
+
+2) convert this into a maven project
+	right click project
+		configure
+			convert to maven project
+3) pom.xml
+	add the following dependencies:
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.3.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
+4) Spring MVC framework provides a
+	DispatcherServlet
+
+we will be creating a servlet mapping in our web.xml
+such that
+all requests are received only by this dispatcher servlet.
+
+based on the url, the servlet, will call the controller method accordingly
+
+so the web.xml is going to be configured as following
+
+org.springframework.web.servlet.DispatcherServlet
+org.springframework.web.servlet.DispatcherServlet
+
+----------------------------
+---------------------------
+
+Spring boot
+	encourages "convention" over "configuration"
+	provides starter dependencies
+	internal tomcat server
+	java application
+	is above the layer of spring
+
+
+
