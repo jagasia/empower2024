@@ -38,6 +38,8 @@ public class ProductController {
 		return mv;
 	}
 	
+	
+	
 	@PostMapping(value = "/dml", params = "add")
 	public ModelAndView addProduct(@RequestParam("name") String name, @RequestParam("description") String description,@RequestParam("price") Double price, @RequestParam("expiryDate") String ed, @RequestParam("picture") MultipartFile file) throws ParseException, IOException
 	{
