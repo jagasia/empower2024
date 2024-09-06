@@ -126,3 +126,17 @@ for date?
 
 https://www.baeldung.com/spring-date-parameters
 
+--------------------------------------------------
+Web services
+-----------------
+1999	XML
+2001	SOAP web service
+	S O A P
+
+RESTful web services
+
+
+
+@RestController	=>	@Controller	+	@ResponseBody
+
+
