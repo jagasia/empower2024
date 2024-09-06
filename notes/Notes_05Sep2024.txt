@@ -381,3 +381,6 @@ public class ProductController {
 </html>
 
 
+------------------------------
+Task:
+Create Spring boot MVC project for customer

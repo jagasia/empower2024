@@ -1,0 +1,125 @@
+1) not saving the files
+2) package name
+	in spring boot,
+		keep all classes and interfaces 
+			inside base package (or)
+			sub package of base package
+		you hava modified the package
+3) Web module was 2.5
+	it must be 5 or later
+	after changing web module version, old jsp files still shown error
+	creating new jsp files solved the issue
+4) apache tomcat embed jasper
+	took lot of time to download
+	after that the problem was solved
+5) mv.setViewName("customer");		//but jsp file name was "Customer.jsp"
+	"c" must be "C"
+6) mv.addObject("customer",customers);	//this must be "customers" because <c:forEach items="${customer}">
+
+7) entity class without constructors (problem)
+
+How to use 
+	Date
+	Image
+in our entity
+
+Product:
+	id
+	name
+	description
+	price
+	expiryDate
+	picture
+
+
+1) entity
+package com.empower.demo.model;
+
+import java.util.Arrays;
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Product {
+	private Integer id;
+	private String name;
+	private String description;
+	private Double price;
+	private Date expiryDate;
+	private byte[] picture;
+	
+	public Product() {}
+
+	public Product(Integer id, String name, String description, Double price, Date expiryDate, byte[] picture) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.expiryDate = expiryDate;
+		this.picture = picture;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public Date getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+
+	public byte[] getPicture() {
+		return picture;
+	}
+
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", expiryDate=" + expiryDate + ", picture=" + picture.length + "]";
+	}
+	
+}
+
+
+
+
+
+for date?
+	
