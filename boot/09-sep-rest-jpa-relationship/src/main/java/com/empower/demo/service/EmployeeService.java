@@ -46,5 +46,10 @@ public class EmployeeService {
 	{
 		return er.findByName(name);
 	}
+	
+	public List<Employee> findEmployeeNameStartWith(String prefix)
+	{
+		return er.findEmployeesNameStartWith(prefix);
+	}
 
 }

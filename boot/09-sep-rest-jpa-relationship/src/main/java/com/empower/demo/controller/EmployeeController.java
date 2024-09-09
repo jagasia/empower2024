@@ -23,6 +23,12 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService es;
 	
+	@GetMapping("/prefix/{prefix}")
+	public List<Employee> findEmployeeByPrefix(@PathVariable("prefix") String prefix)
+	{
+		return es.findEmployeeNameStartWith(prefix);
+	}
+	
 	@GetMapping("/name/{name}")
 	public List<Employee> findByName(@PathVariable("name") String name)
 	{

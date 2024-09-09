@@ -203,3 +203,26 @@ use @OneToMany in University
 and @ManyToOne in College
 
 use swagger and add lot of colleges and atleast 2 universities
+
+
+
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+
+	localhost:5000/swagger-ui/index.html
+
+---------------------------------------------------------
+After break:-	JPA Query Language
+
+
+EJBQL
+JPAQL
+HQL
+
+SELECT * FROM Employee e	(SQL)
+SELECT e FROM Employee e	(JPAQL)
+	same can be done as
+from Employee e		(JPAQL)
+
+
+
+
