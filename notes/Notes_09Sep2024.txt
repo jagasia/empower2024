@@ -1,0 +1,90 @@
+RESTful web services (REST api)
+
+>	&gt;
+<	&lt;
+==	eq
+
+
+&nbsp;			entities in a markup language
+
+
+Spring Security
+-----------------
+	authentication		validates the user's identity.		whether they are a valid user or not
+	encryption
+	authorization		whether this user, has access a resource or not
+
+
+/admin/home			who is allowed to access? 	all users, who have admin role
+/user/home			who is allowed?		all users, whose role is user
+
+/admin/**
+
+
+Demo:
+
+in a spring boot app, if you add the following dependency,
+	spring boot starter security
+
+1) create a spring boot app
+	09-sep-security-1
+
+		spring web
+		spring data jpa
+		oracle driver
+		spring security
+
+
+
+2) we have a controller 
+	/home
+	/admin/home
+	/user/home
+
+
+3) a password is generated in console (that changes every time we restart)
+
+when we access any url
+	login page
+		user
+		<<generated pwd copied from console>>
+
+after login, we are able to access any url
+
+
+4) how can i change the username and password of my choice?
+	
+
+
+
+
+------------------------------------------------
+How am i going to provide access to role based access RBA
+
+
+
+
+
+User
+UserDetails
+UserDetailsService
+
+
+
+
+https://bcrypt-generator.com/#google_vignette
+
+
+
+Task:
+-------
+1) add spring security dependency
+	use generated password
+
+2) application.properties
+	spring.security.user.name=
+	spring.security.user.password=
+
+3) Configuration class
+refer to my code
+
