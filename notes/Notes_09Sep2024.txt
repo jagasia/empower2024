@@ -213,6 +213,7 @@ use swagger and add lot of colleges and atleast 2 universities
 ---------------------------------------------------------
 After break:-	JPA Query Language
 
+nativeQuery	SQL
 
 EJBQL
 JPAQL
