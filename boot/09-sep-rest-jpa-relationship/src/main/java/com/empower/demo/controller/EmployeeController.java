@@ -23,6 +23,12 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService es;
 	
+	@GetMapping("/name/{name}")
+	public List<Employee> findByName(@PathVariable("name") String name)
+	{
+		return es.findEmployeesByTheirName(name);
+	}
+	
 	@PostMapping
 	public Employee create(@RequestBody Employee employee) {
 		return es.create(employee);

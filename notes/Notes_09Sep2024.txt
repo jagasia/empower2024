@@ -120,5 +120,86 @@ dependency for swagger
 -------------------------------
 
 ------------------------------
-https://forms.office.com/r/JRdhzvZ7Hm
+Steps for swagger:
+	1) add the following dependency in pom.xml
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.2</version>
+		</dependency>
 
+	2) after running the project
+		go to base url (do not include any controller url)
+			http://localhost:5001/swagger-ui/index.html
+
+/swagger-ui/index.html		is the url
+	note, we do not mention any controller url because, 
+	this URL will show all controllers in the browser
+
+--------------------------------------------
+there are some finder methods 
+		findById		is readymade		find by primary key
+		findBy<<property>>
+
+	
+suppose Entity is Employee
+	id
+	name
+	department
+	salary
+	dob
+	city
+
+		findAll()		readymade
+		findById()	readymade
+		findBySalary
+		findByDob
+		findByCity
+
+	
+for the above methods, we can define them in repository interface
+
+
+
+How to write queries in jpa?
+	most of the common requirements like
+		SELECT all
+		SELECT by primary key
+		
+
+
+Problem:
+------------
+stack overflow when
+	employee has department
+	department has employees
+
+Solution:
+------------
+@JsonIgnore
+	ignores a property when json is generated
+
+
+
+Task:
+University
+College
+
+
+University
+	id
+	name
+	List<College> colleges;
+
+
+College
+	id
+	name
+	city
+	university
+
+
+use @OneToMany in University
+and @ManyToOne in College
+
+use swagger and add lot of colleges and atleast 2 universities

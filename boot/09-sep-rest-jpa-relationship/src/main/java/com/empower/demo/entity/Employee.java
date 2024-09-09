@@ -1,5 +1,7 @@
 package com.empower.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -11,6 +13,7 @@ public class Employee {
 	@Id
 	private Integer id;
 	private String name;
+//	@JsonIgnore
 	@ManyToOne
 	private Department department;
 	

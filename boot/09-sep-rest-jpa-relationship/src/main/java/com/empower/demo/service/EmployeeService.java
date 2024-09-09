@@ -41,5 +41,10 @@ public class EmployeeService {
 		}
 		return emp;
 	}
+	
+	public List<Employee> findEmployeesByTheirName(String name)
+	{
+		return er.findByName(name);
+	}
 
 }
