@@ -88,3 +88,34 @@ Task:
 3) Configuration class
 refer to my code
 
+-------------------------------------------------------
+
+
+class University
+{
+	List<College> colleges;
+}
+
+class College
+{
+	String name;
+	String founder;
+	University university;
+}
+
+
+
+OneToOne
+OneToMany
+ManyToOne
+ManyToMany
+
+
+
+Employee
+Department
+
+
+dependency for swagger
+-------------------------------
+
