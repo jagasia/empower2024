@@ -2,8 +2,10 @@ package com.wipro.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "JAG_USER")
 public class UserInfo
 {
 	@Id

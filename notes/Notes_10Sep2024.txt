@@ -1,0 +1,70 @@
+Swagger & RAML
+---------------------
+ReSTful Api Modelling Language
+------------------------
+Yesterday, we implemented spring security 
+and allowed users to login using a default login page provided by the spring security.
+But, in our project, we are not going to use browser to access our rest api
+
+
+JWT
+	JSON Web Token
+
+is an encrypted string (long string)
+
+JJWT dependency which can be added to our pom.xml
+
+1) jwt filter
+	we need to configure this filter and include this in the spring security configuration
+	this filter will look for a header in each request (that is configured to be authenciated)
+		what header?	Authorization header
+
+2) jwt util
+	this class provides all methods related to 
+		generate token
+		decode the token to get user identity
+		specify token validity period
+		secret key
+
+
+
+
+
+http://localhost:8080/user?username=raja&password=raja@123
+					this is @RequestParam
+
+http://localhost:8080/user/raja/raja@123
+user/{username}/{password}		this is @PathVariable
+
+
+we will not use above techniques to send password
+we should send by @RequestBody
+
+{
+  "username":"raja",
+  "password":"raja@123"
+}
+
+
+if you  want to send username and password like above,
+then we should have a type that has only these 2
+
+
+we create a class called "AuthRequest"
+
+
+
+
+
+Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmtpdCIsImlhdCI6MTcyNTk0NTUyMCwiZXhwIjoxNzI1OTQ3MzIwfQ.T89B4I_nFZbtbQs7EvWAhjrY9y8jlxXX2c42V5FmHlk
+
+
+
+
+
+Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcnlhbiIsImlhdCI6MTcyNTk0NTg2NCwiZXhwIjoxNzI1OTQ3NjY0fQ.YlhAPRxr2jIZ6y4V1vTeVDOWg1iWqQG-iw7HUu2HqL8
+
+
+
+
+https://github.com/jagasia/spring-boot-3-security-jwt
