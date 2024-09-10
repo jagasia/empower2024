@@ -68,3 +68,14 @@ Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcnlhbiIsImlhdCI6MTcyNTk0NTg2NCwiZXhwIjox
 
 
 https://github.com/jagasia/spring-boot-3-security-jwt
+
+
+
+Add the @AuthenticationPrincipal argument to get the logged in user details:-
+--------------------------------------------------------------------------------------------
+
+    @GetMapping("/admin/adminProfile")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public String adminProfile(@AuthenticationPrincipal UserInfoDetails user) {
+        return "Welcome to Admin Profile.. You are "+user.getUsername();
+    }

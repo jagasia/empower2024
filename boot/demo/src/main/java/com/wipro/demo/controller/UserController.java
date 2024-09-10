@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wipro.demo.entity.AuthRequest;
 import com.wipro.demo.entity.UserInfo;
+import com.wipro.demo.entity.UserInfoDetails;
 import com.wipro.demo.service.JwtService;
 import com.wipro.demo.service.UserInfoService;
 
@@ -49,8 +51,8 @@ public class UserController {
 
     @GetMapping("/admin/adminProfile")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public String adminProfile() {
-        return "Welcome to Admin Profile";
+    public String adminProfile(@AuthenticationPrincipal UserInfoDetails user) {
+        return "Welcome to Admin Profile.. You are "+user.getUsername();
     }
 
     @PostMapping("/generateToken")
