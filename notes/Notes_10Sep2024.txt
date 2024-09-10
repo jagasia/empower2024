@@ -79,3 +79,98 @@ Add the @AuthenticationPrincipal argument to get the logged in user details:-
     public String adminProfile(@AuthenticationPrincipal UserInfoDetails user) {
         return "Welcome to Admin Profile.. You are "+user.getUsername();
     }
+
+
+----------------------------------------
+How to access a rest api from another rest api?
+	i) Feign client
+	ii) RestTemplate 	(only from spring boot)
+
+
+
+Feign client demo
+---------------
+1) rest api for College
+
+2) rest api to call the college rest api
+
+
+
+feign client steps:
+---------------------
+1) add open feign dependency
+
+2) enable feign clients
+
+3) create an interface of the rest api that you want to access
+	we want to access college-rest-api
+
+
+	package com.empower.demo.api;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.empower.demo.entity.College;
+
+@FeignClient(name = "college-api", url = "http://localhost:8081/college")
+public interface CollegeApi {
+	@PostMapping
+	public College create(@RequestBody College college);
+	
+	@GetMapping
+	public List<College> read();
+	
+	@GetMapping("/{id}")
+	public College read(@PathVariable("id")Integer id);
+	
+	@PutMapping
+	public College update(@RequestBody College college);
+	
+	@DeleteMapping("/{id}")
+	public College delete(@PathVariable("id")Integer id);
+}
+
+
+4) lets create our controller in this project
+package com.empower.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.empower.demo.api.CollegeApi;
+import com.empower.demo.entity.College;
+
+@RestController
+@RequestMapping("/client")
+public class MyController {
+	@Autowired
+	private CollegeApi api;
+	
+	
+	@GetMapping("/all")
+	public List<College> getAllColleges()
+	{
+		List<College> list = api.read();
+		return list;
+	}
+	
+}
+
+
+
+----------------------------------
+
+RestTemplate demo
+----------------------
