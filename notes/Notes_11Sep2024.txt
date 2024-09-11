@@ -147,12 +147,12 @@ identify the types of variable and special variables
 
 refer above notes.
 -----------------------------------------------
+	node -v
 After nodeJs installation, try to create a reactJs app using:-
 
 	npm config set strict-ssl false
 
 	npm cache verify
-	npm cache clean
 
 	npx create-react-app dummy
 
@@ -163,8 +163,14 @@ if error, then try separately:-
 	npm i -g react-scripts
 	npm i -g cra-templates
 
+now, all libraries are installed globally, 
+create project now:
+	npx create-react-app dummy
 
 to run the  project
 
 go inside the project folder and run
+	cd dummy
 	npm start
+
+a browser opens and show output
