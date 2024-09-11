@@ -146,3 +146,20 @@ to get input
 identify the types of variable and special variables
 
 refer above notes.
+-----------------------------------------------
+After nodeJs installation, try to create a reactJs app using:-
+
+	npx create-react-app dummy
+
+if error, then try separately:-
+
+	npm i -g react
+	npm i -g react-dom
+	npm i -g react-scripts
+	npm i -g cra-templates
+
+
+to run the  project
+
+go inside the project folder and run
+	npm start
