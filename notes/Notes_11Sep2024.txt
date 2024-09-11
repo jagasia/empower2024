@@ -154,23 +154,23 @@ After nodeJs installation, try to create a reactJs app using:-
 
 	npm cache verify
 
-	npx create-react-app dummy
-
-if error, then try separately:-
-
 	npm i -g react
 	npm i -g react-dom
 	npm i -g react-scripts
 	npm i -g cra-templates
 
 now, all libraries are installed globally, 
-create project now:
-	npx create-react-app dummy
+
+choose a folder where you want to create the project and go to cmd prompt there:
+
+	npx create-react-app myproject
 
 to run the  project
 
 go inside the project folder and run
-	cd dummy
+	cd myproject
 	npm start
 
 a browser opens and show output
+
+
