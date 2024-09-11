@@ -149,6 +149,11 @@ refer above notes.
 -----------------------------------------------
 After nodeJs installation, try to create a reactJs app using:-
 
+	npm config set strict-ssl false
+
+	npm cache verify
+	npm cache clean
+
 	npx create-react-app dummy
 
 if error, then try separately:-
