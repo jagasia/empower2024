@@ -1,0 +1,4 @@
+this is the content of jag.txt typed in command prompt.
+After typing how to exit?????
+
+Here, we continue to type

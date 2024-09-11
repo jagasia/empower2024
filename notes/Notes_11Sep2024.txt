@@ -1,0 +1,62 @@
+Unix/Linux
+	operating systems
+
+Environment
+
+echo
+	to print message
+ls
+	list the files and folders in pwd
+pwd
+	present working directory
+
+ls -l
+	long list 
+	shows details about the file/ folder
+mkdir
+	to make directory
+
+mv	
+	to move the directory to another location
+	to rename directory to another name
+
+cd
+	change directory
+
+rmdir
+	remove directory
+
+passwd
+	change password
+
+
+nano editor
+	type nano followed by file name
+vi
+	visual interface editor
+		is used like notepad in windows
+		we can create any type of file
+
+
+in vi editor
+	there are 2 modes
+		i) insert mode
+		ii) execute mode
+
+press "i" for insert mode
+and type the contents
+
+press esc :wq
+
+w for save
+q for quit
+
+
+
+cat nitin.txt
+	cat is to show contents of the file
+
+Task:
+------
+Use Git Bash
+and practise the above commands
