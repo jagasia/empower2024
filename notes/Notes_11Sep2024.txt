@@ -60,3 +60,89 @@ Task:
 ------
 Use Git Bash
 and practise the above commands
+
+
+Before break, we learned few unix/linux commands.
+Now, we learn shell scripting
+
+set path=C:\Program Files\Java\jdk-21\bin
+javac Hello.java
+java Hello
+
+
+
+
+
+
+
+echo
+read
+
+variable naming conventions.
+	variable names in unix are CAPITAL Letters
+	inside "" we use $
+variable names cannot contain any character other than
+	a-z	(not recommended)
+	A-Z
+	_
+
+
+
+
+
+read only variable(!)
+
+NAME="Zara Ali"
+readonly NAME
+NAME="Qadiri"		Error:	This variable is read only.
+
+
+
+unsetting variable 
+	NAME="Jag"
+	unset NAME
+	echo $NAME
+
+
+
+Local Variables − A local variable is a variable that is present within the current instance of the shell. It is not available to programs that are started by the shell. They are set at the command prompt.
+
+Environment Variables − An environment variable is available to any child process of the shell. Some programs need environment variables in order to function correctly. Usually, a shell script defines only those environment variables that are needed by the programs that it runs.
+
+Shell Variables − A shell variable is a special variable that is set by the shell and is required by the shell in order to function correctly. Some of these variables are environment variables whereas others are local variables.
+
+https://www.tutorialspoint.com/unix/unix-special-variables.htm
+
+
+Observations:
+ls
+ls -l
+pwd
+chmod
+passwd
+mkdir
+rm		remove the file
+rmdir		remove the directory
+mv		
+cd
+grep
+rm -rf	shift delete
+
+touch	create the file
+nano
+vi
+rm -i	confirm before remove
+cat	to see the content of the file
+./a.exe	to run a file named a.exe
+whoami	prints logged in user name
+find
+
+
+Task:
+learn to create shell scripts 
+to print
+to get input
+
+identify the types of variable and special variables
+
+refer above notes.
