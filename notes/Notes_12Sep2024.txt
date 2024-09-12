@@ -268,3 +268,107 @@ Sample Input 2:
 
 Sample Output 2:
 -1 
+
+
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int isPrime(int num)
+{
+    if(num<2)
+        return 0;
+    if(num==2)
+        return 1;
+    for(int den=2;den<=num/2;den++)
+    {
+        if(num%den==0)
+            return 0;
+    }
+    return 1;
+}
+
+int main()
+{
+    int from=0;
+    int to=0;
+    scanf("%d",&from);
+    scanf("%d",&to);
+    
+    int isFirst=1;
+    
+    for(int i=from+1;i<to;i++)
+    {
+        int flag=0;
+        if(isPrime(i))
+        {
+            //check if each digit is isPrime
+            int temp=i;
+            while(temp>0)
+            {
+                int digit=temp%10;
+                
+                //check if digit is isPrime
+                if(!isPrime(digit))
+                {
+                    flag=1;
+                    break;
+                }
+                temp/=10;
+            }
+            if(flag)
+                continue;   
+            if(!isFirst)
+                printf(",");
+            printf("%d",i);
+            isFirst=0;
+        }
+    }
+    return 0;
+}
+
+
+-----------------
+Arrays in c language
+
+	char name[10];
+
+
+--------------------------------
+Indices Array
+
+Raj Kumar bought an array of size N which was in sorted order. His son collapsed all the values in the array and it was modified. Given an array of integers of size N. Write a program to help Raj Kumar find the indices of the array elements after which the array is sorted.
+
+Note:
+The array may also contain duplicates.In this case print the index of  the duplicate elements in sorted order.
+ 
+Input Format:
+First input is an integer that denotes the N value,size of the array.
+Second input is a series of integers seperated by a space that denotes the array values.
+
+Output format:
+Output is a series of integers seperated by space that denotes the indices of the array elements after which the array is sorted.
+
+Sample Input 1:
+6
+7 3 8 9 13 2
+
+Sample Output 1:
+2 1 3 4 5 0
+
+Explanation:
+After sorting the array elements would like [2 3 7 8 9 13],their indices in this array is [2 1 3 4 5 0].
+
+Sample Input 2:
+5
+7 1 2 7 7
+
+Sample Output 2:
+2 0 1 3 4
+
