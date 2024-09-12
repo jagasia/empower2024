@@ -32,3 +32,209 @@ factorial()
     fi
 }
 factorial 5
+
+
+Basics of prog., control statements, arrays, strings
+-----------------------------------------
+
+Learn C language using online gdb compiler
+
+
+C language 
+	is a procedure oriented language
+	is also a structural language
+	used in embedded technologies
+	
+
+
+int i=20;		//same in c, c++, java
+
+Bjourne Startrup
+
+
+we are going to develop console based applications (CUI)
+	there will be a main function that is the entry point to run a c program
+
+
+C language itself, there are various editions for various platforms
+
+
+c program you write can be called as "source code"
+and we need a c compiler to translate it into an "object code"
+
+-------------------------------
+input
+output
+
+how to get input from the user?
+	getc
+	getchar
+	gets
+
+	putc
+	putchar
+	puts
+
+
+getc:
+#include <stdio.h>
+
+int main()
+{
+    char input='\0';
+    input=getc(stdin);
+    
+    printf("%c",input);
+    return 0;
+}
+
+
+getchar:
+#include <stdio.h>
+
+int main()
+{
+    char input='\0';
+    input=getchar();
+    
+    printf("your input was: %c",input);
+    return 0;
+}
+
+
+
+
+gets:
+-------
+is dangerous because, it does not check the array bound and risk to store more elements in memory that belongs to others.
+so it is memory leak risk
+
+scanf:
+-------
+#include <stdio.h>
+
+int main()
+{
+    int marks=0;
+    scanf("%d",&marks);
+    printf("the input you gave for marks is: %d",marks);
+    return 0;
+}
+
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    char name[20];
+    scanf("%s",name);
+    printf("your name is %s",name);
+    return 0;
+}
+
+the above code get input of only 1 word 
+
+
+so we use fgets to get multiple words input
+
+
+#include <stdio.h>
+
+int main()
+{
+    char name[20];
+    fgets(name, sizeof(name), stdin);
+    printf("your name is %s",name);
+    return 0;
+}
+
+
+in c language, 
+if condition, returns true, if the expression returns anything other than 0
+0 is false
+non 0 is true		-1 also is true
+
+
+
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    int marks=0;
+    if(marks)
+        puts("Marks is not 0");
+    else
+        puts("Marks is 0");
+    return 0;
+}
+
+
+
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdbool.h>
+
+int main()
+{
+    bool isValid=true;
+    
+    printf("the value is %d",isValid);
+    return 0;
+}
+
+
+
+---------------------------------------------
+Max Integer
+Ram aspires to become a mathematician , he just learnt the  formula for sum of n numbers. He wants to find the maximum number n,such that sum of n numbers is less than a given value.
+Given an integer bound, write a program to find the maximal integer n such that 1 + 2 + ... + n < bound.
+Help Ram with the program.
+
+Input format:
+A single integer that denotes the Integer bound
+
+Output format:
+A single integer that corresponds to  maximal integer, n.
+
+Sample Input 1:
+14
+
+Sample Output 1:
+4
+
+Explanation:
+n= 1
+Sum = 1
+n=2
+Sum = 1+2 = 3
+n=3
+Sum = 1 + 2 + 3 = 6
+n = 4
+Sum = 1 + 2 + 3 + 4 = 10
+n = 5
+Sum = 1+ 2 + 3 + 4 + 5 = 15
+
+For n = 5 The sum is greater than the bound value 14 , Maximum n value with sum below the bound is 4.
+
+Sample Input 2:
+21
+
+Sample Output 2:
+5 
