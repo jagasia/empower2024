@@ -486,3 +486,59 @@ note:
 a function swapping formal parameters, should affect the actual parameters.
 For this, use pointers as formal parameters and send reference in actual parameters.
 
+#include <stdio.h>
+
+void swap(int*, int*);
+
+int main()
+{
+ int x=0;
+ int y=0;
+ scanf("%d",&x);
+ scanf("%d",&y);
+ 
+ printf("After calling the swap method, look at x and y\n");
+ swap(&x,&y);
+ printf("%d %d",x,y);
+ 
+}
+
+void swap(int *a, int *b)
+{
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+}
+
+
+
+
+* value of
+& address of
+
+
+#include <stdio.h>
+
+
+int main()
+{
+    int arr[]={51, 98, 23, 44, 89, 77};
+    int *ptr;
+    ptr=arr;
+    
+    while(*ptr>0 && *ptr<100)
+    {
+        printf("%d ",*(ptr++));
+    }
+}
+
+
+
+you can use pointers for string
+
+char* can be used for string
+
+Task:
+-------
+Accept 2 string inputs from the user 
+and check if they are anagrams
