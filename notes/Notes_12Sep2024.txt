@@ -456,3 +456,33 @@ int main()
 
 	return 0;
 }
+-------------------------------------------------------------
+Pointer
+	is a variable which can hold the address of another variable of same type
+
+in c language, pointer arithmetic is also possible that will shift the memory location.
+
+
+for example,
+
+int *ptr;
+int x=20;
+ptr=&x;		//now ptr holds the address of x		we are able to manipulate x by using ptr
+
+*ptr=100;	//what happens now?	value of x is affected		x is 100 now
+
+
+
+Task:
+
+create a c programming that has a function named as swap 
+
+swap function accepts 2 int arguments and swap them
+
+note:
+	when we define a function, then the arguments in function definition are formal parameters
+	when we call a function, then the arguments passed to the function are actual parameters
+
+a function swapping formal parameters, should affect the actual parameters.
+For this, use pointers as formal parameters and send reference in actual parameters.
+
