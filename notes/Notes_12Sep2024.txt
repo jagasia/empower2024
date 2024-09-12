@@ -1,6 +1,7 @@
 https://www.geeksforgeeks.org/array-basics-shell-scripting-set-1/
 https://www.geeksforgeeks.org/conditional-statements-shell-script/
 https://www.geeksforgeeks.org/shell-scripting-functions-and-its-types/
+https://www.geeksforgeeks.org/shell-scripting-command-substitution/
 
 Arrays, Control Statements, Functions, Substitutions. 
 
@@ -8,3 +9,12 @@ Control statement
 
 if 
 switch
+
+functions
+
+	how to print all prime numbers between x and y?
+
+we will create a function called isPrime
+
+
+
