@@ -601,3 +601,77 @@ int main()
 }
 
 
+Task:
+------
+Accept a sentence input from user and print only the phone numbers present.
+
+A phone number must be 10 digits
+
+
+
+
+input:
+please contact 9898989898 immediately. 989898 If this number 65656565 is not reachable, call 7676767676
+
+
+
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+
+int main()
+{
+    int n=256;
+    printf("Enter the sentence:");
+    char str[n];
+    
+    fgets(str,n,stdin);
+    
+    int count=0;
+    int arr[10];
+    int j=0;
+    for(int i=0;str[i]!='\0';i++)
+    {
+        char c=str[i];
+        
+        if(c>='0' && c<='9')
+        {
+            arr[j++]=c-48;
+            count++;
+            if(count==10)
+            {
+                //print numbers
+                for(int k=0;k<10;k++)
+                {
+                    printf("%d",arr[k]);
+                }
+                printf("\n");
+            }
+        }else
+        {
+            count=0;
+            j=0;
+        }
+        
+    }
+   
+}
+
+
+
+
