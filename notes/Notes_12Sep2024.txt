@@ -238,3 +238,33 @@ Sample Input 2:
 
 Sample Output 2:
 5 
+---------------------------------------------------
+Full Prime
+
+Siva always try to play with the numbers , he does so because he thinks that it will lead to some special numbers . One day he came up with an idea to know the numbers that are considered as Full Prime .  Full prime is a prime number where each of its digits is also a prime . Given a range from X to Y ,write a program to help Siva find the numbers (excluding X and Y ) that are full primes . If no such numbers exist between the given range,then print -1.
+
+Note1: Mention the maximum range of number will vary from 1 to 1000.
+
+Note2: 1 is not a prime number. 
+
+
+Input Format:
+First Input is an integer that denotes the X value.
+Second Input is an integer that denotes the Y value.
+
+Output Format:
+Output is a series of integers separated by a comma that is considered as a full prime.
+
+Sample Input 1:
+1
+50
+
+Sample Output 1:
+2,3,5,7,23,37
+
+Sample Input 2:
+8
+10
+
+Sample Output 2:
+-1 
