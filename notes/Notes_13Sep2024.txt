@@ -766,3 +766,69 @@ external < internal < id selector < inline
 
 Task:
 learn the selectors used in css
+--------------------------------------------------
+
+How to use shorthand property
+------------------------------------
+background
+color types
+	name
+	hexa decimal code
+	rgba
+-------------------------------
+
+
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+
+compare
+
+body {
+  background-color: #ffffff;
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+with
+
+body {
+  background: #ffffff url("img_tree.png") no-repeat right top;
+}
+
+
+
+
+styling on event
+
+:click
+
+:focus
+
+-------------------------------------------
+Bootstrap
+-----------
+typography
+	as soon as we apply bootstrap to a page, the default style is applied on all elements of the page
+
+
+
+Bootstrap treats a page as 12 columns
+
+we can span some columns and make necessary number of columns as requires
+
+
+
+colors
+alerts
+tables
+images
+
+
+cards		
+
+
+
