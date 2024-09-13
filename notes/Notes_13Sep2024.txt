@@ -266,3 +266,103 @@ create a function that accepts employee details and print them.
 modify the values of employees inside the function
 
 and observe that in main method, the employee details are not affected by the function.
+
+
+
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+struct Address
+{
+    char *doorNo;
+    char *city;
+    int pincode;
+    char *state;
+};
+
+struct Date
+{
+    int day;
+    char *month;
+    int year;
+};
+
+int main()
+{
+    struct Address add;
+    add.doorNo="A451";
+    add.city="Bengaluru";
+    add.pincode=501103;
+    add.state="Karnataka";
+    // printf("%s %s %d %s",add.doorNo, add.city, add.pincode, add.state);
+    
+    struct Date dt;
+    dt.day=13;
+    dt.month="Sep";
+    dt.year=2024;
+    printf("%d-%s-%d",dt.day, dt.month, dt.year);
+    
+    return 0;
+}
+
+
+===============================================
+===============================================
+#include <stdio.h>
+
+struct Address
+{
+    char *doorNo;
+    char *city;
+    int pincode;
+    char *state;
+};
+
+struct Date
+{
+    int day;
+    char *month;
+    int year;
+};
+
+struct Employee
+{
+    int id;
+    char *name;
+    struct Date dob;
+    struct Address address;
+};
+
+int main()
+{
+    struct Address add;
+    add.doorNo="A451";
+    add.city="Bengaluru";
+    add.pincode=501103;
+    add.state="Karnataka";
+    // printf("%s %s %d %s",add.doorNo, add.city, add.pincode, add.state);
+    
+    struct Date dt;
+    dt.day=13;
+    dt.month="Sep";
+    dt.year=2024;
+    // printf("%d-%s-%d",dt.day, dt.month, dt.year);
+    
+    struct Employee emp;
+    emp.id=123;
+    emp.name="Raja";
+    emp.dob=dt;
+    emp.address=add;
+    
+    printf("Id:%d\nName:%s\nDob:%d-%s-%d\nAddress:%s %s %d %s\n",emp.id, emp.name,emp.dob.day, emp.dob.month, emp.dob.year, emp.address.doorNo, emp.address.city, emp.address.pincode, emp.address.state);
+    
+    return 0;
+}
+=============================
