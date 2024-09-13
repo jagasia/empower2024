@@ -366,3 +366,165 @@ int main()
     return 0;
 }
 =============================
+Files
+
+Already you know file handling in java language.
+lets do in c language
+
+File is in storage
+we need to represent it as an object in memory
+
+FILE *fptr;		this pointer is capable of representing a file in memory
+
+fopen()			open => loading the file in memory
+
+fclose()			remove the file from memory
+
+all the read/write/append operations we do on the memory and 
+flush the changes to the storage using
+
+fflush()
+
+
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+// 	FILE *fptr=fopen("file1.txt","w");
+// 	char *str="Hello";
+// 	fprintf(fptr,"%s",str);
+// 	fclose(fptr);
+
+	FILE *fptr=fopen("file1.txt","r");
+	char str[100];
+	// char *str2;
+	while(fscanf(fptr, "%s", str)==1)
+	{
+		printf("%s ",str);
+	}
+	return 0;
+}
+
+
+
+----------------------
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    FILE *fptr;
+    fptr=fopen("file2.txt","w");
+    int dno=123;
+    char *street="Brigade road";
+    
+    fprintf(fptr,"%d %s",dno, street);
+    fflush(fptr);
+    printf("Done");
+	return 0;
+}
+
+
+
+
+
+
+
+
+-------------------
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    printf("Done");
+    FILE *fptr;
+    fptr=fopen("file2.txt","r");
+    int dno;
+    printf("Done");
+    char street[100];
+    char word[100];
+    
+    printf("Done");
+    fscanf(fptr,"%d",&dno);
+    fscanf(fptr,"%s %s",street, word);
+    
+    
+  printf("Done");
+    printf("THe content from the file was %d %s %s\n",dno, street, word);
+//     printf("Done");
+	return 0;
+}
+
+
+
+-------------------------
+write objects to a file:
+
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+struct Employee
+{
+    int id;
+    char *name;
+    float salary;
+};
+
+int main()
+{
+    struct Employee emp;
+    emp.id=1;
+    emp.name="Raja";
+    emp.salary=1234567.0;
+    
+    FILE *fptr;
+    fptr=fopen("emp.dat","a");
+    
+    fwrite(&emp, sizeof(emp), 1, fptr);
+    
+    printf("Done");
+	return 0;
+}
+
+
+
+
+----------------------------------------
+read object from a file
+--------------------------
+
+
+
+https://www.geeksforgeeks.org/read-write-structure-from-to-a-file-in-c/
+
+
