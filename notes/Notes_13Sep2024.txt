@@ -1,0 +1,268 @@
+c programming functions
+
+we can 
+	define functions
+	call functions
+
+this is normal in any language.
+but in c language, it is top down scanning
+so any functions defined below cannot be called from above.
+
+sometimes, we declare the functions above to make it accessible from anywhere
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+void fn1();
+
+
+int main()
+{
+    
+    fn1();
+
+    return 0;
+}
+
+void fn1()
+{
+    printf("Hi this fn1 function");
+}
+
+
+
+
+------------------
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+void fn1();
+
+
+int main()
+{
+    
+    fn1();
+    fn1();
+    fn1();
+    
+
+    return 0;
+}
+
+void fn1()
+{
+    int count=0;
+    printf("count=%d\n",count++);
+}
+
+-------------------------------------
+
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+void fn1();
+
+
+int main()
+{
+    
+    fn1();
+    fn1();
+    fn1();
+    
+
+    return 0;
+}
+
+void fn1()
+{
+    static int count=0;
+    printf("count=%d\n",count++);
+}
+
+
+------------------------------------------
+all of you understand what is static??
+	static means persistent in c, c++
+	means a variable can retain its value across several function calls.
+
+-----------------------
+functions can have 
+	arguments / parameters
+	return type
+
+arguments can be 
+	value type	
+	reference type
+
+functions can return reference also
+
+
+ARRAYS are always passed by reference
+
+
+
+in java, (also in c#, vb.net, reactjs)
+	param array
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+void fn1();
+
+
+int main()
+{
+    
+    int input[10];
+    input[0]=1;
+    fn1(input);         //here, input array's name is passed as argument. array name is a pointer to first of the array
+
+    printf("%d",input[0]);
+    return 0;
+}
+
+void fn1(int arr[])
+{
+    arr[0]=2000;
+}
+-----------------------------------
+
+functions can be called byVal or byRef
+arrays are always by ref
+
+
+in c language, function overloading is not possible
+
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+void fn1();
+
+int sumInt(int i, int j)
+{
+    return i+j;
+}
+
+float sumFloat(float i, float j)
+{
+    return i+j;
+}
+
+int main()
+{
+    
+    int input[10];
+    input[0]=1;
+    fn1(input);         //here, input array's name is passed as argument. array name is a pointer to first of the array
+
+    printf("%d",input[0]);
+    return 0;
+}
+
+void fn1(int arr[])
+{
+    arr[0]=2000;
+}
+
+
+
+----------------------
+Recursion
+	a function calls itself
+
+------------------------
+structure
+----------
+ is used to create user defined types in c (and c++) language
+
+struct Address
+{
+}
+
+
+
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+struct Address
+{
+    char *doorNo;
+    char *city;
+    int pincode;
+    char *state;
+};
+
+int main()
+{
+    struct Address add;
+    add.doorNo="A451";
+    add.city="Bengaluru";
+    add.pincode=501103;
+    add.state="Karnataka";
+    printf("%s %s %d %s",add.doorNo, add.city, add.pincode, add.state);
+    return 0;
+}
+
+
+Task:
+-----
+
+Create a c program and accept employee details, store them in the structure
+
+create a function that accepts employee details and print them.
+
+modify the values of employees inside the function
+
+and observe that in main method, the employee details are not affected by the function.
