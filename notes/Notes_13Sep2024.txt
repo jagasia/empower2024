@@ -634,3 +634,135 @@ FORM INPUTS	(html5 tags like 		number, date, email, range)
 2) lists
 3) table
 4) form inputs
+-------------------------------------------
+unordered list
+-----------------
+
+<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>  
+
+<ul style="list-style-type:disc;">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>  
+
+
+
+
+ordered list
+-----------------
+<ol>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>  
+
+
+
+<ol start="50">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>
+
+<ol type="I" start="50">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>
+
+-------------------------
+What is CSS?
+	Cascading Style Sheet
+
+
+there are 3 ways, css can be applied to html elements
+	i) 	inline
+	ii)	internal
+	iii)	external
+
+
+inline
+------
+	in the line of the html element, the style is applied using style "attribute"
+
+ex:
+	<p style="color:red"> this is a paragraph</p>
+
+internal
+----------
+	we use <style> element
+	and whatever style we mention, are applied to the entire html document (current page)
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <p>One</p>      <p>Two</p>      <p>Three</p>
+</body>
+</html>
+
+
+
+external
+---------
+we will create separate css file and apply it in html document using
+	<link> element
+
+
+
+
+Selectors:
+------------
+
+p
+{
+	color:red
+}
+
+
+in above example, we used "element" selector
+
+
+#p2
+{
+    color:chocolate
+}
+
+in above example, we used "id" selector
+
+
+
+.even
+{
+    color:chartreuse
+}
+
+in above example, we use "class" selector
+
+sometimes, for a single element, 
+	we may use external style	
+	we may use internal
+	we may use inline
+	we may use by id selector
+	we may use by class selector
+
+what will be applied?
+	
+external < internal < id selector < inline
+
+
+Task:
+learn the selectors used in css
