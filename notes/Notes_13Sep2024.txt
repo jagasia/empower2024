@@ -528,3 +528,109 @@ read object from a file
 https://www.geeksforgeeks.org/read-write-structure-from-to-a-file-in-c/
 
 
+----------------------------------------------------------
+HTML
+------
+	Hypertext Markup Language
+
+
+markup languages like
+	html, xml are based on SGML		(Standard Generalized Markup Language)
+
+
+Lets understand the grammer of a markup language
+
+1) elements
+2) attributes
+3) comments
+4) entities
+5) processing instruction
+
+
+Element
+-----------
+is also called as Tag
+
+ex:
+	<HTML>	is the root element of a html file
+
+there must be only 1 root element in any markup language code
+An element that contains all other elements is "root" element
+
+<HTML>
+
+</HTML>
+
+Tag is called as element
+there are different types of tags:
+	1) empty tag
+		ex:		<br/>		<hr/>		
+	2) content tag
+		ex:		<body></body>	<p></p>
+
+		i) container / block elements that can contain other elements inside as child
+		ex:
+			<div>	<p> this is paragraph</p>	<div>	</div>	</div>
+
+
+		ii) inline elements
+			they appear in the line of parent element
+
+			ex:	<span> 	</span>
+
+
+Attributes:
+------------
+provide additional input to the element
+ex:
+	<p align="right"></p>
+
+attribute values must always be in "" only
+
+
+Comments:
+-------------
+<!-- <span>this is span</span> -->
+
+
+Entities:
+---------
+	&nbsp;
+	&gt;
+	&lt;
+	&ge;
+	&le;
+	&eq;
+	&ne;
+
+HTML 
+	has a root <HTML>
+	and this <HTML> tag can contain
+		<HEAD>
+	and	<BODY>
+
+
+the code in <HEAD> tag are loaded in memory, even before the page is rendered
+any scripts, you want to be ready should be used in head
+though scripts are allowed in body also
+
+Inside HEAD
+	TITLE
+	
+
+the following tags:
+
+HEADINGS
+	H1 to H6			
+	H1 being the largest and
+	H6 being the smallest
+
+TABLE tags
+FORM INPUTS	(html5 tags like 		number, date, email, range)
+
+
+
+1) headings
+2) lists
+3) table
+4) form inputs
