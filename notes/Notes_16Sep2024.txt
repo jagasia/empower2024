@@ -404,3 +404,7 @@ install bootstrap@5
 and import in index.js
 
 display image in home page
+
+
+to enable script in vs code terminal:-
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
