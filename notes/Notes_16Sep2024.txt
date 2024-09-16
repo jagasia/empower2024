@@ -303,3 +303,19 @@ arrow functions			(similar to lambda in java 8)
 
 -----------------------------------------------
 https://www.geeksforgeeks.org/introduction-to-es6/
+
+-----------------------------------------------------------
+
+localStorage
+sessionStorage
+
+	localStorage.setItem(key,value);		//store an item 
+	var value=localStorage.getItem(key);		//retrieve an item
+
+
+	localStorage.removeItem(key);		//remove an item
+
+
+
+Task:
+-------

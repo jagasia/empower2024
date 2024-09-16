@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn1()
+        {
+            var rm=document.getElementById("chkRememberMe").checked;
+            var username="";
+            if(rm)
+            {
+            //store in localStorage
+            username=document.getElementById("txtUsername").value;
+            localStorage.setItem("username",username);
+            alert("Username is stored in local storage")
+            }else{
+                username=localStorage.getItem("username");
+                if(username!=null)
+                {
+                    localStorage.removeItem("username");
+                    alert("localstore item username is removed now")
+                }
+            }
+
+        }
+
+        function fn2()
+        {
+            var username=localStorage.getItem("username");
+            if(username!=null)
+            {
+                document.getElementById("txtUsername").value=username;
+            }
+        }
+    </script>
+</head>
+<body onload="fn2()">
+<form onsubmit="fn1()">
+    Username: <input type="text" name="" id="txtUsername"><br/>
+    Password: <input type="password" name="" id="txtPassword"><br>
+    <label for="chkRememberMe">Remember Me</label><input type="checkbox" name="" id="chkRememberMe"><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
