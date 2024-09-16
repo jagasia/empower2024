@@ -319,3 +319,13 @@ sessionStorage
 
 Task:
 -------
+Create a home page where Login, Signup options are provided
+Signup should allow users to signup
+signedup users can login
+on login, home page should welcome and greet the user.
+
+
+
+
+raja,raja@123,Raja Siva Kumar;
+siva,siva@123,Siva Raja;
