@@ -408,3 +408,11 @@ display image in home page
 
 to enable script in vs code terminal:-
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+-------------------------------------------
+How to create components?
+	i) class component
+	ii) functional component
+
+
+how to create class component?
