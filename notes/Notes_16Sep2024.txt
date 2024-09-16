@@ -214,3 +214,92 @@ objects
 		stringify
 		parse
 
+try to use
+	input type
+		select
+		radio
+		checkbox
+
+button click vs submit
+
+<form>
+	<input type="button" onclick="" />
+</form>
+
+vs
+
+<form onSubmit="">
+	<input type="submit" />
+</form>
+
+
+Template literal ``
+
+we can use variables (values) in template literal
+ex:
+	var age=20;
+	console.log("The value of age is ${age}");
+
+<table>
+<tr>
+	<td>1</td>
+	<td>Raja</td>
+</tr>
+</table>
+
+
+
+Array methods
+The push() method add the element to the end of the array.
+The unshift() method add the element to the starting of the array.
+The pop() method removes an element from the last index of the array.
+The shift() method removes the element from the first index of the array.
+The splice() method removes or replaces the element from the array.
+
+
+length property
+	array length can be changed using length property
+
+
+
+// Creating an Array and Initializing with Values
+let courses = ["HTML", "CSS", "Javascript", "React", "Node.js"];
+
+// Increase the array length to 7
+courses.length = 7;
+
+console.log("Array After Increase the Length: ", courses);
+
+// Decrease the array length to 2
+courses.length = 2;
+console.log("Array After Decrease the Length: ", courses)
+
+
+Output
+Array After Increase the Length:  [ 'HTML', 'CSS', 'Javascript', 'React', 'Node.js', <2 empty items> ]
+Array After Decrease the Length:  [ 'HTML', 'CSS' ]
+
+
+-----------------
+// Creating an Array and Initializing with Values
+let courses = ["HTML", "CSS", "JavaScript", "React"];
+
+// Iterating through forEach loop
+courses.forEach(function myfunc(elements) {
+    console.log(elements);
+});
+
+
+Output
+HTML
+CSS
+JavaScript
+React
+
+
+
+
+arrow functions			(similar to lambda in java 8)
+
+-----------------------------------------------
+https://www.geeksforgeeks.org/introduction-to-es6/

@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Employee
+        {
+            constructor(id, name, department)
+            {
+                this.id=id;
+                this.name=name;
+                this.department=department;
+            }
+        }
+
+        const myPromise=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("This is my promise you see after 5 seconds");
+            },5000);
+        });
+
+        function fn1()
+        {
+            myPromise
+            .then((response)=>{
+                alert(response);
+                
+            });
+            alert("After the promise");
+            
+            
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Ok" onclick="fn1()">
+</body>
+</html>

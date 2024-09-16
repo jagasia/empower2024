@@ -1,18 +1,29 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        function fn1()
-        {
-            var dob=document.getElementById("dob").value;
-            alert(dob)
-        }
+      class Product {}
+
+      function fn1() {
+        var code = `<table border="1">
+<tr>
+	<td>1</td>
+	<td>Raja</td>
+</tr>
+</table>`;
+    document.getElementById("div2").innerHTML=code;
+        var dob = document.getElementById("dob").value;
+        var x = new Product();
+        x.id = 2;
+        alert(`The dob is ${dob} and ${x.id}`);
+      }
     </script>
-</head>
-<body>
-    <input type="date" name="" id="dob">
-    <input type="button" value="Submit" onclick="fn1()">
-</body>
+  </head>
+  <body>
+    <input type="date" name="" id="dob" />
+    <input type="button" value="Submit" onclick="fn1()" />
+    <div id="div2"></div>
+  </body>
 </html>
