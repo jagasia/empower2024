@@ -1,9 +1,9 @@
 import { Component } from "react";
 
-export  class Menu extends Component {
+export class Menu extends Component {
     render() {
-        return <div> 
-                        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        return <div>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="javascript:void(0)">Logo</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -24,7 +24,6 @@ export  class Menu extends Component {
                     </div>
                 </div>
             </nav>
-
-        </div>  
+        </div>
     }
 }
