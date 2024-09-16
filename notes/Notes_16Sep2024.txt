@@ -1,0 +1,216 @@
+Javascript
+-----------
+ES6
+ECMA script
+ECMA = European Computer Manufacturers' Association
+
+
+
+in a web application, there can be
+	client side scripts
+	server side scripts
+
+
+javascript is run by a web browser
+
+javascript is interpreted language
+
+
+Difference between declaring variables using
+	let		//ES6 
+	var		//old
+
+
+where do you mention the data type while declaring a variable in js?
+	we do not mention.
+	the data type is inferred from the value or reference assigned
+
+(activity) There are dataypes in javasRIPT:
+
+numbers
+date
+string
+objects
+tuples
+
+constructs
+	if
+	if else
+	if else if
+	switch case
+	for loop
+	while loop
+	do while 
+	for each
+
+Arrays
+
+
+DOM
+	Document Object Model
+
+
+	document object represents the entire html document as a tree 
+	we can access any element using name or id
+
+
+
+
+
+
+for each loop in javascript:
+
+	for(var x of arr)			x will get current element in each iteration
+
+
+	for(var x in arr)			x will get the index in each iteration
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr=[];
+        function fn1()
+        {
+            var country=document.getElementById("txtCountry").value;            
+            arr.push(country);
+            update();
+        }
+
+        function update()
+        {
+            var div=document.getElementById("div1");
+            div.innerHTML="";
+            for(var c of arr)
+            {
+                div.innerHTML+=c+"<br/>";
+            }
+        }
+
+        function fnRemove()
+        {
+            arr.pop();
+            update();
+        }
+    </script>
+</head>
+<body>
+Enter the country: <input type="text" name="" id="txtCountry" >
+<input type="button" value="Add" onclick="fn1()">    <br/>
+<input type="button" value="Remove" onclick="fnRemove()"><br/>
+<div id="div1"></div>
+</body>
+</html>
+
+
+
+Objects
+---------
+	How to convert a JSON string into object
+
+
+
+{id: '1', name: 'Gagan', department: 'CSE'}			this is object
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fnAdd()
+        {
+            var emp={};
+            var id=document.getElementById("id").value;
+            var name=document.getElementById("name").value;
+            var department=document.getElementById("department").value;
+            
+            emp.id=id;
+            emp.name=name;
+            emp.department=department;
+
+            console.log(emp);
+
+            console.log(JSON.stringify(emp))
+            
+        }
+
+        function fnImport()
+        {
+            var txt=document.getElementById("txt1").value;
+            //convert json string into object
+            var emp=JSON.parse(txt);
+            document.getElementById("id").value=emp.id;
+            document.getElementById("name").value=emp.name;
+            document.getElementById("department").value=emp.department;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt1"><br>
+    <input type="button" value="Import" onclick="fnImport()">
+
+    Id: <input type="number" name="" id="id"><br>
+    Name: <input type="text" name="" id="name"><br>
+    Department: <input type="text" name="" id="department"><br>
+    <input type="button" value="Add" onclick="fnAdd()">
+
+
+</body>
+</html>
+
+
+
+
+
+
+Date:
+----------
+ISO format		yyyy-MM-dd
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn1()
+        {
+            var dob=document.getElementById("dob").value;
+            alert(dob)
+        }
+    </script>
+</head>
+<body>
+    <input type="date" name="" id="dob">
+    <input type="button" value="Submit" onclick="fn1()">
+</body>
+</html>
+
+
+Activity:
+---------
+datatypes in javascript
+programming constructs
+	if
+	switch
+	while
+	do while
+	for loop
+	for each loop
+arrays
+
+	push
+	pop
+	slice
+	map	(important)
+objects
+	JSON
+		stringify
+		parse
+

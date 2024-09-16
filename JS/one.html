@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr=[];
+        function fn1()
+        {
+            var country=document.getElementById("txtCountry").value;            
+            arr.push(country);
+            update();
+        }
+
+        function update()
+        {
+            var div=document.getElementById("div1");
+            div.innerHTML="";
+            for(var c of arr)
+            {
+                div.innerHTML+=c+"<br/>";
+            }
+        }
+
+        function fnRemove()
+        {
+            arr.pop();
+            update();
+        }
+    </script>
+</head>
+<body>
+Enter the country: <input type="text" name="" id="txtCountry" >
+<input type="button" value="Add" onclick="fn1()">    <br/>
+<input type="button" value="Remove" onclick="fnRemove()"><br/>
+<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fnAdd()
+        {
+            var emp={};
+            var id=document.getElementById("id").value;
+            var name=document.getElementById("name").value;
+            var department=document.getElementById("department").value;
+            
+            emp.id=id;
+            emp.name=name;
+            emp.department=department;
+
+            console.log(emp);
+
+            console.log(JSON.stringify(emp))
+            
+        }
+
+        function fnImport()
+        {
+            var txt=document.getElementById("txt1").value;
+            //convert json string into object
+            var emp=JSON.parse(txt);
+            document.getElementById("id").value=emp.id;
+            document.getElementById("name").value=emp.name;
+            document.getElementById("department").value=emp.department;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt1"><br>
+    <input type="button" value="Import" onclick="fnImport()">
+
+    Id: <input type="number" name="" id="id"><br>
+    Name: <input type="text" name="" id="name"><br>
+    Department: <input type="text" name="" id="department"><br>
+    <input type="button" value="Add" onclick="fnAdd()">
+
+
+</body>
+</html>
