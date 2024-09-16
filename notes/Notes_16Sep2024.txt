@@ -329,3 +329,78 @@ on login, home page should welcome and greet the user.
 
 raja,raja@123,Raja Siva Kumar;
 siva,siva@123,Siva Raja;
+
+
+----------------------------
+1) we have cloned the html pages into
+	home
+	logout
+	login
+	signup
+
+it is difficult to manage
+2) menu / nav
+	is redundant
+	
+so if we need to modify, it needs to be modified in multiple pages
+
+another, thing is 
+if we have component based approach,
+menu component can be plugged or removed easily
+
+in reactjs, we have only 1 html file	index.html
+
+we plug components into this page
+
+what is a component?
+	html code
+	css code
+	js code
+
+all together as 1 component
+
+-----------------------------------------
+Virtual DOM
+----------------------
+Demo:
+-------
+in c:\training
+
+create a folder for "reactjs"
+
+
+How to create a reactjs project?
+	npx create-react-app demo1
+
+
+
+npm i react-router-dom
+npm i bootstrap@5
+
+
+
+
+npm install
+	to add node_modules to a project
+
+	this is required because, any git repository of reactjs application will not contain node modules
+	because of gitignore
+
+
+how to install bootstrap to our react js app?
+	npm i bootstrap@5.3.3
+
+index.js
+
+	import "bootstrap/dist/css/bootstrap.min.css";
+
+
+Task:
+create a reactjs app (if already created, run it)
+
+modify App.js and create a homepage
+
+install bootstrap@5
+and import in index.js
+
+display image in home page
