@@ -26,15 +26,15 @@ const Maths=()=>{
     }
     
 
-    return <div>
+    return (<div style={{'background-color':'rgba(255,255,255,0.4)'}}>
         {no1}<br/>
         {no2}<br/>
         {sum}
         <br/>
         Number 1:<input type="number" id="no1" onChange={onChangeHandler} /><br/>
         Number 2:<input type="number" id="no2" onChange={onChangeHandler}  /><br/>
-        
-    </div>
+        <p style={{'color':'rgb(255,0,255)'}} id="p1">This is a paragraph</p>
+    </div>)
 }
 
 export default Maths;

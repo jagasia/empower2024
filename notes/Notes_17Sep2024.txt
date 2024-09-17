@@ -302,3 +302,28 @@ export default Maths;
 What is JSX?
 	
 https://www.w3schools.com/react/react_jsx.asp
+
+
+
+css colors:
+	named colors
+		red
+	rgba
+		rgb()
+		rgba()
+
+	color code in hexa decimal
+		#00 00 00 		black
+		#ff ff ff			white
+
+
+
+
+
+----------------------
+<input type="range" min="0" max="255" />
+
+keep 3 sliders
+
+
+

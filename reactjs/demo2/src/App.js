@@ -1,10 +1,11 @@
 import './App.css';
-import Maths from './Components/Maths';
+import Fun from './Components/Fun';
 
 function App() {
   return (
-    <div className="App">
-      <Maths />
+    <div  className="App">
+      {/* <Maths /> */}
+      <Fun />
       <br/>
       {/* <Counter /> */}
     </div>
