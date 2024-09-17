@@ -1,4 +1,5 @@
 import './App.css';
+import { Counter } from './components/Counter';
 import Login from './components/Login';
 import { Menu } from './components/Menu';
 
@@ -15,10 +16,10 @@ function App() {
         <img width="100" src="images/empower.jfif" />
       </div>
       <div className='col-sm-4'>
-      <Login />
+      <Counter />
       </div>
       <div className='col-sm-4'>
-          
+      <Login bgcolor="grey" title="User Login" />
       </div>
     </div>
     </div>
