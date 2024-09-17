@@ -1,34 +1,28 @@
 import { useState } from "react";
 
 const Maths=()=>{
-    const [no1, setNo1]=useState();
-    const [no2, setNo2]=useState();
-    const [sum, setSum]=useState();
+    const [no1, setNo1]=useState(0);
+    const [no2, setNo2]=useState(0);
+    const [sum, setSum]=useState(0);
 
     function onChangeHandler(e)
     {
+        var value=e.target.value;
         switch(e.target.id)
         {
             case "no1":
-                Promise.resolve()
-                .then(()=>setNo1(e.target.value))
-                .then(()=>{
-                    setSum(parseInt(no1)+parseInt(no2));
+                setNo1((x)=>{
+                    setSum(parseInt(value)+parseInt(no2));
+                    return value;
                 })
                 break;
             case "no2":
-                Promise.resolve()
-                .then(()=>setNo2(e.target.value))
-                .then(()=>{
-                    setSum(parseInt(no1)+parseInt(no2));
+                setNo2((x)=>{
+                    setSum(parseInt(value)+parseInt(no1));
+                    return value;
                 })
                 break;
         }
-
-        
-        
-        
-    
     }
     
 
