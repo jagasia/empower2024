@@ -18,6 +18,7 @@ function App() {
         <img width="100" src="images/empower.jfif" />
       {/* <MyLogin /> */}
       <Maths />
+      <br/>
       </div>
       <div className='col-sm-4'>
       <Counter />
