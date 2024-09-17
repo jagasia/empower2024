@@ -1,9 +1,8 @@
 import './App.css';
 import { Counter } from './components/Counter';
 import Login from './components/Login';
+import { Maths } from './components/Maths';
 import { Menu } from './components/Menu';
-import { MyLogin } from './components/MyLogin';
-
 
 function App() {
   return (
@@ -12,10 +11,13 @@ function App() {
       <h1>This is our title</h1>
     </div>
     <Menu />
+    <br/>
+    
     <div className='row'>
       <div className='col-sm-4'>
         <img width="100" src="images/empower.jfif" />
-      <MyLogin />
+      {/* <MyLogin /> */}
+      <Maths />
       </div>
       <div className='col-sm-4'>
       <Counter />

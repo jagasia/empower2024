@@ -9,6 +9,10 @@ export class MyLogin extends Component
         this.onChangeHandler=this.onChangeHandler.bind(this);
     }
 
+    componentDidUpdate()
+    {
+
+    }
     onChangeHandler(e)
     {
         if(e.target.id=="username")
@@ -31,8 +35,8 @@ export class MyLogin extends Component
             { this.state.usernameTouched && this.state.username.length<3 && <div className="text-danger">Username is invalid</div> }
             <br/>
             <p style={{'color':(this.state.username.length<3)?'red':'black'}}>This is a paragraph</p>
-            Username:<input type="text" id="username" className={this.state.x} onChange={this.onChangeHandler} />
-            Password:<input type="password" id="password" className="form-control" onChange={this.onChangeHandler} />
+            Username:<input type="text" id="username" className={this.state.x} onChange={(e)=>{ this.setState({[e.target.id]:e.target.value}) }} />
+            Password:<input type="password" id="password" className="form-control" onChange={(e)=>{ this.setState({[e.target.id]:e.target.value}) }} />
             <br/>
 
             <input type="button" value="Login" className="btn btn-primary" />
