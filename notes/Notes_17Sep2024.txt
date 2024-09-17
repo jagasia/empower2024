@@ -328,3 +328,21 @@ keep 3 sliders for red, green, blue
 <div style={{'background-color':`rgb(${red},${green},${blue})`}}>
 
 
+-------------------------------------------------------
+What is the need for axios?
+	access rest api
+
+how can we create rest api?
+
+	JSON server
+
+we have to install JSON server using NPM		(Node Package Manager)
+npx json-server --watch db.json
+
+
+
+
+
+
+
+

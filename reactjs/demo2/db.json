@@ -1,0 +1,16 @@
+{
+"products":[
+{
+	"id":1,
+	"name":"Pencil",
+	"price":10
+}
+],
+"customers":[
+{
+	"id":111,
+	"name":"Ankit",
+	"department":"CSE"
+}
+]
+}
