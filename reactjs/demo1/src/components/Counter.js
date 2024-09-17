@@ -14,10 +14,11 @@ export class Counter extends Component{
         //find which button was clicked?
         switch(e.target.value)
         {
-            case "Increment":
+            case "Increment":                
                 this.setState({count:this.state.count+1})
                 break;
             case "Decrement":
+                if(this.state.count>0)
                 this.setState({count:this.state.count-1})
                 break;
         }

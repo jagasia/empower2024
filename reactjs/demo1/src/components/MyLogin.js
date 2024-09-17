@@ -1,48 +1,3 @@
-why className instead of class?
-	we are writing JSX (Javascript XML) code 
-	this will be translated into javascrip code
-	in js, "class" is a keyword
-
-	so className is used instead of class in JSX
-
-
-App component is the parent 
-Login component is the child
-
-parent wants to give input to child component
-
-How to give input from parent to child?
-	props
-
-props helps the parent component to send input to child component
-	
-	props are read-only
-
---------------------
-State
-------
-is used to retain information across function calls within a component
-useful for state management
-
-Lets create a component called counter
-it should have a button
-on clicking the button, it should increment the count
-
-the count should be displayed
-
-
-
-Task:
-use props and state in a class component
-
-
-
-
-
-style
-className
-
-
 import { Component } from "react";
 
 export class MyLogin extends Component
@@ -88,15 +43,3 @@ export class MyLogin extends Component
         </div>
     }
 }
-
-
-
-
-
-Task:
-
-accept 2 numbers input from user using text boxes and bind them to the state
-
-display the sum and product as soon as they type 
-and also when you click buttons
-

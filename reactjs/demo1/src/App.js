@@ -2,6 +2,7 @@ import './App.css';
 import { Counter } from './components/Counter';
 import Login from './components/Login';
 import { Menu } from './components/Menu';
+import { MyLogin } from './components/MyLogin';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <div className='row'>
       <div className='col-sm-4'>
         <img width="100" src="images/empower.jfif" />
+      <MyLogin />
       </div>
       <div className='col-sm-4'>
       <Counter />
