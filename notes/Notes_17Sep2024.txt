@@ -298,3 +298,7 @@ const Maths=()=>{
 
 export default Maths;
 
+---------------------------------------------------
+What is JSX?
+	
+https://www.w3schools.com/react/react_jsx.asp
