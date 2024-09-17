@@ -323,7 +323,8 @@ css colors:
 ----------------------
 <input type="range" min="0" max="255" />
 
-keep 3 sliders
+keep 3 sliders for red, green, blue
 
+<div style={{'background-color':`rgb(${red},${green},${blue})`}}>
 
 
