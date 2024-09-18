@@ -1,4 +1,6 @@
 import './App.css';
+import AdminHome from './Components/AdminHome';
+import Login from './Components/Login';
 import Product from './Components/Product';
 
 function App() {
@@ -8,11 +10,15 @@ function App() {
         <h2>Product Axios Demo</h2>
       </div>
       <div className='row'>
-      <div className='col-sm-2'></div>
+      <div className='col-sm-2'>
+        <Login />
+      </div>
       <div className='col-sm-8'>
         <Product />
       </div>
-      <div className='col-sm-2'></div>
+      <div className='col-sm-2'>
+        <AdminHome />
+      </div>
       </div>
     </div>
   );
