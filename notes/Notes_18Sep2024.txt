@@ -147,3 +147,21 @@ ReactJs + Spring boot Rest + JWT
     }
 
 
+-----------------------------------------------------------
+How to use image in react + spring rest
+---------------------------------------------
+Last time we used byte[]
+lets try with String instead of byte[]
+
+what String?
+	Base64 encoded string
+
+
+
+Product
+	id
+	name
+	category
+	picture
+	mfd
+

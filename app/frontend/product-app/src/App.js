@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className='p-5 bg-secondary text-white'>
-        <h2>Product Axios Demo</h2>
+        <h2>Product Demo</h2>
       </div>
       <div className='row'>
       <div className='col-sm-2'>
