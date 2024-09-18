@@ -131,3 +131,19 @@ public class MyController {
 -------------------------
 ReactJs + Spring boot Rest + JWT
 
+
+
+
+    accessAdminHome()
+    {
+        var token=this.getToken();        
+        return axios.get(this.URL+"/admin/adminProfile", { headers: {"Authorization":`Bearer ${token}`}});
+    }
+
+    getToken() {
+        var token = '';
+        token = localStorage.getItem("token");
+        return token;
+    }
+
+
