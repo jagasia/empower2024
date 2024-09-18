@@ -1,0 +1,32 @@
+AXIOS
+-------
+1) simple crud
+2) jwt
+
+Demo:
+1) create a reactjs application
+
+
+Activity:
+identify the reactjs functional component hooks
+
+useState()	hook
+useEffect()	hook
+
+
+
+
+
+Access to XMLHttpRequest at 'http://localhost:5001/product' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+CORS
+	Cross Origin Resource Sharing
+
+
+        <form className="container">
+            Id:<input type="number" className="form-control" id="id" />
+            Name:
+            Category:
+            Price:
+            <br/>
+        </form>
