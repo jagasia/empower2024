@@ -30,3 +30,25 @@ CORS
             Price:
             <br/>
         </form>
+
+
+------------------
+Spring email
+---------------
+
+1) create one gmail account for sending emails from your apps.
+2) go to gmail settings to enable app access
+	Manage your account
+		search for "App passwords"
+
+
+
+App name: 	empower-demo-2024
+app password:	yeex hrtx bnxx vzsy
+
+
+
+
+
+-----------------------------coding
+add the following dependency in pom.xml
