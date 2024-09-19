@@ -2,10 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import About from './Components/About';
 import Contact from './Components/Contact';
 import Home from './Components/Home';
-import Login from './Components/Login';
+import Login from './Components/Login_old';
 import Logout from './Components/Logout';
 import Nav from './Components/Nav';
-import Signup from './Components/Signup';
+import Signup2 from './Components/Signup2';
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/contact' Component={Contact} />
           <Route path='/login' Component={Login} />
-          <Route path='/signup' Component={Signup} />
+          <Route path='/signup2' Component={Signup2} />
           <Route path='/logout' Component={Logout} />
         </Routes>
       </div>

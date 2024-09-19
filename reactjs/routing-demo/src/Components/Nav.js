@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 
 const Nav = () => {
+    
+    const [status, setStatus]=useState('');
+
+    useEffect(()=>{
+        var str=localStorage.getItem("user");
+        if(str==null)
+        {
+            setStatus(()=>{
+                return "login"
+            });
+        }else{
+            setStatus(()=>{
+                return "logout"
+            });
+        }
+    },[status,setStatus]);
+
     return (
         <div>
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -20,10 +37,10 @@ const Nav = () => {
                         </ul>
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="/signup">Sign Up</a>
+                                <a className="nav-link" href="/signup2">Sign Up</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/login">Login</a>
+                                <a className="nav-link" href={"/"+status}>{status}</a>
                             </li>
                         </ul>
                     </div>
