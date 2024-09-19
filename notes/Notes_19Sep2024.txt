@@ -38,3 +38,88 @@ define the routes
 conver the <App> in index.js using
 <BrowserRouter>
 
+--------------------------------------------------------------------------
+redirect using javascript code
+
+if condition is true, then redirect to another component
+
+while redirecting, we can pass some parameters as input to next component
+
+
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const Login = () => {
+    const [username, setUsername]=useState('');
+    const [password, setPassword]=useState('');
+    const [message, setMessage]=useState('');
+
+    const navigate=useNavigate();
+
+    function fnLogin()
+    {
+        if(username==password)
+        {
+            //success
+            setMessage('');
+            //redirect to home page
+            var obj={};
+            obj.name=username;
+            obj.role="admin"
+            navigate("/",{state:obj})
+        }else{
+            //failure
+            setMessage("Login failed");
+        }
+    }
+    
+  return (
+    <div>
+        <form>
+            Username:<input type="text" id="username" className='form-control' onChange={(e)=>setUsername(e.target.value)} />
+            Password:<input type="password" id="password" className='form-control' onChange={(e)=>setPassword(e.target.value)} />
+            <br/>
+            <input type="button" className='btn btn-secondary' value="Login" onClick={fnLogin} />
+            <br/>
+            <p className='text-danger'>{message}</p>
+        </form>
+    </div>
+  )
+}
+
+export default Login
+
+
+
+
+
+
+
+
+
+
+
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const Home = () => {
+
+    const [obj, setObj]=useState({});
+    const location=useLocation();
+
+    useEffect(()=>{
+        setObj(location.state)
+    },null)
+
+  return (
+    <div>
+            <div>Home....</div>
+            <div>Welcome {obj.name} ! You are {obj.role}</div>
+    </div>
+  )
+}
+
+export default Home
+
+

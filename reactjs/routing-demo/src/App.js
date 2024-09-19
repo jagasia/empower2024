@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import About from './Components/About';
-import { Contact } from './Components/Contact';
+import Contact from './Components/Contact';
 import Home from './Components/Home';
 import Login from './Components/Login';
 import Logout from './Components/Logout';
 import Nav from './Components/Nav';
 import Signup from './Components/Signup';
+
 
 function App() {
   return (

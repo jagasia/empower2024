@@ -46,6 +46,8 @@ const Product=()=>{
     function addProduct()
     {
         // alert("Adding..."+JSON.stringify(product))
+
+
         ProductService.addProduct(product)
         .then((response)=>{
             console.log(response.data)
