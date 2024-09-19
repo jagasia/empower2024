@@ -1,0 +1,40 @@
+we need to install routing
+	npm i react-router-dom
+
+Routes
+	we need to define the routes
+	the placeholder where we need to render a component,		<Routes>
+	there itself we define the routes				<Route
+		path		=>	Component/ Element
+
+
+For example:
+	lets create 3 components
+			home
+			about
+			contact
+			login
+			signup
+			logout
+
+
+
+<Routes>
+          <Route path='/' Component={Home } />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' Component={Contact} />
+          <Route path='/login' Component={Login} />
+          <Route path='/signup' Component={Signup} />
+          <Route path='/logout' Component={Logout} />
+        </Routes>
+
+
+
+
+Task:
+Create few components and provide hyperlink using navbar
+define the routes
+
+conver the <App> in index.js using
+<BrowserRouter>
+
