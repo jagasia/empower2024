@@ -9,8 +9,7 @@ const Home = () => {
 
   useEffect(() => {
     setObj((x) => {
-      if (location.state != null) {
-        
+      if (location.state != null) {        
         return location.state;
       }
       else
