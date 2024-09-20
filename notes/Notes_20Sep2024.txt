@@ -1,0 +1,10 @@
+npm i bootstrap@5.3.3
+npm i formik
+npm i yup
+
+refer to 
+	formik-demo
+
+in reactjs folder
+
+----------------------------------------------------

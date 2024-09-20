@@ -31,7 +31,7 @@ function onButtonClick()
       {formik.errors.cpassword && <p className='text-danger'>{formik.errors.cpassword}</p>  }
       Email:<input type="email" className={`form-control ${formik.errors.email && formik.touched.email && 'is-invalid'}`} id='email' onChange={formik.handleChange} onBlur={formik.handleBlur} />
       {formik.errors.email && formik.touched.email && <p className='text-danger'>{formik.errors.email}</p>  }
-      <input type="button" className='btn btn-primary' value="Sign up" onClick={onButtonClick} />
+      <input type="button" className={`btn btn-primary`} value="Sign up" onClick={onButtonClick} disabled={!(formik.dirty && formik.isValid)} />
     </div>
   )
 }
