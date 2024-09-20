@@ -1,10 +1,15 @@
 package com.wipro.demo.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wipro.demo.entity.AuthRequest;
 import com.wipro.demo.entity.UserInfo;
 import com.wipro.demo.entity.UserInfoDetails;
+import com.wipro.demo.helper.MyToken;
 import com.wipro.demo.service.JwtService;
 import com.wipro.demo.service.UserInfoService;
 
@@ -58,10 +64,19 @@ public class UserController {
     }
 
     @PostMapping("/generateToken")
-    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+    public MyToken authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(authRequest.getUsername());
+        	String name=authentication.getName();
+        	Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        	  
+        	String token=jwtService.generateToken(authRequest.getUsername());
+        	MyToken myToken=new MyToken();
+        	myToken.setName(name);
+        	myToken.setToken(token);
+        	myToken.setAuthorities(authorities);
+        	return myToken;
+//            return jwtService.generateToken(authRequest.getUsername());
         } else {
             throw new UsernameNotFoundException("invalid user request !");
         }

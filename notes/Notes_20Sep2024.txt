@@ -18,6 +18,7 @@ const Signup = () => {
     validationSchema:Yup.object({
       username:Yup.string().required("Username is mandatory").min(6,"Username must be atleast 6 letters"),
       password:Yup.string().required("Password is mandatory"),
+      cpassword:Yup.string(),
       email:Yup.string().email("Invalid email").required("Email is mandatory")
     })
   });
@@ -28,8 +29,8 @@ const Signup = () => {
     var pwd=formik.values.password;
     var cpwd=formik.values.cpassword;
     if(pwd!=cpwd)
-    {
-      formik.errors.cpassword="Passwords does not match"
+    {      
+      formik.setFieldError('cpassword','Passwords does not match')
     }else
     {
       formik.errors.cpassword=""
@@ -51,20 +52,249 @@ const Signup = () => {
   return (
     <div>
       <form>
+        {formik.errors.cpassword}
         <br/>
         Username:<input type="text" className={`form-control ${formik.errors.username && formik.touched.username && 'is-invalid'}`} id='username' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.username && formik.touched.username && <p className='alert alert-danger'>{formik.errors.username}</p>}
         Password:<input type="text" className={`form-control ${formik.errors.password && formik.touched.password && 'is-invalid'}`} id='password'  onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.password && formik.touched.password && <p className='alert alert-danger'>{formik.errors.password}</p>}
-        Confirm Password:<input type="text" className={`form-control ${formik.errors.cpassword && 'is-invalid'}`} id='cpassword' onChange={formik.handleChange}  onKeyUp={fnConfirmPassword} />
+        Confirm Password:<input type="text" className={`form-control ${formik.errors.cpassword && 'is-invalid'}`} id='cpassword' onChange={formik.handleChange} onBlur={formik.handleBlur}  onKeyUp={fnConfirmPassword} />
         {formik.errors.cpassword && <p className='alert alert-danger'>{formik.errors.cpassword}</p>}
         .Email:<input type="email" className={`form-control ${formik.errors.email && formik.touched.email && 'is-invalid'}`} id='email' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.email && formik.touched.email && <p className='alert alert-danger'>{formik.errors.email}</p>}
         <br/>
-        <input type="button" className='btn btn-info' value="Signup" onClick={fnLogin} />
+        <input type="button" className='btn btn-info' value="Signup" onClick={fnLogin} disabled={!(formik.dirty && formik.isValid)} />
       </form>
     </div>
   )
 }
 
 export default Signup
+
+
+
+	const [product, setProduct]=useState({});
+
+
+onchangehanlder
+
+	prd
+
+	setProduct(prd);
+
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+Python
+--------
+
+
+
+
+print("Hello world...");
+
+
+
+Data types in python
+
+
+
+
+Built-in Data Types
+In programming, data type is an important concept.
+
+Variables can store data of different types, and different types can do different things.
+
+Python has the following data types built-in by default, in these categories:
+
+Text Type:	str
+Numeric Types:	int, float, complex
+Sequence Types:	list, tuple, range
+Mapping Type:	dict
+Set Types:	set, frozenset
+Boolean Type:	bool
+Binary Types:	bytes, bytearray, memoryview
+None Type:	NoneType
+
+
+
+
+python
+	if
+	while
+	for
+
+input
+
+
+
+	findUserByToken(@AuthenticationPrincipal UserInfoDetails user)
+	{
+		String token=jwt.getToken();
+	
+	}
+
+
+
+----------------------------------Gagan---------------------------
+package com.wipro.demo.helper;
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+
+public class MyToken {
+	private String token;
+    private String name;
+    private Collection<? extends GrantedAuthority> authorities;
+    
+    public MyToken() {}
+
+	public MyToken(String token, String name, Collection<? extends GrantedAuthority> authorities) {
+		super();
+		this.token = token;
+		this.name = name;
+		this.authorities = authorities;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
+
+	@Override
+	public String toString() {
+		return "MyToken [token=" + token + ", name=" + name + ", authorities=" + authorities + "]";
+	}
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//in UserController
+package com.wipro.demo.controller;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.wipro.demo.entity.AuthRequest;
+import com.wipro.demo.entity.UserInfo;
+import com.wipro.demo.entity.UserInfoDetails;
+import com.wipro.demo.helper.MyToken;
+import com.wipro.demo.service.JwtService;
+import com.wipro.demo.service.UserInfoService;
+
+@RestController
+@CrossOrigin(origins = {"*"})
+@RequestMapping("/auth")
+public class UserController {
+
+    @Autowired
+    private UserInfoService service;
+
+    @Autowired
+    private JwtService jwtService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @GetMapping("/welcome")
+    public String welcome() {
+        return "Welcome this endpoint is not secure";
+    }
+
+    @PostMapping("/addNewUser")
+    public String addNewUser(@RequestBody UserInfo userInfo) {
+        return service.addUser(userInfo);
+    }
+
+    @GetMapping("/user/userProfile")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public String userProfile() {
+        return "Welcome to User Profile";
+    }
+
+    @GetMapping("/admin/adminProfile")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public String adminProfile(@AuthenticationPrincipal UserInfoDetails user) {
+        return "Welcome to Admin Profile.. You are "+user.getUsername();
+    }
+
+    @PostMapping("/generateToken")
+    public MyToken authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        if (authentication.isAuthenticated()) {
+        	String name=authentication.getName();
+        	Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        	  
+        	String token=jwtService.generateToken(authRequest.getUsername());
+        	MyToken myToken=new MyToken();
+        	myToken.setName(name);
+        	myToken.setToken(token);
+        	myToken.setAuthorities(authorities);
+        	return myToken;
+//            return jwtService.generateToken(authRequest.getUsername());
+        } else {
+            throw new UsernameNotFoundException("invalid user request !");
+        }
+    }
+
+}
+
+
+----------------------------------Gagan---------------------------
