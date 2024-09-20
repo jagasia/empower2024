@@ -8,6 +8,7 @@ const Signup = () => {
     validationSchema:Yup.object({
       username:Yup.string().required("Username is mandatory").min(6,"Username must be atleast 6 letters"),
       password:Yup.string().required("Password is mandatory"),
+      cpassword:Yup.string(),
       email:Yup.string().email("Invalid email").required("Email is mandatory")
     })
   });
@@ -18,8 +19,8 @@ const Signup = () => {
     var pwd=formik.values.password;
     var cpwd=formik.values.cpassword;
     if(pwd!=cpwd)
-    {
-      formik.errors.cpassword="Passwords does not match"
+    {      
+      formik.setFieldError('cpassword','Passwords does not match')
     }else
     {
       formik.errors.cpassword=""
@@ -41,17 +42,18 @@ const Signup = () => {
   return (
     <div>
       <form>
+        {formik.errors.cpassword}
         <br/>
         Username:<input type="text" className={`form-control ${formik.errors.username && formik.touched.username && 'is-invalid'}`} id='username' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.username && formik.touched.username && <p className='alert alert-danger'>{formik.errors.username}</p>}
         Password:<input type="text" className={`form-control ${formik.errors.password && formik.touched.password && 'is-invalid'}`} id='password'  onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.password && formik.touched.password && <p className='alert alert-danger'>{formik.errors.password}</p>}
-        Confirm Password:<input type="text" className={`form-control ${formik.errors.cpassword && 'is-invalid'}`} id='cpassword' onChange={formik.handleChange}  onKeyUp={fnConfirmPassword} />
+        Confirm Password:<input type="text" className={`form-control ${formik.errors.cpassword && 'is-invalid'}`} id='cpassword' onChange={formik.handleChange} onBlur={formik.handleBlur}  onKeyUp={fnConfirmPassword} />
         {formik.errors.cpassword && <p className='alert alert-danger'>{formik.errors.cpassword}</p>}
         .Email:<input type="email" className={`form-control ${formik.errors.email && formik.touched.email && 'is-invalid'}`} id='email' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.email && formik.touched.email && <p className='alert alert-danger'>{formik.errors.email}</p>}
         <br/>
-        <input type="button" className='btn btn-info' value="Signup" onClick={fnLogin} />
+        <input type="button" className='btn btn-info' value="Signup" onClick={fnLogin} disabled={!(formik.dirty && formik.isValid)} />
       </form>
     </div>
   )
