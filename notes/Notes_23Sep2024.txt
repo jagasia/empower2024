@@ -1,0 +1,78 @@
+1) modified "generateToken" method
+2) in every project, use the UserInfo entity for all users (admin/ participant/ host/ user/ customer)
+3) kindly verify your entity classes as early possible
+-------------------------------------
+Cloud native technologies
+
+
+DevOps
+--------
+What is DevOps?
+	Development Operations
+		git		(gihub, gitlab, bitbucket)		source code management
+		jira		project management tool
+		jenkins		build deployment 			CI/CD
+		maven		
+		docker
+		kubernetes
+
+git
+---
+	remote repository
+
+	local repository		in c:\ or d:\ 
+
+while creating a local repository, ensure that the current directory is not a sub folder of any other repository
+
+
+c:\training 
+
+	if this folder is a local repository
+		then
+
+
+c:\training\java
+	this java folder cannot be a repository for another remote repository at all
+
+
+what is a local git repository?
+	a folder/directory where .git folder is present 
+
+		this folder is created 
+			git init
+
+
+lab setup
+	install git
+
+	git config --global user.name jagasia
+	git config --gloabl user.email rjagadeeswaran@Yahoo.com
+
+
+
+
+	git config --list --show-origin
+
+
+once you have installed git
+and configured using your
+	name and email address
+
+start working
+
+
+1) create a remote repository 	(in github.com we create a repository)
+2) create a local repository		(a folder where you do git init)
+	git init	
+	git remote add origin https://github.com/jagasia/gd.git
+
+3) create some files like readme
+
+4) git add .
+5) git commit -m "first"
+6) git branch -M jag
+7) git push -u origin jag
+
+
+learn the git commands and switches
+
