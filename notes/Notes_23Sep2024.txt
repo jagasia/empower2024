@@ -76,3 +76,29 @@ start working
 
 learn the git commands and switches
 
+
+
+-----------------------------------
+we are going to collaborate
+
+settings
+	collaborators
+
+the collaborators will be able to push to our git
+
+----------------------------------------------------------
+git init
+git commit
+git add
+git remote
+git push
+git branch
+	-M
+	-d
+	
+		how do you delete a local branch?
+		how do you delete a remote branch?
+
+
+--------------------------------------------------------------
+https://forms.office.com/r/q44j2qDf7B
