@@ -1,0 +1,71 @@
+Docker
+--------
+
+hub.docker.com
+
+docker ps			to list all containers running currently in your system
+docker container ls		to list all containers running currently in your system
+docker ps -a		all	(including those run in background)
+docker image ls		to list all images locally present in the system
+docker images		to list all images locally present in the system
+docker rm		remove a container
+docker rm -f		forcibly remove a container	(even while it is running)
+docker rmi		to remove a local docker image
+docker run		to run a docker image. If image is not found locally, it will pull
+docker pull		to pull a remote docker image to local system
+docker push		to push a local docker image to remote
+
+
+---------------------------------------------------
+how to create our own docker image?
+	using Dockerfile
+	mvn spring-boot:build-image
+
+
+1) we have chosen the following project to containerize now
+06-sep-mvc-image-demo - Copy		(D:\Jag\Empower\2024\all\boot)
+2) we have modified backend from oracle to h2
+	pom.xml	
+		h2 dependency
+	application.properties
+		h2 details
+3) go to location where pom.xml is present
+	mvn clean install
+
+now, in target folder, i can see .war file is created
+
+STEPS FOR DOCKER:
+-------------------------
+to create a docker image of the above war,
+
+create a docker file	(Dockerfile)
+in same location where pom.xml is present
+	
+in the Dockerfile
+FROM openjdk:17-jdk-slim AS build
+EXPOSE 5002
+ADD target/06-sep-mvc-image-demo-0.0.1-SNAPSHOT.war 06-sep-mvc-image-demo-0.0.1-SNAPSHOT.war
+ENTRYPOINT ["java","-jar","06-sep-mvc-image-demo-0.0.1-SNAPSHOT.war"]
+
+
+save
+
+in cmd prompt where Dockerfile is present
+
+i) create docker image
+	docker build -t 06-sep-mvc-image-demo .
+
+ii) once local image is ready, 
+	go to hub.docker.com and login
+	then create a repository
+
+i have created
+	jagindia/06-sep-mvc-image-demo
+
+iii) tag local image to this jagindia/06-sep-mvc-image-demo
+	docker tag 06-sep-mvc-image-demo jagindia/06-sep-mvc-image-demo
+
+iv) docker push 
+	docker push jagindia/06-sep-mvc-image-demo
+
+
