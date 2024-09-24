@@ -69,3 +69,8 @@ iv) docker push
 	docker push jagindia/06-sep-mvc-image-demo
 
 
+
+---------------------------------
+ReactJs coding test link:
+
+https://forms.office.com/r/Uu6zRFt7Uw
