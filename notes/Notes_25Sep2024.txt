@@ -143,3 +143,4 @@ do the updation and save and exit
 ----------------------------
 
 
+"/swagger-ui/**","/swagger-resources/*","/v3/api-docs/**"
