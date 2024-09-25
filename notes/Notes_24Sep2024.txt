@@ -71,6 +71,37 @@ iv) docker push
 
 
 ---------------------------------
-ReactJs coding test link:
 
-https://forms.office.com/r/cgPyY2qJrh
+
+
+
+@GetMapping(value = "/get-file-via-byte-array-resource", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+public @ResponseBody Resource getFileViaByteArrayResource() throws IOException, URISyntaxException {
+	byte data[]=new byte[100];
+	
+    ByteArrayResource resource = new ByteArrayResource(data);
+    return resource;
+}
+
+
+
+resto_user
+resto_food
+resto_reservation
+resto_order
+
+
+
+
+
+id
+customer
+noOfPeople
+reservationDate
+isConfirmed
+
+
+id
+orderDate
+foodItems
+customer
