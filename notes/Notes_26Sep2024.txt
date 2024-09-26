@@ -1,0 +1,102 @@
+What is Cloud Computing, Types of Clouds, Advantages and Disadvantages, Introduction to AWS
+
+Storage cloud
+Compute cloud
+Network cloud
+
+Software as a service
+Platform as a service
+Infra as a service
+
+login to aws 
+
+	aws.amazon.com
+
+EC2
+	Elastic Compute Cloud
+
+
+13.232.135.193
+
+
+
+
+password:
+ANijlKII5nndp&tgmXW%X*X=)9?Dl0;(
+
+
+
+1) for installing docker in aws linux terminal
+
+
+
+
+http://35.154.117.8:5002/product
+
+
+
+
+
+Create an EC2 linux instance:
+	EC2 Dashboard:
+		Instances -> Launch an Instance
+	i) enter a name for the instance
+	ii) Choose OS as Amazon Linux (default) (free tier eligible)
+	iii) Choose Key pair or create a new key pair. (the .pem file will be downloaded to downloads folder)
+	iv) Network settings (check the "Auto-assign public IP)
+		edit and enable the auto assign public ip
+	v) Select existing security group (if already exists)
+
+Finally, click the "Launch Instance" button.
+Check the dashboard for instances and refresh to see the status changing from "Pending" to "Running".
+
+When it is running, click the instance id (hyperlink).
+Click connect button.
+in SSH client tab,
+
+copy the last line  under example.
+	ssh -i "instance14docker.pem" ec2-user@ec2-15-206-151-82.ap-south-1.compute.amazonaws.com
+
+Open cmd
+choose the location where .pem file is present.
+paste the command:
+	ssh -i "instance14docker.pem" ec2-user@ec2-15-206-151-82.ap-south-1.compute.amazonaws.com
+--------------------------------
+To install docker in AWS EC2 linux instance:
+
+sudo yum update
+
+sudo yum search docker
+
+sudo yum install docker
+
+sudo usermod -a -G docker ec2-user
+id ec2-user
+
+sudo systemctl enable docker.service
+
+sudo systemctl start docker.service
+
+sudo systemctl status docker.service
+
+docker version
+	error:		Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
+
+	solution:
+		sudo groupadd docker
+		sudo usermod -aG docker $USER
+		newgrp docker
+		sudo docker run hello-world
+Now you can pull any docker image and run in EC2 instance.
+Check in browser (replace the localhost by the public IP)
+ex:
+	http://3.108.64.101:5000/employee
+http://35.154.168.83/	
+--------------
+to install docker-compose also:
+wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) 
+
+sudo mv docker-compose-$(uname -s)-$(uname -m) /usr/local/bin/docker-compose
+
+sudo chmod -v +x /usr/local/bin/docker-compose
+
