@@ -1,0 +1,86 @@
+https://www.npmjs.com/package/react-to-pdf
+
+
+EC2
+ECR	Elastic Container Registray	(this is similar to hub.docker.dom)
+ECS	(if you want to run a container like docker)
+	Elastic Container Service
+
+	
+
+jagindia/06-sep-mvc-image-demo
+
+
+http://3.110.92.167:5002/product
+
+
+1) create a spring boot application
+2) create a docker image
+	mvn spring-boot:build-image
+3) push the image to the docker hub
+	i) create repo in hub.docker.com
+	ii) tag the local image to repo
+	iii) docker push repo
+4) go to aws ECS
+	create task definition
+		choose between "Fargate" or "EC2"
+		choose "Fargate"
+		enter task definition name
+		enter task role as "None"
+		enter task memory 1 Gb
+		enter cpu memory 0.5v CPU
+		create container
+			enter name
+			image:
+				docker.io/jagindia/reponame:tagname
+			memory limit: hard limit	1024
+			port mapping: 8080 and 80
+		click "Add"
+		click "create"
+ 
+	create cluster
+		type: Networking only
+		cluster name: jag1
+		click create
+	view cluster
+		task
+			"Run new task"
+				Launch type: fargate
+			choose task definition (already created)			
+			choose cluster vpc
+			choose subnet
+			security group:	
+				"Edit"
+				enter the security group name (any name)
+				In bound rules
+					choose all traffic and all tcp
+		click Run task button
+		in the cluster, check logs (refresh)
+		select the task and go to logs.
+		Details | Tags | Logs
+ 
+			in details tab, under network: public ip
+ 
+	In status:	
+		Last status: RUNNING
+	Click on the task (hyperlink)
+	Below that
+		Network:
+			public IP		(copy the ip address)
+	go to browser:
+http://ipaddress:portnumber
+ 
+-------------------------
+http://3.108.42.145:8080
+ 
+http://3.108.42.145:8080/
+ 
+3.108.42.145
+3.108.42.145
+ 
+http://43.204.37.125:5000
+
+
+
+
+Elastic beanstalk
