@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Product {
@@ -13,6 +14,8 @@ public class Product {
 	private String name;
 	private String category;
 	private Double price;
+	private Date mfd;
+	private String picture;
 	
 	public Product() {}
 
@@ -22,6 +25,36 @@ public class Product {
 		this.name = name;
 		this.category = category;
 		this.price = price;
+	}
+
+	public Product(Integer id, String name, String category, Double price, Date mfd, String picture) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.price = price;
+		this.mfd=mfd;
+		this.picture=picture;
+	}
+
+	public void setMfd(Date mfd)
+	{	
+		this.mfd=mfd;
+	}
+
+	public void setPicture(String picture)
+	{
+		this.picture=picture;
+	}
+	
+	public Date getMfd()
+	{
+		return this.mfd;
+	}
+
+	public String getPicture()
+	{
+		return this.picture;
 	}
 
 	public Integer getId() {

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { usePDF } from 'react-to-pdf';
 import './App.css';
 import ProductService from './Services/ProductService';
+
 
 function App() {
   const [id, setId] = useState(0);
@@ -10,11 +12,13 @@ function App() {
   const [mfd, setMfd] = useState('');
   const [picture, setPicture] = useState('');
   const [products, setProducts]=useState([])
+  const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
 
   useEffect(()=>{
     ProductService.retrieveAllProducts()
     .then((response)=>{
       setProducts(response.data)
+      console.log(response.data)
     })
     .catch((err)=>{
       console.log(err);
@@ -87,26 +91,29 @@ function App() {
             <br />
             <input type="button" className='btn btn-info' value="Add" onClick={addProduct} />
           </form>
+          <br/>
+          <button onClick={() => toPDF()}>Download PDF</button>
+          <div ref={targetRef}>
           <table className='table table-bordered table-striped table-hover'>
             <thead>
               <tr>
-                <th>Id</th><th>Name</th><th>Price</th><th>Category</th><th>Mfd</th><th>Picture</th>
+                <th>Id</th><th>Name</th><th>Price</th><th>Category</th><th>Picture</th><th>Mfd</th>
               </tr>
             </thead>
             <tbody>
               {
-                products.map((p)=><tr>
+                products.map((p)=><tr key={p.id}>
                   <td>{p.id}</td>
                   <td>{p.name}</td>
                   <td>{p.price}</td>
                   <td>{p.category}</td>
-                  <td>{p.mfd}</td>
                   <td><img width={100} src={p.picture} /></td>
-                  
+                  <td>{p.mfd}</td>
                 </tr>)
               }
             </tbody>
           </table>
+          </div>
         </div>
         <div className='col-sm-4'></div>
       </div>

@@ -1,0 +1,73 @@
+S3		-	Simple Storage Service
+EBS
+AWS
+	Elastic beanstalk
+Successfully uploaded file 06-sep-mvc-image-demo-0.0.1-SNAPSHOT.war to S3, created application version and started deployment with new application version
+
+only 5000 port works for elastic beanstalk
+
+VPC
+	Virtual private cloud
+	Security group
+	Subnet
+Learn to deploy our spring boot application in Elastic Beanstalk
+1)	We have create a spring boot rest api now 14-jun-aws-rest-1
+2)	To generate jar file: right click project -> Run As -> Maven Build -> goals: clean install
+3)	Now, the .jar file is present in target folder
+Steps for deploying this .jar in AWS Elastic Beanstalk:
+1)	Login to aws.amazon.com		management console
+2)	Search for “Elastic Beanstalk”
+3)	Create an application (ideally same name as the project name)
+4)	Create environment:
+Platform:	Java	(for .jar		and tomcat for .war)
+		We have chosen java platform now
+Choose sample application and deploy		(later we can upload jar)
+
+
+
+http://ust-demo-1-env.eba-jgtkx6u6.ap-south-1.elasticbeanstalk.com/hello
+this is working:
+
+Now, Task:
+1)	Create a spring boot application with rest controller and getmappings
+2)	server.port=5000
+
+In aws, management console:
+
+AWS official documentation for create vpc: (as on 14-Jun-2023)
+https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html
+
+To create a VPC, subnets, and other VPC resources using the console
+1.	Open the Amazon VPC console at https://console.aws.amazon.com/vpc/.
+2.	On the VPC dashboard, choose Create VPC.
+3.	For Resources to create, choose VPC and more.
+4.	Keep Name tag auto-generation selected to create Name tags for the VPC resources, or clear it to provide your own Name tags for the VPC resources.
+5.	For IPv4 CIDR block, enter an IPv4 address range for the VPC. A VPC must have an IPv4 address range.
+6.	(Optional) To support IPv6 traffic, choose IPv6 CIDR block, Amazon-provided IPv6 CIDR block.
+7.	Choose a Tenancy option. This option defines if EC2 instances that you launch into the VPC will run on hardware that's shared with other AWS accounts or on hardware that's dedicated for your use only. If you choose the tenancy of the VPC to be Default, EC2 instances launched into this VPC will use the tenancy attribute specified when you launch the instance -- For more information, see Launch an instance using defined parameters in the Amazon EC2 User Guide for Linux Instances. If you choose the tenancy of the VPC to be Dedicated, the instances will always run as Dedicated Instances on hardware that's dedicated for your use. If you're using AWS Outposts, your Outpost requires private connectivity; you must use Default tenancy.
+8.	For Number of Availability Zones (AZs), we recommend that you provision subnets in at least two Availability Zones for a production environment. To choose the AZs for your subnets, expand Customize AZs. Otherwise, let AWS choose them for you.
+9.	To configure your subnets, choose values for Number of public subnets and Number of private subnets. To choose the IP address ranges for your subnets, expand Customize subnets CIDR blocks. Otherwise, let AWS choose them for you.
+10.	(Optional) If resources in a private subnet need access to the public internet over IPv4, for NAT gateways, choose the number of AZs in which to create NAT gateways. In production, we recommend that you deploy a NAT gateway in each AZ with resources that need access to the public internet.
+11.	(Optional) If resources in a private subnet need access to the public internet over IPv6, for Egress only internet gateway, choose Yes.
+12.	(Optional) If you need to access Amazon S3 directly from your VPC, choose VPC endpoints, S3 Gateway. This creates a gateway VPC endpoint for Amazon S3. For more information, see Gateway VPC endpoints in the AWS PrivateLink Guide.
+13.	(Optional) For DNS options, both options for domain name resolution are enabled by default. If the default doesn't meet you needs, you can disable these options.
+14.	(Optional) To add a tag to your VPC, expand Additional tags, choose Add new tag, and enter a tag key and a tag value.
+15.	In the Preview pane, you can visualize the relationships between the VPC resources that you've configured. Solid lines represent relationships between resources. Dotted lines represent network traffic to NAT gateways, internet gateways, and gateway endpoints. After you create the VPC, you can visualize the resources in your VPC in this format at any time using the Resource map tab. For more information, see Visualize the resources in your VPC.
+16.	When you are finished configuring your VPC, choose Create VPC.
+
+Lets create a MVC project and deploy it in Elastic Beanstalk:
+Entity:
+	Employee
+		id
+		firstName
+		lastName
+
+http://jagindia.ap-south-1.elasticbeanstalk.com/employee
+
+
+RDS		-	Relational Database Service
+
+Steps to configure RDS mysql database and access it from mysql workbench and also from java:-
+https://youtu.be/2Y960jjzjK4
+
+
