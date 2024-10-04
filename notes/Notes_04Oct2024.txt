@@ -1,0 +1,101 @@
+1) All of you have completed REST apis
+	@CrossOrigin
+
+in security configuration
+	.permitAll		(temporary)
+
+2) Front end
+	basically, all components must have been created as of now
+
+every component can be completely tested using simple UI like textbox
+
+	ex:
+		Booking
+			id
+			bdate
+			product
+			customer
+			
+
+time being, (until you do routing)
+		keep textboxes for all these
+
+and test by submitting
+
+later you can change these text boxes as
+	dropdownlist
+	radio
+	range
+	
+you may remove some of the textboxes 	(customer/user		can be taken from login (localStorage)
+
+3) today
+	every component	
+		validations
+
+	routing
+
+
+
+remove the ant matchers that permitAll		(except few things like 		login, signup)
+
+@PreAuthorize
+
+
+
+
+when login is successful, what we get?
+	older version:		String	(jwt token)
+	new version:		MyToken	
+
+	{
+		token:
+		name:
+		authorities:[{"authority":"USER"}]
+	}
+
+convert object into string
+	JSON.stringify(myToken)
+	store it in localStorage
+
+
+every component
+	should greet the user
+		
+get the localStorage item and
+convert string into object
+	JSON.parse(str)
+
+var str=localStorage.getItem("myToken");
+var obj=JSON.parse(str);
+obj.name		
+obj.authorities[0].authority			//i got ADMIN
+obj.token		this you need to send to every call to rest api
+
+
+    accessAdminHome()
+    {
+        var token=this.getToken();        
+        return axios.get(this.URL+"/admin/adminProfile", { headers: {"Authorization":`Bearer ${token}`}});
+    }
+
+
+-----------
+Exception handling
+
+
+
+{	mystate.map((x)=><tr key={x.id}>
+		<td>
+
+
+
+
+1) comments		only explanation			no java code or react or js code is commented
+2) all unused variables are removed
+3) package		
+4) indentation		format document
+5) define user defined exception classes in java
+	and throw them in all alternate situations
+
+
