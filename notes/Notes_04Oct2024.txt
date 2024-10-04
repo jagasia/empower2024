@@ -99,3 +99,9 @@ Exception handling
 	and throw them in all alternate situations
 
 
+java.util.Date		2024-10-04
+LocalDate			2024-10-04T09:48:00
+
+dt.substring(0,10)		2024-10-04
+dt.substring(11)		09:48:00
+
