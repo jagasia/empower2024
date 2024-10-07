@@ -2,7 +2,7 @@ import axios from "axios";
 
 class UserService 
 {
-    URL="http://localhost:5001/auth"
+    URL="http://localhost:5002/auth"
 
     generateToken(authRequest)
     {
@@ -15,7 +15,7 @@ class UserService
         return axios.get(this.URL+"/user/userProfile",{ headers: {"Authorization" : `Bearer ${token}`}});
     }
 
-    accessAdminHome()
+     accessAdminHome()
     {
         var token=this.getToken();        
         return axios.get(this.URL+"/admin/adminProfile", { headers: {"Authorization":`Bearer ${token}`}});
