@@ -1,0 +1,30 @@
+from reactjs, you send headers "Authorization" 	Bearer lkasjdflkas ndfk;lj sjdlkfjsdlkfjsldk fjslkd jflksdj flksdj flkj
+
+spring security configuration should allow these headers from cross origin
+
+
+pro *c
+
+what is pro c?
+	a kind of c language that includes libraries to access oracle database and execute sql queries from a c program
+
+
+
+App.pc	(this is our proc code)
+to compile this
+proc App.pc		convert proc code to c code
+
+gcc App.c			convert c code to object code
+
+./a.exe
+
+
+https://www.javatpoint.com/proc
+
+
+
+Agenda
+---------
+Pro *C learning
+Final Test (MCQ)
+Project mock presentation
