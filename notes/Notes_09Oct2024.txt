@@ -101,3 +101,17 @@ Arrays can only be single dimensional. The example char name[50][11] would seem 
 
 When using arrays to store the results of a query, if the size of the host array (say n) is smaller than the actual number of tuples returned by the query, then only the first n result tuples will be entered into the host array.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://forms.office.com/r/q44j2qDf7B
