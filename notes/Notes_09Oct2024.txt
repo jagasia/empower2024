@@ -1,0 +1,103 @@
+Embedded SQL Statements, Pro C Synatax, Transactions, Error Handling
+
+
+http://infolab.stanford.edu/~ullman/fcdb/oracle/or-proc.html
+
+
+Embedded SQL is a method of combining the computing power of a high-level language like C/C++ and the database manipulation capabilities of SQL. It allows you to execute any SQL statement from an application program. Oracle's embedded SQL environment is called Pro*C.
+A Pro*C program is compiled in two steps.  First, the Pro*C precompiler recognizes the SQL statements embedded in the program, and replaces them with appropriate calls to the functions in the SQL runtime library. The output is pure C/C++ code with all the pure C/C++ portions intact. Then, a regular C/C++ compiler is used to compile the code and produces the executable.  For details, see the section on Demo Programs.
+
+Pro*C Syntax
+SQL
+All SQL statements need to start with EXEC SQL and end with a semicolon ";". You can place the SQL statements anywhere within a C/C++ block, with the restriction that the declarative statements do not come after the executable statements. As an example:
+    {
+        int a;
+        /* ... */
+        EXEC SQL SELECT salary INTO :a
+                 FROM Employee
+                 WHERE SSN=876543210;
+        /* ... */
+        printf("The salary is %d\n", a);
+        /* ... */
+    }
+Preprocessor Directives
+The C/C++ preprocessor directives that work with Pro*C are #include and #if. Pro*C does not recognize #define. For example, the following code is invalid:
+    #define THE_SSN 876543210
+    /* ... */
+    EXEC SQL SELECT salary INTO :a
+             FROM Employee
+             WHERE SSN = THE_SSN;    /* INVALID */
+Statement Labels
+You can connect C/C++ labels with SQL as in:
+    EXEC SQL WHENEVER SQLERROR GOTO error_in_SQL;
+    /* ... */
+error_in_SQL:
+    /* do error handling */
+We will come to what WHENEVER means later in the section on Error Handling.
+Host Variables
+Basics
+Host variables are the key to the communication between the host program and the database. A host variable expression must resolve to an lvalue (i.e., it can be assigned). You can declare host variables according to C syntax, as you declare regular C variables. The host variable declarations can be placed wherever C variable declarations can be placed. (C++ users need to use a declare section; see the section on C++ Users.) The C datatypes that can be used with Oracle include:
+char
+char[n]
+int
+short
+long
+float
+double
+VARCHAR[n] - This is a psuedo-type recognized by the Pro*C precompiler. It is used to represent blank-padded, variable-length strings. Pro*C precompiler will convert it into a structure with a 2-byte length field and a n-byte character array.
+You cannot use register storage-class specifier for the host variables.
+A host variable reference must be prefixed with a colon ":" in SQL statements, but should not be prefixed with a colon in C statements. When specifying a string literal via a host variable, the single quotes must be omitted; Pro*C understands that you are specifying a string based on the declared type of the host variable. C function calls and most of the pointer arithmetic expressions cannot be used as host variable references even though they may indeed resolve to lvalues. The following code illustrates both legal and illegal host variable references:
+
+int deptnos[3] = { 000, 111, 222 };
+int get_deptno() { return deptnos[2]; }
+int *get_deptnoptr() { return &(deptnos[2]); }
+int main() {
+    int x; char *y; int z;
+    /* ... */
+    EXEC SQL INSERT INTO emp(empno, ename, deptno)
+        VALUES(:x, :y, :z);         /* LEGAL */
+    EXEC SQL INSERT INTO emp(empno, ename, deptno)
+        VALUES(:x + 1,              /* LEGAL: the reference is to x */
+               'Big Shot',          /* LEGAL: but not really a host var */
+               :deptnos[2]);        /* LEGAL: array element is fine */
+    EXEC SQL INSERT INTO emp(empno, ename, deptno)
+        VALUES(:x, :y,
+               :(*(deptnos+2)));    /* ILLEGAL: although it has an
+lvalue */
+    EXEC SQL INSERT INTO emp(empno, ename, deptno)
+        VALUES(:x, :y,
+               :get_deptno());      /* ILLEGAL: no function calls */
+    EXEC SQL INSERT INTO emp(empno, ename, deptno)
+        VALUES(:x, :y,
+               :(*get_depnoptr())); /* ILLEGAL: although it has an lvalue */
+    /* ... */
+}
+Pointers
+You can define pointers using the regular C syntax, and use them in embedded SQL statements. As usual, prefix them with a colon:
+    int *x;
+    /* ... */
+    EXEC SQL SELECT xyz INTO :x FROM ...;
+The result of this SELECT statement will be written into *x, not x.
+Structures
+Structures can be used as host variables, as illustrated in the following example:
+    typedef struct {
+        char name[21];    /* one greater than column length; for '\0' */
+        int SSN;
+    } Emp;
+    /* ... */
+    Emp bigshot;
+    /* ... */
+    EXEC SQL INSERT INTO emp (ename, eSSN)
+        VALUES (:bigshot);
+Arrays
+Host arrays can be used in the following way:
+    int emp_number[50];
+    char name[50][11];
+    /* ... */
+    EXEC SQL INSERT INTO emp(emp_number, name)
+        VALUES (:emp_number, :emp_name);
+which will insert all the 50 tuples in one go.
+Arrays can only be single dimensional. The example char name[50][11] would seem to contradict that rule. However, Pro*C actually considers name a one-dimensional array of strings rather than a two-dimensional array of characters. You can also have arrays of structures.
+
+When using arrays to store the results of a query, if the size of the host array (say n) is smaller than the actual number of tuples returned by the query, then only the first n result tuples will be entered into the host array.
+
