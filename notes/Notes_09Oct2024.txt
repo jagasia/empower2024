@@ -112,6 +112,4 @@ When using arrays to store the results of a query, if the size of the host array
 
 
 
-
-
-https://forms.office.com/r/q44j2qDf7B
+https://forms.office.com/r/Uu6zRFt7Uw
