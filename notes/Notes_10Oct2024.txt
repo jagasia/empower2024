@@ -1,0 +1,22 @@
+Development lifecycle (Covering Hybrid/SAFE, Development expectations unit tests, integration tests, builds, ownership)
+
+SDLC
+	waterfall
+	agile
+	hybrid
+
+Safe
+	Scalable Agile framework
+https://www.toptal.com/project-managers/agile/project-management-blueprint-part-2-agile-waterfall-hybrid
+
+
+Lean enterprise
+
+https://en.wikipedia.org/wiki/Lean_enterprise
+
+
+
+
+
+
+https://forms.office.com/r/ptmndgJVGZ
